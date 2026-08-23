@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Choose Role | HerBalance</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+
+            min-height: 100vh;
+
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #fff4f8,
+                    #fffafd
+                );
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            color: #333;
+        }
+
+
+        .container {
+
+            width: 90%;
+
+            max-width: 850px;
+
+            text-align: center;
+        }
+
+
+        .logo {
+
+            font-size: 32px;
+
+            font-weight: 700;
+
+            color: #b95783;
+
+            margin-bottom: 35px;
+        }
+
+
+        h1 {
+
+            font-size: 35px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .subtitle {
+
+            color: #777;
+
+            font-size: 17px;
+
+            margin-bottom: 35px;
+        }
+
+
+        .role-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 25px;
+        }
+
+
+        .role-card {
+
+            background: white;
+
+            border:
+                2px solid #f0dce5;
+
+            border-radius: 25px;
+
+            padding: 40px 30px;
+
+            text-decoration: none;
+
+            color: inherit;
+
+            transition:
+                transform 0.2s,
+                box-shadow 0.2s,
+                border-color 0.2s;
+        }
+
+
+        .role-card:hover {
+
+            transform:
+                translateY(-5px);
+
+            border-color: #c56791;
+
+            box-shadow:
+                0 15px 35px
+                rgba(185, 87, 131, 0.13);
+        }
+
+
+        .icon {
+
+            font-size: 65px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .role-card h2 {
+
+            font-size: 24px;
+
+            margin-bottom: 10px;
+
+            color: #333;
+        }
+
+
+        .role-card p {
+
+            color: #777;
+
+            font-size: 15px;
+
+            line-height: 1.6;
+        }
+
+
+        .note {
+
+            margin-top: 28px;
+
+            color: #999;
+
+            font-size: 13px;
+        }
+
+
+        @media (max-width: 650px) {
+
+            .role-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            h1 {
+
+                font-size: 28px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <div class="logo">
+        🌸 HerBalance
+    </div>
+
+
+    <h1>
+        How would you like to use HerBalance?
+    </h1>
+
+
+    <p class="subtitle">
+
+        Choose the experience that best matches you.
+
+    </p>
+
+
+    <div class="role-grid">
+
+
+        <!-- WOMAN -->
+
+        <a
+            href="{% url 'set_role' 'woman' %}"
+            class="role-card"
+        >
+
+            <div class="icon">
+                👩
+            </div>
+
+
+            <h2>
+                I'm a Woman
+            </h2>
+
+
+            <p>
+
+                Track symptoms, understand your
+                wellness trends, receive reminders,
+                explore lifestyle suggestions and
+                manage your personal wellness journey.
+
+            </p>
+
+        </a>
+
+
+
+        <!-- FAMILY -->
+
+        <a
+            href="{% url 'set_role' 'family' %}"
+            class="role-card"
+        >
+
+            <div class="icon">
+                ❤️
+            </div>
+
+
+            <h2>
+                I'm a Family Member
+            </h2>
+
+
+            <p>
+
+                Learn about menopause, understand
+                the changes she may experience and
+                discover practical ways to provide
+                support.
+
+            </p>
+
+        </a>
+
+
+    </div>
+
+
+    <p class="note">
+
+        Your personal health information should
+        remain private and should only be shared
+        with others with your permission.
+
+    </p>
+
+</div>
+
+
+</body>
+
+</html>

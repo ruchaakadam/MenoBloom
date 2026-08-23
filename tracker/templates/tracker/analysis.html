@@ -1,0 +1,2252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Wellness Analysis | HerBalance
+    </title>
+
+
+    <!-- Chart.js -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/chart.js">
+    </script>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background: #fff7fa;
+
+            color: #333;
+
+            min-height: 100vh;
+
+        }
+
+
+        .container {
+
+            width: 90%;
+
+            max-width: 1200px;
+
+            margin: 45px auto 70px;
+
+        }
+
+
+        /* HEADER */
+
+        .header {
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .header h1 {
+
+            font-size: 38px;
+
+            color: #b95783;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .header p {
+
+            color: #777;
+
+            font-size: 17px;
+
+            line-height: 1.6;
+
+        }
+
+
+        /* SUMMARY */
+
+        .summary-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .summary-card {
+
+            background: white;
+
+            border-radius: 20px;
+
+            padding: 25px;
+
+            box-shadow:
+                0 6px 25px
+                rgba(0, 0, 0, 0.06);
+
+        }
+
+
+        .summary-card h3 {
+
+            color: #777;
+
+            font-size: 16px;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .summary-number {
+
+            font-size: 34px;
+
+            font-weight: bold;
+
+            color: #b95783;
+
+        }
+
+
+        .summary-text {
+
+            color: #999;
+
+            font-size: 14px;
+
+            margin-top: 6px;
+
+        }
+
+
+        /* CARD */
+
+        .card {
+
+            background: white;
+
+            border-radius: 22px;
+
+            padding: 30px;
+
+            margin-bottom: 25px;
+
+            box-shadow:
+                0 6px 25px
+                rgba(0, 0, 0, 0.06);
+
+        }
+
+
+        .card h2 {
+
+            font-size: 26px;
+
+            color: #333;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .card-description {
+
+            color: #777;
+
+            line-height: 1.6;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        /* CHART */
+
+        .chart-container {
+
+            position: relative;
+
+            width: 100%;
+
+            height: 450px;
+
+        }
+
+
+        /* MAIN INSIGHT */
+
+        .insight {
+
+            background: #fff4f8;
+
+            border-left:
+                5px solid #b95783;
+
+            border-radius: 12px;
+
+            padding: 22px;
+
+            color: #555;
+
+            line-height: 1.7;
+
+        }
+
+
+        .insight strong {
+
+            color: #b95783;
+
+        }
+
+
+        .insight hr {
+
+            border: none;
+
+            border-top:
+                1px solid #eadde3;
+
+            margin: 25px 0;
+
+        }
+
+
+        .insight small {
+
+            display: block;
+
+            color: #888;
+
+            line-height: 1.6;
+
+        }
+
+
+        /* TREND ITEMS */
+
+        .trend-item {
+
+            padding: 18px;
+
+            margin-top: 12px;
+
+            border-radius: 12px;
+
+            line-height: 1.7;
+
+        }
+
+
+        .trend-item.improving {
+
+            background: #f1fbf5;
+
+            border-left:
+                5px solid #70b88a;
+
+        }
+
+
+        .trend-item.worsening {
+
+            background: #fff8ed;
+
+            border-left:
+                5px solid #e3a33d;
+
+        }
+
+
+        .trend-item.stable {
+
+            background: #f5f7f8;
+
+            border-left:
+                5px solid #9ba5ab;
+
+        }
+
+
+        .trend-item strong {
+
+            color: #b95783;
+
+        }
+
+
+        /* INSIGHTS */
+
+        .insights-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 18px;
+
+        }
+
+
+        .insight-card {
+
+            background: #fff8fb;
+
+            border:
+                1px solid #f1dce6;
+
+            border-radius: 16px;
+
+            padding: 22px;
+
+        }
+
+
+        .insight-card h3 {
+
+            font-size: 19px;
+
+            color: #444;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .insight-card p {
+
+            color: #777;
+
+            line-height: 1.6;
+
+        }
+
+
+        .insight-value {
+
+            font-size: 30px;
+
+            font-weight: bold;
+
+            color: #b95783;
+
+            margin: 8px 0;
+
+        }
+
+
+        .insight-positive {
+
+            border-left:
+                5px solid #70b88a;
+
+        }
+
+
+        .insight-warning {
+
+            border-left:
+                5px solid #e3a33d;
+
+        }
+
+
+        .insight-neutral {
+
+            border-left:
+                5px solid #9ba5ab;
+
+        }
+
+
+        /* NO DATA */
+
+        .no-data {
+
+            text-align: center;
+
+            padding: 45px 20px;
+
+            color: #888;
+
+        }
+
+
+        .no-data-icon {
+
+            font-size: 50px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .no-data h3 {
+
+            color: #555;
+
+            font-size: 22px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        /* BUTTON */
+
+        .back-button {
+
+            display: inline-block;
+
+            padding: 13px 24px;
+
+            background: #b95783;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 10px;
+
+            font-weight: 600;
+
+            transition: 0.2s;
+
+        }
+
+
+        .back-button:hover {
+
+            opacity: 0.9;
+
+            transform: translateY(-1px);
+
+        }
+
+
+        /* RESPONSIVE */
+
+        @media (max-width: 800px) {
+
+            .summary-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .insights-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .container {
+
+                width: 94%;
+
+                margin-top: 25px;
+
+            }
+
+
+            .card {
+
+                padding: 22px;
+
+            }
+
+
+            .header h1 {
+
+                font-size: 30px;
+
+            }
+
+
+            .chart-container {
+
+                height: 350px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- HEADER -->
+
+    <div class="header">
+
+        <h1>
+            📊 Your Wellness Analysis
+        </h1>
+
+        <p>
+
+            Understand how your symptoms are
+            changing over time and identify
+            patterns in your wellness journey.
+
+        </p>
+
+    </div>
+
+
+
+    <!-- SUMMARY CARDS -->
+
+    <div class="summary-grid">
+
+
+        <div class="summary-card">
+
+            <h3>
+                Symptoms Tracked
+            </h3>
+
+            <div
+                class="summary-number"
+                id="symptomCount"
+            >
+                0
+            </div>
+
+            <div class="summary-text">
+
+                Different symptoms recorded
+
+            </div>
+
+        </div>
+
+
+
+        <div class="summary-card">
+
+            <h3>
+                Weeks Tracked
+            </h3>
+
+            <div
+                class="summary-number"
+                id="weekCount"
+            >
+                0
+            </div>
+
+            <div class="summary-text">
+
+                Weeks of symptom history
+
+            </div>
+
+        </div>
+
+
+
+        <div class="summary-card">
+
+            <h3>
+                Total Reports
+            </h3>
+
+            <div
+                class="summary-number"
+                id="reportCount"
+            >
+                0
+            </div>
+
+            <div class="summary-text">
+
+                Symptom occurrences recorded
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- SYMPTOM GRAPH -->
+
+    <div class="card">
+
+        <h2>
+            📈 Symptom Trends
+        </h2>
+
+        <p class="card-description">
+
+            This graph shows how frequently
+            each symptom has been reported
+            week by week.
+
+        </p>
+
+
+        <div class="chart-container">
+
+            <canvas
+                id="symptomChart"
+            ></canvas>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- WELLNESS INSIGHT -->
+
+    <div class="card">
+
+        <h2>
+            💡 Your Wellness Insight
+        </h2>
+
+        <p class="card-description">
+
+            HerBalance compares your symptom
+            history to identify changes over time.
+
+        </p>
+
+
+        <div
+            class="insight"
+            id="insightText"
+        >
+
+            Loading your wellness analysis...
+
+        </div>
+
+    </div>
+
+
+
+    <!-- DETAILED INSIGHTS -->
+
+    <div class="card">
+
+        <h2>
+            🔎 Symptom Insights
+        </h2>
+
+        <p class="card-description">
+
+            A summary of patterns found in
+            your recorded symptom history.
+
+        </p>
+
+
+        <div
+            id="symptomInsights"
+            class="insights-grid"
+        >
+
+        </div>
+
+    </div>
+
+
+
+    <!-- BACK BUTTON -->
+
+    <a
+        href="{% url 'dashboard' %}"
+        class="back-button"
+    >
+
+        ← Back to Dashboard
+
+    </a>
+
+
+</div>
+
+
+
+<!--
+    Django sends the weekly data to JavaScript
+    using the json_script filter.
+-->
+
+{{ weekly_data|json_script:"weekly-data" }}
+
+
+
+<script>
+
+
+    /* =========================================
+       LOAD DJANGO DATA
+       ========================================= */
+
+    const dataElement =
+        document.getElementById(
+            "weekly-data"
+        );
+
+
+    let rawData = [];
+
+
+    if (dataElement) {
+
+        try {
+
+            rawData =
+                JSON.parse(
+                    dataElement.textContent
+                );
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "Unable to read symptom data:",
+                error
+            );
+
+        }
+
+    }
+
+
+    console.log(
+        "HerBalance data:",
+        rawData
+    );
+
+
+
+    /* =========================================
+       UNIQUE WEEKS
+       ========================================= */
+
+    const weeks = [
+        ...new Set(
+            rawData.map(
+                item => item.week
+            )
+        )
+    ];
+
+
+
+    /* =========================================
+       UNIQUE SYMPTOMS
+       ========================================= */
+
+    const symptoms = [
+        ...new Set(
+            rawData.map(
+                item => item.symptom
+            )
+        )
+    ];
+
+
+
+    /* =========================================
+       WEEK REFERENCES
+       ========================================= */
+
+    let previousWeek = null;
+
+    let latestWeek = null;
+
+
+    if (weeks.length >= 2) {
+
+        previousWeek =
+            weeks[
+                weeks.length - 2
+            ];
+
+        latestWeek =
+            weeks[
+                weeks.length - 1
+            ];
+
+    }
+
+
+
+    /* =========================================
+       SYMPTOM NAMES
+       ========================================= */
+
+    const symptomNames = {
+
+        hot_flashes:
+            "Hot Flashes",
+
+        night_sweats:
+            "Night Sweats",
+
+        sleep:
+            "Sleep Problems",
+
+        sleep_problems:
+            "Sleep Problems",
+
+        mood:
+            "Mood Changes",
+
+        mood_changes:
+            "Mood Changes",
+
+        anxiety:
+            "Anxiety",
+
+        fatigue:
+            "Fatigue",
+
+        headache:
+            "Headache",
+
+        joint_pain:
+            "Joint / Muscle Discomfort",
+
+        brain_fog:
+            "Brain Fog",
+
+        vaginal_dryness:
+            "Vaginal Dryness",
+
+        urinary:
+            "Urinary Changes"
+
+    };
+
+
+
+    /* =========================================
+       SUMMARY COUNTERS
+       ========================================= */
+
+    document.getElementById(
+        "symptomCount"
+    ).textContent =
+        symptoms.length;
+
+
+    document.getElementById(
+        "weekCount"
+    ).textContent =
+        weeks.length;
+
+
+    let totalReports = 0;
+
+
+    rawData.forEach(
+        item => {
+
+            totalReports +=
+                Number(
+                    item.frequency || 0
+                );
+
+        }
+    );
+
+
+    document.getElementById(
+        "reportCount"
+    ).textContent =
+        totalReports;
+
+
+
+    /* =========================================
+       CREATE CHART DATA
+       ========================================= */
+
+    const datasets =
+        symptoms.map(
+            symptom => {
+
+
+                const values =
+                    weeks.map(
+                        week => {
+
+
+                            let total = 0;
+
+
+                            rawData.forEach(
+                                item => {
+
+                                    if (
+                                        item.week === week &&
+                                        item.symptom === symptom
+                                    ) {
+
+                                        total +=
+                                            Number(
+                                                item.frequency || 0
+                                            );
+
+                                    }
+
+                                }
+                            );
+
+
+                            return total;
+
+                        }
+                    );
+
+
+                return {
+
+                    label:
+                        symptomNames[symptom]
+                        ||
+                        symptom,
+
+                    data:
+                        values,
+
+                    borderWidth:
+                        3,
+
+                    tension:
+                        0.3,
+
+                    fill:
+                        false,
+
+                    pointRadius:
+                        5,
+
+                    pointHoverRadius:
+                        7
+
+                };
+
+            }
+        );
+
+
+
+    /* =========================================
+       DRAW GRAPH
+       ========================================= */
+
+    const canvas =
+        document.getElementById(
+            "symptomChart"
+        );
+
+
+    if (
+        canvas &&
+        rawData.length > 0
+    ) {
+
+
+        const ctx =
+            canvas.getContext(
+                "2d"
+            );
+
+
+        new Chart(
+
+            ctx,
+
+            {
+
+                type:
+                    "line",
+
+
+                data: {
+
+                    labels:
+                        weeks,
+
+                    datasets:
+                        datasets
+
+                },
+
+
+                options: {
+
+                    responsive:
+                        true,
+
+                    maintainAspectRatio:
+                        false,
+
+
+                    interaction: {
+
+                        mode:
+                            "index",
+
+                        intersect:
+                            false
+
+                    },
+
+
+                    scales: {
+
+                        y: {
+
+                            beginAtZero:
+                                true,
+
+                            ticks: {
+
+                                precision:
+                                    0
+
+                            },
+
+                            title: {
+
+                                display:
+                                    true,
+
+                                text:
+                                    "Times Reported"
+
+                            }
+
+                        },
+
+
+                        x: {
+
+                            title: {
+
+                                display:
+                                    true,
+
+                                text:
+                                    "Week"
+
+                            }
+
+                        }
+
+                    },
+
+
+                    plugins: {
+
+                        legend: {
+
+                            position:
+                                "bottom"
+
+                        },
+
+
+                        tooltip: {
+
+                            callbacks: {
+
+                                label:
+                                    function(context) {
+
+                                        return (
+
+                                            context.dataset.label
+                                            +
+                                            ": "
+                                            +
+                                            context.parsed.y
+                                            +
+                                            " time(s)"
+
+                                        );
+
+                                    }
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        );
+
+    }
+
+
+
+    /* =========================================
+       MAIN WELLNESS ANALYSIS
+       ========================================= */
+
+    const insight =
+        document.getElementById(
+            "insightText"
+        );
+
+
+    /*
+       NO DATA
+    */
+
+    if (
+        rawData.length === 0
+    ) {
+
+
+        insight.innerHTML = `
+
+            🌸
+
+            <strong>
+                No symptom data yet.
+            </strong>
+
+            <br><br>
+
+            Start recording your symptoms
+            regularly.
+
+            <br><br>
+
+            HerBalance will analyse your
+            symptom patterns once enough
+            information has been recorded.
+
+        `;
+
+    }
+
+
+
+    /*
+       ONE WEEK
+    */
+
+    else if (
+        weeks.length === 1
+    ) {
+
+
+        insight.innerHTML = `
+
+            🌸
+
+            <strong>
+                Your tracking has started!
+            </strong>
+
+            <br><br>
+
+            You currently have information
+            for
+
+            <strong>
+                1 week
+            </strong>.
+
+            <br><br>
+
+            Continue recording your symptoms
+            each week.
+
+            <br><br>
+
+            Once you have multiple weeks of
+            information, HerBalance will
+            compare your symptoms and identify
+            improving, increasing and stable
+            patterns.
+
+            <br><br>
+
+            <strong>
+                Current symptoms:
+            </strong>
+
+            <br><br>
+
+            ${symptoms
+                .map(
+                    symptom =>
+                        symptomNames[symptom]
+                        ||
+                        symptom
+                )
+                .join(", ")}
+
+        `;
+
+    }
+
+
+
+    /*
+       MULTIPLE WEEKS
+    */
+
+    else {
+
+
+        let improving = 0;
+
+        let worsening = 0;
+
+        let stable = 0;
+
+
+        let breakdownHTML = "";
+
+
+
+        symptoms.forEach(
+            symptom => {
+
+
+                let previousTotal = 0;
+
+                let latestTotal = 0;
+
+
+                rawData.forEach(
+                    item => {
+
+
+                        if (
+                            item.symptom === symptom
+                        ) {
+
+
+                            if (
+                                item.week === previousWeek
+                            ) {
+
+                                previousTotal +=
+                                    Number(
+                                        item.frequency || 0
+                                    );
+
+                            }
+
+
+                            if (
+                                item.week === latestWeek
+                            ) {
+
+                                latestTotal +=
+                                    Number(
+                                        item.frequency || 0
+                                    );
+
+                            }
+
+                        }
+
+                    }
+                );
+
+
+                const name =
+                    symptomNames[symptom]
+                    ||
+                    symptom;
+
+
+
+                /*
+                   IMPROVING
+                */
+
+                if (
+                    latestTotal <
+                    previousTotal
+                ) {
+
+
+                    improving++;
+
+
+                    let percentage = 0;
+
+
+                    if (
+                        previousTotal > 0
+                    ) {
+
+                        percentage =
+                            Math.round(
+
+                                (
+                                    (
+                                        previousTotal
+                                        -
+                                        latestTotal
+                                    )
+                                    /
+                                    previousTotal
+                                )
+                                *
+                                100
+
+                            );
+
+                    }
+
+
+                    breakdownHTML += `
+
+                        <div
+                            class="
+                                trend-item
+                                improving
+                            "
+                        >
+
+                            🌸
+
+                            <strong>
+                                ${name}
+                            </strong>
+
+                            <br><br>
+
+                            Your recorded occurrences
+                            decreased from
+
+                            <strong>
+                                ${previousTotal}
+                            </strong>
+
+                            to
+
+                            <strong>
+                                ${latestTotal}
+                            </strong>.
+
+                            <br>
+
+                            Change:
+
+                            <strong>
+                                ${percentage}% decrease
+                            </strong>
+
+                        </div>
+
+                    `;
+
+                }
+
+
+
+                /*
+                   WORSENING
+                */
+
+                else if (
+                    latestTotal >
+                    previousTotal
+                ) {
+
+
+                    worsening++;
+
+
+                    let percentage = 0;
+
+
+                    if (
+                        previousTotal > 0
+                    ) {
+
+                        percentage =
+                            Math.round(
+
+                                (
+                                    (
+                                        latestTotal
+                                        -
+                                        previousTotal
+                                    )
+                                    /
+                                    previousTotal
+                                )
+                                *
+                                100
+
+                            );
+
+                    }
+
+
+                    breakdownHTML += `
+
+                        <div
+                            class="
+                                trend-item
+                                worsening
+                            "
+                        >
+
+                            💛
+
+                            <strong>
+                                ${name}
+                            </strong>
+
+                            <br><br>
+
+                            Your recorded occurrences
+                            increased from
+
+                            <strong>
+                                ${previousTotal}
+                            </strong>
+
+                            to
+
+                            <strong>
+                                ${latestTotal}
+                            </strong>.
+
+                            <br>
+
+                            Change:
+
+                            <strong>
+                                ${percentage}% increase
+                            </strong>
+
+                        </div>
+
+                    `;
+
+                }
+
+
+
+                /*
+                   STABLE
+                */
+
+                else {
+
+
+                    stable++;
+
+
+                    breakdownHTML += `
+
+                        <div
+                            class="
+                                trend-item
+                                stable
+                            "
+                        >
+
+                            🌿
+
+                            <strong>
+                                ${name}
+                            </strong>
+
+                            <br><br>
+
+                            Your recorded occurrences
+                            remained at
+
+                            <strong>
+                                ${latestTotal}
+                            </strong>.
+
+                            <br>
+
+                            The pattern is stable
+                            compared with the previous
+                            week.
+
+                        </div>
+
+                    `;
+
+                }
+
+            }
+        );
+
+
+
+        /* OVERALL CONCLUSION */
+
+
+        let overallMessage = "";
+
+
+        if (
+            improving > worsening
+        ) {
+
+
+            overallMessage = `
+
+                🌸
+
+                <strong>
+                    Your recent symptom pattern
+                    is showing improvement.
+                </strong>
+
+                <br><br>
+
+                ${improving}
+                symptom(s) decreased compared
+                with the previous week.
+
+                ${worsening}
+                symptom(s) increased.
+
+            `;
+
+        }
+
+
+        else if (
+            worsening > improving
+        ) {
+
+
+            overallMessage = `
+
+                💛
+
+                <strong>
+                    Some symptoms have increased
+                    this week.
+                </strong>
+
+                <br><br>
+
+                ${worsening}
+                symptom(s) increased compared
+                with the previous week.
+
+                ${improving}
+                symptom(s) decreased.
+
+                <br><br>
+
+                Continue tracking your symptoms
+                consistently so that you can
+                understand whether this is a
+                temporary change or a continuing
+                pattern.
+
+            `;
+
+        }
+
+
+        else {
+
+
+            overallMessage = `
+
+                🌿
+
+                <strong>
+                    Your recent symptom pattern
+                    is relatively stable.
+                </strong>
+
+                <br><br>
+
+                Your recorded symptom frequencies
+                are showing a balanced pattern
+                compared with the previous week.
+
+            `;
+
+        }
+
+
+        insight.innerHTML = `
+
+            ${overallMessage}
+
+            <hr>
+
+            <strong>
+                📋 Week-to-Week Breakdown
+            </strong>
+
+            ${breakdownHTML}
+
+            <hr>
+
+            <small>
+
+                This feature identifies patterns
+                in the symptoms you record. It is
+                intended for wellness tracking and
+                does not provide a medical diagnosis.
+
+            </small>
+
+        `;
+
+    }
+
+
+
+    /* =========================================
+       DETAILED SYMPTOM INSIGHTS
+       ========================================= */
+
+    const insightsContainer =
+        document.getElementById(
+            "symptomInsights"
+        );
+
+
+    if (
+        insightsContainer &&
+        rawData.length > 0
+    ) {
+
+
+        const symptomTotals = {};
+
+
+        const symptomWeeks = {};
+
+
+        symptoms.forEach(
+            symptom => {
+
+                symptomTotals[symptom] = 0;
+
+                symptomWeeks[symptom] =
+                    new Set();
+
+            }
+        );
+
+
+        rawData.forEach(
+            item => {
+
+
+                if (
+                    symptomTotals[item.symptom]
+                    === undefined
+                ) {
+
+                    symptomTotals[item.symptom] =
+                        0;
+
+                }
+
+
+                symptomTotals[item.symptom] +=
+                    Number(
+                        item.frequency || 0
+                    );
+
+
+                if (
+                    symptomWeeks[item.symptom]
+                ) {
+
+                    symptomWeeks[
+                        item.symptom
+                    ].add(
+                        item.week
+                    );
+
+                }
+
+            }
+        );
+
+
+
+        /* MOST REPORTED SYMPTOM */
+
+        let mostFrequentSymptom = null;
+
+        let highestFrequency = 0;
+
+
+        Object.entries(
+            symptomTotals
+        ).forEach(
+            ([symptom, total]) => {
+
+
+                if (
+                    total >
+                    highestFrequency
+                ) {
+
+                    highestFrequency =
+                        total;
+
+                    mostFrequentSymptom =
+                        symptom;
+
+                }
+
+            }
+        );
+
+
+
+        /* PERSISTENT SYMPTOMS */
+
+        const persistentSymptoms = [];
+
+
+        Object.entries(
+            symptomWeeks
+        ).forEach(
+            ([symptom, weekSet]) => {
+
+
+                if (
+                    weekSet.size >= 2
+                ) {
+
+                    persistentSymptoms.push(
+                        symptom
+                    );
+
+                }
+
+            }
+        );
+
+
+
+        /* TREND LISTS */
+
+        const improvingSymptoms = [];
+
+        const worseningSymptoms = [];
+
+        const stableSymptoms = [];
+
+
+        if (
+            weeks.length >= 2
+        ) {
+
+
+            symptoms.forEach(
+                symptom => {
+
+
+                    let previousTotal = 0;
+
+                    let latestTotal = 0;
+
+
+                    rawData.forEach(
+                        item => {
+
+
+                            if (
+                                item.symptom ===
+                                symptom
+                            ) {
+
+
+                                if (
+                                    item.week ===
+                                    previousWeek
+                                ) {
+
+                                    previousTotal +=
+                                        Number(
+                                            item.frequency || 0
+                                        );
+
+                                }
+
+
+                                if (
+                                    item.week ===
+                                    latestWeek
+                                ) {
+
+                                    latestTotal +=
+                                        Number(
+                                            item.frequency || 0
+                                        );
+
+                                }
+
+                            }
+
+                        }
+                    );
+
+
+                    if (
+                        latestTotal <
+                        previousTotal
+                    ) {
+
+                        improvingSymptoms.push(
+                            symptom
+                        );
+
+                    }
+
+                    else if (
+                        latestTotal >
+                        previousTotal
+                    ) {
+
+                        worseningSymptoms.push(
+                            symptom
+                        );
+
+                    }
+
+                    else {
+
+                        stableSymptoms.push(
+                            symptom
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+
+
+
+        /* MOST REPORTED CARD */
+
+        if (
+            mostFrequentSymptom
+        ) {
+
+
+            insightsContainer.innerHTML += `
+
+                <div
+                    class="
+                        insight-card
+                    "
+                >
+
+                    <h3>
+                        ⭐ Most Reported
+                    </h3>
+
+                    <div
+                        class="insight-value"
+                    >
+
+                        ${
+                            symptomNames[
+                                mostFrequentSymptom
+                            ]
+                            ||
+                            mostFrequentSymptom
+                        }
+
+                    </div>
+
+                    <p>
+
+                        Reported
+
+                        <strong>
+                            ${highestFrequency}
+                        </strong>
+
+                        time(s) across your
+                        recorded history.
+
+                    </p>
+
+                </div>
+
+            `;
+
+        }
+
+
+
+        /* PERSISTENT CARD */
+
+        if (
+            persistentSymptoms.length > 0
+        ) {
+
+
+            const names =
+                persistentSymptoms.map(
+                    symptom =>
+                        symptomNames[symptom]
+                        ||
+                        symptom
+                );
+
+
+            insightsContainer.innerHTML += `
+
+                <div
+                    class="
+                        insight-card
+                        insight-warning
+                    "
+                >
+
+                    <h3>
+                        🔁 Persistent Symptoms
+                    </h3>
+
+                    <div
+                        class="insight-value"
+                    >
+
+                        ${persistentSymptoms.length}
+
+                    </div>
+
+                    <p>
+
+                        These symptoms have
+                        appeared across multiple
+                        weeks:
+
+                        <br><br>
+
+                        <strong>
+                            ${names.join(", ")}
+                        </strong>
+
+                    </p>
+
+                </div>
+
+            `;
+
+        }
+
+
+
+        /* IMPROVING CARD */
+
+        if (
+            improvingSymptoms.length > 0
+        ) {
+
+
+            const names =
+                improvingSymptoms.map(
+                    symptom =>
+                        symptomNames[symptom]
+                        ||
+                        symptom
+                );
+
+
+            insightsContainer.innerHTML += `
+
+                <div
+                    class="
+                        insight-card
+                        insight-positive
+                    "
+                >
+
+                    <h3>
+                        📉 Improving
+                    </h3>
+
+                    <div
+                        class="insight-value"
+                    >
+
+                        ${improvingSymptoms.length}
+
+                    </div>
+
+                    <p>
+
+                        These symptoms decreased
+                        compared with the previous
+                        week:
+
+                        <br><br>
+
+                        <strong>
+                            ${names.join(", ")}
+                        </strong>
+
+                    </p>
+
+                </div>
+
+            `;
+
+        }
+
+
+
+        /* WORSENING CARD */
+
+        if (
+            worseningSymptoms.length > 0
+        ) {
+
+
+            const names =
+                worseningSymptoms.map(
+                    symptom =>
+                        symptomNames[symptom]
+                        ||
+                        symptom
+                );
+
+
+            insightsContainer.innerHTML += `
+
+                <div
+                    class="
+                        insight-card
+                        insight-warning
+                    "
+                >
+
+                    <h3>
+                        📈 Increased
+                    </h3>
+
+                    <div
+                        class="insight-value"
+                    >
+
+                        ${worseningSymptoms.length}
+
+                    </div>
+
+                    <p>
+
+                        These symptoms increased
+                        compared with the previous
+                        week:
+
+                        <br><br>
+
+                        <strong>
+                            ${names.join(", ")}
+                        </strong>
+
+                    </p>
+
+                </div>
+
+            `;
+
+        }
+
+
+
+        /* STABLE CARD */
+
+        if (
+            stableSymptoms.length > 0
+        ) {
+
+
+            const names =
+                stableSymptoms.map(
+                    symptom =>
+                        symptomNames[symptom]
+                        ||
+                        symptom
+                );
+
+
+            insightsContainer.innerHTML += `
+
+                <div
+                    class="
+                        insight-card
+                        insight-neutral
+                    "
+                >
+
+                    <h3>
+                        🌿 Stable
+                    </h3>
+
+                    <div
+                        class="insight-value"
+                    >
+
+                        ${stableSymptoms.length}
+
+                    </div>
+
+                    <p>
+
+                        These symptoms remained
+                        stable compared with the
+                        previous week:
+
+                        <br><br>
+
+                        <strong>
+                            ${names.join(", ")}
+                        </strong>
+
+                    </p>
+
+                </div>
+
+            `;
+
+        }
+
+
+
+        /* ONE WEEK MESSAGE */
+
+        if (
+            weeks.length === 1
+        ) {
+
+
+            insightsContainer.innerHTML = `
+
+                <div
+                    class="
+                        insight-card
+                        insight-neutral
+                    "
+                >
+
+                    <h3>
+                        🌸 Tracking Started
+                    </h3>
+
+                    <div
+                        class="insight-value"
+                    >
+
+                        1 week
+
+                    </div>
+
+                    <p>
+
+                        Continue recording your
+                        symptoms regularly.
+
+                        <br><br>
+
+                        HerBalance will begin
+                        identifying trends once
+                        you have multiple weeks
+                        of symptom history.
+
+                    </p>
+
+                </div>
+
+            `;
+
+        }
+
+    }
+
+
+
+    /* =========================================
+       FINISHED
+       ========================================= */
+
+    console.log(
+        "HerBalance wellness analysis loaded."
+    );
+
+
+</script>
+
+
+</body>
+
+</html>

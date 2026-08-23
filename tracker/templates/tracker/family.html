@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Family Support | HerBalance</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #fff7fa;
+            color: #333;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            height: 78px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 8%;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #b95787;
+        }
+
+        .logout {
+            text-decoration: none;
+            color: #b95787;
+            font-weight: bold;
+        }
+
+        /* HERO */
+
+        .container {
+            width: 78%;
+            margin: 50px auto;
+        }
+
+        .hero {
+            background: white;
+            border-radius: 25px;
+            padding: 45px;
+            box-shadow: 0 10px 30px rgba(185,87,135,0.08);
+            margin-bottom: 30px;
+        }
+
+        .hero h1 {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #666;
+        }
+
+        /* CARDS */
+
+        .section-title {
+            font-size: 28px;
+            margin: 35px 0 20px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+
+        .card {
+            background: white;
+            padding: 28px;
+            border-radius: 20px;
+            border: 1px solid #f1d8e4;
+            transition: 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(185,87,135,0.10);
+        }
+
+        .icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .card h3 {
+            font-size: 21px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* SUPPORT */
+
+        .support {
+            margin-top: 30px;
+            background: #fce8f1;
+            padding: 35px;
+            border-radius: 22px;
+        }
+
+        .support h2 {
+            margin-bottom: 15px;
+        }
+
+        .support ul {
+            padding-left: 25px;
+        }
+
+        .support li {
+            margin: 12px 0;
+            line-height: 1.5;
+        }
+
+        /* WARNING */
+
+        .warning {
+            margin-top: 30px;
+            background: white;
+            border-left: 5px solid #b95787;
+            padding: 25px;
+            border-radius: 15px;
+        }
+
+        .warning h3 {
+            margin-bottom: 10px;
+        }
+
+        .warning p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        @media(max-width: 800px) {
+
+            .container {
+                width: 90%;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 30px;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            🌸 HerBalance
+        </div>
+
+        <a href="/login/" class="logout">
+            Logout
+        </a>
+
+    </nav>
+
+
+    <!-- MAIN -->
+
+    <main class="container">
+
+        <!-- HERO -->
+
+        <section class="hero">
+
+            <h1>
+                Welcome to HerBalance Family Support 💗
+            </h1>
+
+            <p>
+                Menopause is a natural stage of life that can bring
+                physical, emotional and lifestyle changes. Understanding
+                these changes can help families provide better support,
+                patience and care.
+            </p>
+
+        </section>
+
+
+        <!-- UNDERSTANDING MENOPAUSE -->
+
+        <h2 class="section-title">
+            🌸 Understanding Her Changes
+        </h2>
+
+        <div class="cards">
+
+            <div class="card">
+
+                <div class="icon">
+                    🔥
+                </div>
+
+                <h3>
+                    Hot Flashes
+                </h3>
+
+                <p>
+                    Sudden feelings of heat and sweating can occur.
+                    Providing a comfortable environment and understanding
+                    her discomfort can help.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">
+                    😴
+                </div>
+
+                <h3>
+                    Sleep Problems
+                </h3>
+
+                <p>
+                    Hormonal changes can affect sleep. Encourage a calm
+                    bedtime routine and avoid dismissing tiredness as
+                    simply being lazy.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">
+                    💭
+                </div>
+
+                <h3>
+                    Mood Changes
+                </h3>
+
+                <p>
+                    Irritability, anxiety or emotional changes may occur.
+                    Listening without judgement can make a meaningful
+                    difference.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">
+                    🦴
+                </div>
+
+                <h3>
+                    Body Changes
+                </h3>
+
+                <p>
+                    Menopause can affect areas such as bone health,
+                    muscles, metabolism and overall energy.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- HOW TO SUPPORT -->
+
+        <h2 class="section-title">
+            🤝 How You Can Support Her
+        </h2>
+
+        <section class="support">
+
+            <h2>
+                Small things can make a big difference
+            </h2>
+
+            <ul>
+
+                <li>
+                    👂 Listen to her concerns without immediately
+                    dismissing them.
+                </li>
+
+                <li>
+                    💬 Encourage open conversations about how she is
+                    feeling.
+                </li>
+
+                <li>
+                    🌿 Support healthy food, sleep and physical activity
+                    habits.
+                </li>
+
+                <li>
+                    🩺 Encourage regular health check-ups and discussions
+                    with healthcare professionals.
+                </li>
+
+                <li>
+                    ❤️ Be patient when mood or energy levels change.
+                </li>
+
+                <li>
+                    🫶 Ask how you can help instead of assuming what
+                    she needs.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- WHAT NOT TO SAY -->
+
+        <h2 class="section-title">
+            💬 What To Avoid
+        </h2>
+
+        <div class="cards">
+
+            <div class="card">
+
+                <div class="icon">
+                    ❌
+                </div>
+
+                <h3>
+                    "It's just in your head."
+                </h3>
+
+                <p>
+                    Her symptoms and feelings are real. Avoid dismissing
+                    her experiences.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">
+                    ❌
+                </div>
+
+                <h3>
+                    "Everyone goes through it."
+                </h3>
+
+                <p>
+                    Every woman's experience can be different. Give her
+                    space to describe what she is experiencing.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- MEDICAL NOTE -->
+
+        <section class="warning">
+
+            <h3>
+                🩺 When should she talk to a healthcare professional?
+            </h3>
+
+            <p>
+                If symptoms are persistent, severe, concerning or affecting
+                daily life, encourage her to speak with a qualified
+                healthcare professional. This website is intended to
+                support awareness and tracking, not replace medical care.
+            </p>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

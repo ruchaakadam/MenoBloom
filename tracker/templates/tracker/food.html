@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Food & Lifestyle | HerBalance
+    </title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background: #fff7fa;
+
+            color: #333;
+
+            min-height: 100vh;
+
+        }
+
+
+        .container {
+
+            width: 90%;
+
+            max-width: 1150px;
+
+            margin: 45px auto 70px;
+
+        }
+
+
+        /* =========================
+           HEADER
+           ========================= */
+
+        .header {
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .header h1 {
+
+            color: #b95783;
+
+            font-size: 38px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .header p {
+
+            color: #777;
+
+            font-size: 17px;
+
+            line-height: 1.6;
+
+            max-width: 850px;
+
+        }
+
+
+        /* =========================
+           INTRO
+           ========================= */
+
+        .intro {
+
+            background: white;
+
+            border-radius: 20px;
+
+            padding: 28px;
+
+            margin-bottom: 25px;
+
+            box-shadow:
+                0 6px 25px
+                rgba(0, 0, 0, 0.05);
+
+        }
+
+
+        .intro h2 {
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .intro p {
+
+            color: #777;
+
+            line-height: 1.7;
+
+        }
+
+
+        /* =========================
+           SYMPTOM SELECTOR
+           ========================= */
+
+        .selector {
+
+            background: white;
+
+            border-radius: 20px;
+
+            padding: 28px;
+
+            margin-bottom: 25px;
+
+            box-shadow:
+                0 6px 25px
+                rgba(0, 0, 0, 0.05);
+
+        }
+
+
+        .selector h2 {
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .selector-description {
+
+            color: #777;
+
+            margin-bottom: 22px;
+
+            line-height: 1.6;
+
+        }
+
+
+        .symptom-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 14px;
+
+        }
+
+
+        .symptom-option {
+
+            position: relative;
+
+        }
+
+
+        .symptom-option input {
+
+            position: absolute;
+
+            opacity: 0;
+
+        }
+
+
+        .symptom-option label {
+
+            display: block;
+
+            padding: 16px;
+
+            border:
+                1px solid #eadde3;
+
+            border-radius: 12px;
+
+            cursor: pointer;
+
+            background: #fff;
+
+            transition: 0.2s;
+
+            font-weight: 600;
+
+            color: #555;
+
+        }
+
+
+        .symptom-option label:hover {
+
+            border-color: #c46b93;
+
+        }
+
+
+        .symptom-option input:checked
+        + label {
+
+            background: #fff0f6;
+
+            border-color: #b95783;
+
+            color: #a44773;
+
+        }
+
+
+        .analyze-button {
+
+            margin-top: 22px;
+
+            border: none;
+
+            border-radius: 11px;
+
+            padding:
+                14px 24px;
+
+            background: #b95783;
+
+            color: white;
+
+            font-size: 15px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+        }
+
+
+        .analyze-button:hover {
+
+            opacity: 0.9;
+
+        }
+
+
+        /* =========================
+           RESULTS
+           ========================= */
+
+        #recommendations {
+
+            display: none;
+
+        }
+
+
+        #recommendations.show {
+
+            display: block;
+
+        }
+
+
+        .result-header {
+
+            background: white;
+
+            border-radius: 20px;
+
+            padding: 28px;
+
+            margin-bottom: 20px;
+
+            box-shadow:
+                0 6px 25px
+                rgba(0, 0, 0, 0.05);
+
+        }
+
+
+        .result-header h2 {
+
+            color: #b95783;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .result-header p {
+
+            color: #777;
+
+            line-height: 1.6;
+
+        }
+
+
+        /* =========================
+           RECOMMENDATION GRID
+           ========================= */
+
+        .recommendation-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 20px;
+
+        }
+
+
+        .recommendation-card {
+
+            background: white;
+
+            border-radius: 18px;
+
+            padding: 25px;
+
+            box-shadow:
+                0 6px 25px
+                rgba(0, 0, 0, 0.05);
+
+        }
+
+
+        .recommendation-icon {
+
+            font-size: 32px;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .recommendation-card h3 {
+
+            font-size: 21px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .recommendation-card p {
+
+            color: #777;
+
+            line-height: 1.6;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .recommendation-card ul {
+
+            padding-left: 20px;
+
+        }
+
+
+        .recommendation-card li {
+
+            margin-bottom: 9px;
+
+            line-height: 1.5;
+
+            color: #555;
+
+        }
+
+
+        /* =========================
+           GENERAL WELLNESS
+           ========================= */
+
+        .general-wellness {
+
+            margin-top: 25px;
+
+            background: white;
+
+            border-radius: 20px;
+
+            padding: 28px;
+
+            box-shadow:
+                0 6px 25px
+                rgba(0, 0, 0, 0.05);
+
+        }
+
+
+        .general-wellness h2 {
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .wellness-list {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 15px;
+
+        }
+
+
+        .wellness-item {
+
+            background: #fff8fb;
+
+            border-radius: 12px;
+
+            padding: 17px;
+
+            line-height: 1.6;
+
+            color: #555;
+
+        }
+
+
+        /* =========================
+           EMPTY MESSAGE
+           ========================= */
+
+        .empty-message {
+
+            display: none;
+
+            background: #fff1f6;
+
+            color: #8d4868;
+
+            border-radius: 12px;
+
+            padding: 17px;
+
+            margin-top: 18px;
+
+        }
+
+
+        .empty-message.show {
+
+            display: block;
+
+        }
+
+
+        /* =========================
+           SAFETY NOTE
+           ========================= */
+
+        .medical-note {
+
+            margin-top: 25px;
+
+            background: #f6f6f6;
+
+            border-radius: 14px;
+
+            padding: 18px;
+
+            color: #777;
+
+            font-size: 13px;
+
+            line-height: 1.7;
+
+        }
+
+
+        /* =========================
+           BACK
+           ========================= */
+
+        .back-button {
+
+            display: inline-block;
+
+            margin-top: 28px;
+
+            padding:
+                13px 22px;
+
+            background: #b95783;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 10px;
+
+            font-weight: 600;
+
+        }
+
+
+        .back-button:hover {
+
+            opacity: 0.9;
+
+        }
+
+
+        /* =========================
+           RESPONSIVE
+           ========================= */
+
+        @media (max-width: 850px) {
+
+            .symptom-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+            .recommendation-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .wellness-list {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+
+        @media (max-width: 550px) {
+
+            .container {
+
+                width: 94%;
+
+                margin-top: 25px;
+
+            }
+
+            .symptom-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .header h1 {
+
+                font-size: 30px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- =========================
+         HEADER
+         ========================= -->
+
+    <div class="header">
+
+        <h1>
+            🌿 Food & Lifestyle
+        </h1>
+
+        <p>
+
+            Understand how everyday food,
+            hydration, movement and lifestyle
+            habits can support your wellbeing
+            during menopause.
+
+        </p>
+
+    </div>
+
+
+
+    <!-- =========================
+         INTRO
+         ========================= -->
+
+    <div class="intro">
+
+        <h2>
+            🌸 Personalized Wellness Suggestions
+        </h2>
+
+        <p>
+
+            Select the symptoms you have been
+            experiencing. HerBalance will organize
+            relevant food and lifestyle suggestions
+            for you.
+
+        </p>
+
+    </div>
+
+
+
+    <!-- =========================
+         SYMPTOM SELECTOR
+         ========================= -->
+
+    <div class="selector">
+
+        <h2>
+            What have you been experiencing?
+        </h2>
+
+        <p class="selector-description">
+
+            You can select more than one.
+
+        </p>
+
+
+        <div class="symptom-grid">
+
+
+            <!-- HOT FLASHES -->
+
+            <div class="symptom-option">
+
+                <input
+                    type="checkbox"
+                    id="hot-flashes"
+                    value="hot-flashes"
+                >
+
+                <label for="hot-flashes">
+
+                    🔥 Hot Flashes
+
+                </label>
+
+            </div>
+
+
+            <!-- SLEEP -->
+
+            <div class="symptom-option">
+
+                <input
+                    type="checkbox"
+                    id="sleep"
+                    value="sleep"
+                >
+
+                <label for="sleep">
+
+                    😴 Sleep Problems
+
+                </label>
+
+            </div>
+
+
+            <!-- FATIGUE -->
+
+            <div class="symptom-option">
+
+                <input
+                    type="checkbox"
+                    id="fatigue"
+                    value="fatigue"
+                >
+
+                <label for="fatigue">
+
+                    😩 Fatigue
+
+                </label>
+
+            </div>
+
+
+            <!-- MOOD -->
+
+            <div class="symptom-option">
+
+                <input
+                    type="checkbox"
+                    id="mood"
+                    value="mood"
+                >
+
+                <label for="mood">
+
+                    💭 Mood Changes
+
+                </label>
+
+            </div>
+
+
+            <!-- VAGINAL DRYNESS -->
+
+            <div class="symptom-option">
+
+                <input
+                    type="checkbox"
+                    id="dryness"
+                    value="dryness"
+                >
+
+                <label for="dryness">
+
+                    🌸 Vaginal Dryness
+
+                </label>
+
+            </div>
+
+
+            <!-- JOINT -->
+
+            <div class="symptom-option">
+
+                <input
+                    type="checkbox"
+                    id="joint"
+                    value="joint"
+                >
+
+                <label for="joint">
+
+                    🦴 Joint / Muscle Discomfort
+
+                </label>
+
+            </div>
+
+
+            <!-- WEIGHT -->
+
+            <div class="symptom-option">
+
+                <input
+                    type="checkbox"
+                    id="weight"
+                    value="weight"
+                >
+
+                <label for="weight">
+
+                    ⚖️ Weight Changes
+
+                </label>
+
+            </div>
+
+
+            <!-- HEADACHE -->
+
+            <div class="symptom-option">
+
+                <input
+                    type="checkbox"
+                    id="headache"
+                    value="headache"
+                >
+
+                <label for="headache">
+
+                    🤕 Headaches
+
+                </label>
+
+            </div>
+
+
+            <!-- STRESS -->
+
+            <div class="symptom-option">
+
+                <input
+                    type="checkbox"
+                    id="stress"
+                    value="stress"
+                >
+
+                <label for="stress">
+
+                    😟 Stress / Anxiety
+
+                </label>
+
+            </div>
+
+
+        </div>
+
+
+        <button
+            class="analyze-button"
+            onclick="generateRecommendations()"
+        >
+
+            🌿 Show My Suggestions
+
+        </button>
+
+
+        <div
+            id="emptyMessage"
+            class="empty-message"
+        >
+
+            Please select at least one symptom
+            to generate personalized suggestions.
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         RESULTS
+         ========================= -->
+
+    <section
+        id="recommendations"
+    >
+
+
+        <div class="result-header">
+
+            <h2>
+                💚 Your Wellness Suggestions
+            </h2>
+
+            <p>
+
+                These suggestions are based on
+                the areas you selected. They are
+                intended for general wellbeing and
+                should not replace medical advice.
+
+            </p>
+
+        </div>
+
+
+        <div
+            id="recommendationGrid"
+            class="recommendation-grid"
+        ></div>
+
+
+        <!-- =========================
+             GENERAL WELLNESS
+             ========================= -->
+
+        <div class="general-wellness">
+
+            <h2>
+                🌱 Everyday Wellness
+            </h2>
+
+
+            <div class="wellness-list">
+
+
+                <div class="wellness-item">
+
+                    💧
+                    Stay adequately hydrated
+                    throughout the day.
+
+                </div>
+
+
+                <div class="wellness-item">
+
+                    🥗
+                    Aim for a varied,
+                    nutrient-rich eating pattern
+                    rather than relying on a single
+                    food or supplement.
+
+                </div>
+
+
+                <div class="wellness-item">
+
+                    🚶‍♀️
+                    Include regular physical
+                    activity that is appropriate
+                    for your abilities.
+
+                </div>
+
+
+                <div class="wellness-item">
+
+                    😴
+                    Maintain a regular sleep and
+                    wake schedule when possible.
+
+                </div>
+
+
+                <div class="wellness-item">
+
+                    🧘‍♀️
+                    Make time for relaxation,
+                    social connection or activities
+                    that help you manage stress.
+
+                </div>
+
+
+                <div class="wellness-item">
+
+                    🩺
+                    Discuss persistent or concerning
+                    symptoms with a healthcare
+                    professional.
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =========================
+         MEDICAL NOTE
+         ========================= -->
+
+    <div class="medical-note">
+
+        <strong>
+            Important:
+        </strong>
+
+        Food and lifestyle suggestions cannot
+        diagnose, prevent or treat a medical
+        condition. Individual nutritional needs
+        can differ, particularly if someone has
+        other health conditions or takes
+        medication. Consult a qualified healthcare
+        professional for personalized advice.
+
+    </div>
+
+
+
+    <!-- =========================
+         BACK
+         ========================= -->
+
+    <a
+        href="{% url 'dashboard' %}"
+        class="back-button"
+    >
+
+        ← Back to Dashboard
+
+    </a>
+
+
+</div>
+
+
+
+<script>
+
+
+    /* ==========================================
+       RECOMMENDATION DATABASE
+       ========================================== */
+
+    const recommendations = {
+
+
+        "hot-flashes": {
+
+            icon: "🔥",
+
+            title: "Hot Flashes",
+
+            description:
+                "Helpful areas to focus on include hydration, identifying personal triggers and keeping comfortable.",
+
+            tips: [
+
+                "Keep water available and drink regularly.",
+
+                "Notice whether particular foods or drinks appear to trigger symptoms for you.",
+
+                "Use lighter clothing and keep the sleeping environment comfortable.",
+
+                "Limit personal triggers if you notice a clear connection."
+
+            ]
+
+        },
+
+
+        "sleep": {
+
+            icon: "😴",
+
+            title: "Sleep Support",
+
+            description:
+                "A consistent routine can support better sleep habits.",
+
+            tips: [
+
+                "Try to maintain a consistent sleep and wake time.",
+
+                "Create a relaxing wind-down routine before bed.",
+
+                "Keep the bedroom comfortable, quiet and cool.",
+
+                "Reduce caffeine later in the day if it interferes with your sleep."
+
+            ]
+
+        },
+
+
+        "fatigue": {
+
+            icon: "😩",
+
+            title: "Energy & Nutrition",
+
+            description:
+                "Regular, balanced meals and adequate hydration can support everyday energy.",
+
+            tips: [
+
+                "Include a variety of vegetables and fruits.",
+
+                "Include protein-rich foods as part of balanced meals.",
+
+                "Choose whole grains and other high-fibre foods regularly.",
+
+                "Stay hydrated throughout the day."
+
+            ]
+
+        },
+
+
+        "mood": {
+
+            icon: "💭",
+
+            title: "Mood & Wellbeing",
+
+            description:
+                "Regular routines, movement, nutritious meals and social connection can support overall wellbeing.",
+
+            tips: [
+
+                "Try to maintain regular meal and sleep routines.",
+
+                "Include physical activity that you enjoy and can do safely.",
+
+                "Make time for friends, family or supportive social connections.",
+
+                "Use relaxation practices such as breathing exercises or mindfulness if helpful."
+
+            ]
+
+        },
+
+
+        "dryness": {
+
+            icon: "🌸",
+
+            title: "Vaginal & Genitourinary Comfort",
+
+            description:
+                "Vaginal dryness can occur during menopause and is worth discussing with a healthcare professional if persistent or bothersome.",
+
+            tips: [
+
+                "Maintain adequate hydration.",
+
+                "Avoid products that cause irritation or discomfort.",
+
+                "Discuss persistent symptoms with a healthcare professional.",
+
+                "Ask a clinician about appropriate treatment options if symptoms affect daily life."
+
+            ]
+
+        },
+
+
+        "joint": {
+
+            icon: "🦴",
+
+            title: "Bone, Muscle & Joint Support",
+
+            description:
+                "A varied diet and appropriate physical activity can support general musculoskeletal health.",
+
+            tips: [
+
+                "Include calcium-rich foods in your overall diet.",
+
+                "Include adequate protein as part of balanced meals.",
+
+                "Include appropriate weight-bearing or resistance activity when suitable for you.",
+
+                "Discuss persistent pain or bone-health concerns with a healthcare professional."
+
+            ]
+
+        },
+
+
+        "weight": {
+
+            icon: "⚖️",
+
+            title: "Healthy Weight Habits",
+
+            description:
+                "Focus on sustainable habits rather than restrictive diets.",
+
+            tips: [
+
+                "Build meals around vegetables, fruits, whole grains and protein-rich foods.",
+
+                "Pay attention to portion sizes without following extreme restrictions.",
+
+                "Choose regular physical activity that you enjoy.",
+
+                "Focus on long-term habits rather than rapid weight loss."
+
+            ]
+
+        },
+
+
+        "headache": {
+
+            icon: "🤕",
+
+            title: "Headache Awareness",
+
+            description:
+                "Keeping track of possible triggers can help you understand your own pattern.",
+
+            tips: [
+
+                "Stay adequately hydrated.",
+
+                "Try not to regularly skip meals.",
+
+                "Keep a record of when headaches occur.",
+
+                "Discuss frequent, severe or changing headaches with a healthcare professional."
+
+            ]
+
+        },
+
+
+        "stress": {
+
+            icon: "😟",
+
+            title: "Stress Management",
+
+            description:
+                "Stress management can be part of a broader wellbeing routine.",
+
+            tips: [
+
+                "Try short breathing or relaxation exercises.",
+
+                "Include movement or outdoor activity when possible.",
+
+                "Stay connected with supportive people.",
+
+                "Make space for activities that you find calming or enjoyable."
+
+            ]
+
+        }
+
+    };
+
+
+
+    /* ==========================================
+       GENERATE RECOMMENDATIONS
+       ========================================== */
+
+    function generateRecommendations() {
+
+
+        const selected =
+            document.querySelectorAll(
+                ".symptom-option input:checked"
+            );
+
+
+        const emptyMessage =
+            document.getElementById(
+                "emptyMessage"
+            );
+
+
+        const recommendationsSection =
+            document.getElementById(
+                "recommendations"
+            );
+
+
+        const grid =
+            document.getElementById(
+                "recommendationGrid"
+            );
+
+
+        if (selected.length === 0) {
+
+            emptyMessage.classList.add(
+                "show"
+            );
+
+            recommendationsSection.classList.remove(
+                "show"
+            );
+
+            return;
+
+        }
+
+
+        emptyMessage.classList.remove(
+            "show"
+        );
+
+
+        grid.innerHTML = "";
+
+
+        selected.forEach(
+            checkbox => {
+
+
+                const data =
+                    recommendations[
+                        checkbox.value
+                    ];
+
+
+                if (!data) {
+
+                    return;
+
+                }
+
+
+                const card =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                card.className =
+                    "recommendation-card";
+
+
+                let tipsHTML = "";
+
+
+                data.tips.forEach(
+                    tip => {
+
+                        tipsHTML +=
+                            `
+                            <li>
+                                ${tip}
+                            </li>
+                            `;
+
+                    }
+                );
+
+
+                card.innerHTML = `
+
+                    <div
+                        class="recommendation-icon"
+                    >
+                        ${data.icon}
+                    </div>
+
+                    <h3>
+                        ${data.title}
+                    </h3>
+
+                    <p>
+                        ${data.description}
+                    </p>
+
+                    <ul>
+                        ${tipsHTML}
+                    </ul>
+
+                `;
+
+
+                grid.appendChild(
+                    card
+                );
+
+            }
+        );
+
+
+        recommendationsSection.classList.add(
+            "show"
+        );
+
+
+        recommendationsSection.scrollIntoView({
+
+            behavior: "smooth",
+
+            block: "start"
+
+        });
+
+    }
+
+
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,1824 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Record Symptoms | HerBalance
+    </title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+
+            margin: 0;
+
+            padding: 0;
+
+            font-family: Arial, sans-serif;
+        }
+
+
+        body {
+            background: #fff8fb;
+
+            color: #333;
+        }
+
+
+        .container {
+            width: 92%;
+
+            max-width: 800px;
+
+            margin: 45px auto;
+        }
+
+
+        .box {
+            background: white;
+
+            padding: 40px;
+
+            border-radius: 24px;
+
+            box-shadow:
+                0 5px 25px
+                rgba(0, 0, 0, 0.07);
+        }
+
+
+        /* HEADER */
+
+        .heading {
+            margin-bottom: 35px;
+        }
+
+
+        .heading h1 {
+            color: #b65c88;
+
+            font-size: 32px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .heading p {
+            color: #777;
+
+            line-height: 1.6;
+        }
+
+
+        /* SECTION */
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+
+        .section-title {
+            font-size: 20px;
+
+            font-weight: bold;
+
+            margin-bottom: 15px;
+        }
+
+
+        /* SYMPTOM */
+
+        .symptom-card {
+
+            border: 1px solid #eadde4;
+
+            border-radius: 16px;
+
+            margin-bottom: 12px;
+
+            overflow: hidden;
+
+            transition: 0.2s;
+        }
+
+
+        .symptom-card:hover {
+
+            border-color: #d994b3;
+
+        }
+
+
+        .symptom-header {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+            padding: 18px;
+
+            cursor: pointer;
+
+            background: white;
+        }
+
+
+        .symptom-header input {
+
+            width: 21px;
+
+            height: 21px;
+
+            accent-color: #b65c88;
+
+            cursor: pointer;
+        }
+
+
+        .symptom-name {
+
+            font-size: 17px;
+
+            font-weight: 600;
+        }
+
+
+        /* DETAILS */
+
+        .symptom-details {
+
+            display: none;
+
+            padding: 20px;
+
+            background: #fff7fa;
+
+            border-top: 1px solid #eee;
+        }
+
+
+        .symptom-card.active
+        .symptom-details {
+
+            display: block;
+        }
+
+
+        /* SEVERITY */
+
+        .detail-title {
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            margin-bottom: 10px;
+
+            color: #555;
+        }
+
+
+        .severity-options {
+
+            display: flex;
+
+            gap: 10px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .severity-option {
+
+            flex: 1;
+
+            position: relative;
+        }
+
+
+        .severity-option input {
+
+            position: absolute;
+
+            opacity: 0;
+        }
+
+
+        .severity-option label {
+
+            display: block;
+
+            text-align: center;
+
+            padding: 11px 8px;
+
+            border: 1px solid #ddd;
+
+            border-radius: 10px;
+
+            background: white;
+
+            cursor: pointer;
+
+            font-size: 14px;
+        }
+
+
+        .severity-option
+        input:checked + label {
+
+            background: #b65c88;
+
+            color: white;
+
+            border-color: #b65c88;
+        }
+
+
+        /* FREQUENCY */
+
+        .frequency-input {
+
+            width: 100%;
+
+            padding: 12px;
+
+            border: 1px solid #ddd;
+
+            border-radius: 10px;
+
+            background: white;
+
+            font-size: 15px;
+
+            outline: none;
+        }
+
+
+        .frequency-input:focus {
+
+            border-color: #b65c88;
+        }
+
+
+        .help-text {
+
+            color: #999;
+
+            font-size: 13px;
+
+            margin-top: 6px;
+        }
+
+
+        /* NOTES */
+
+        textarea {
+
+            width: 100%;
+
+            height: 130px;
+
+            padding: 14px;
+
+            border: 1px solid #ddd;
+
+            border-radius: 12px;
+
+            resize: vertical;
+
+            font-size: 15px;
+
+            outline: none;
+        }
+
+
+        textarea:focus {
+
+            border-color: #b65c88;
+        }
+
+
+        /* BUTTON */
+
+        .save-button {
+
+            width: 100%;
+
+            padding: 16px;
+
+            border: none;
+
+            border-radius: 12px;
+
+            background: #b65c88;
+
+            color: white;
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+
+        .save-button:hover {
+
+            background: #a34d79;
+
+            transform: translateY(-1px);
+        }
+
+
+        .back {
+
+            display: block;
+
+            text-align: center;
+
+            margin-top: 20px;
+
+            color: #777;
+
+            text-decoration: none;
+        }
+
+
+        .back:hover {
+
+            color: #b65c88;
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 600px) {
+
+            .container {
+
+                width: 95%;
+
+                margin: 20px auto;
+            }
+
+
+            .box {
+
+                padding: 25px 18px;
+            }
+
+
+            .heading h1 {
+
+                font-size: 27px;
+            }
+
+
+            .severity-options {
+
+                flex-direction: column;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <div class="box">
+
+
+        <!-- HEADER -->
+
+        <div class="heading">
+
+            <h1>
+                How are you feeling? 🌸
+            </h1>
+
+            <p>
+
+                Select the symptoms you've
+                experienced and tell us a little
+                more about each one.
+
+            </p>
+
+        </div>
+
+
+
+        <form
+            method="POST"
+            onsubmit="return validateForm()"
+        >
+
+            {% csrf_token %}
+
+
+
+            <!-- SYMPTOMS -->
+
+            <div class="section">
+
+                <div class="section-title">
+
+                    What are you experiencing?
+
+                </div>
+
+
+
+                <!-- HOT FLASHES -->
+
+                <div
+                    class="symptom-card"
+                    id="card-hot_flashes"
+                >
+
+                    <label class="symptom-header">
+
+                        <input
+                            type="checkbox"
+                            name="symptoms"
+                            value="hot_flashes"
+                            onchange="toggleSymptom(
+                                'hot_flashes'
+                            )"
+                        >
+
+                        <span class="symptom-name">
+
+                            🔥 Hot Flashes
+
+                        </span>
+
+                    </label>
+
+
+                    <div class="symptom-details">
+
+                        <div class="detail-title">
+                            Severity
+                        </div>
+
+
+                        <div class="severity-options">
+
+                            <div
+                                class="severity-option"
+                            >
+
+                                <input
+                                    type="radio"
+                                    id="hot_mild"
+                                    name="severity_hot_flashes"
+                                    value="1"
+                                >
+
+                                <label for="hot_mild">
+                                    🌱 Mild
+                                </label>
+
+                            </div>
+
+
+                            <div
+                                class="severity-option"
+                            >
+
+                                <input
+                                    type="radio"
+                                    id="hot_moderate"
+                                    name="severity_hot_flashes"
+                                    value="2"
+                                >
+
+                                <label for="hot_moderate">
+                                    🌸 Moderate
+                                </label>
+
+                            </div>
+
+
+                            <div
+                                class="severity-option"
+                            >
+
+                                <input
+                                    type="radio"
+                                    id="hot_severe"
+                                    name="severity_hot_flashes"
+                                    value="3"
+                                >
+
+                                <label for="hot_severe">
+                                    🔴 Severe
+                                </label>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="detail-title">
+                            How many times?
+                        </div>
+
+
+                        <input
+                            class="frequency-input"
+                            type="number"
+                            name="frequency_hot_flashes"
+                            min="1"
+                            value="1"
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- NIGHT SWEATS -->
+
+                <div
+                    class="symptom-card"
+                    id="card-night_sweats"
+                >
+
+                    <label class="symptom-header">
+
+                        <input
+                            type="checkbox"
+                            name="symptoms"
+                            value="night_sweats"
+                            onchange="toggleSymptom(
+                                'night_sweats'
+                            )"
+                        >
+
+                        <span class="symptom-name">
+
+                            🌙 Night Sweats
+
+                        </span>
+
+                    </label>
+
+
+                    <div class="symptom-details">
+
+                        <div class="detail-title">
+                            Severity
+                        </div>
+
+
+                        <div class="severity-options">
+
+                            <div
+                                class="severity-option"
+                            >
+
+                                <input
+                                    type="radio"
+                                    id="sweat_mild"
+                                    name="severity_night_sweats"
+                                    value="1"
+                                >
+
+                                <label for="sweat_mild">
+                                    🌱 Mild
+                                </label>
+
+                            </div>
+
+
+                            <div
+                                class="severity-option"
+                            >
+
+                                <input
+                                    type="radio"
+                                    id="sweat_moderate"
+                                    name="severity_night_sweats"
+                                    value="2"
+                                >
+
+                                <label for="sweat_moderate">
+                                    🌸 Moderate
+                                </label>
+
+                            </div>
+
+
+                            <div
+                                class="severity-option"
+                            >
+
+                                <input
+                                    type="radio"
+                                    id="sweat_severe"
+                                    name="severity_night_sweats"
+                                    value="3"
+                                >
+
+                                <label for="sweat_severe">
+                                    🔴 Severe
+                                </label>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="detail-title">
+                            How many times?
+                        </div>
+
+
+                        <input
+                            class="frequency-input"
+                            type="number"
+                            name="frequency_night_sweats"
+                            min="1"
+                            value="1"
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- SLEEP -->
+
+                <div
+                    class="symptom-card"
+                    id="card-sleep"
+                >
+
+                    <label class="symptom-header">
+
+                        <input
+                            type="checkbox"
+                            name="symptoms"
+                            value="sleep"
+                            onchange="toggleSymptom(
+                                'sleep'
+                            )"
+                        >
+
+                        <span class="symptom-name">
+
+                            😴 Sleep Problems
+
+                        </span>
+
+                    </label>
+
+
+                    <div class="symptom-details">
+
+                        <div class="detail-title">
+                            Severity
+                        </div>
+
+
+                        <div class="severity-options">
+
+                            <div class="severity-option">
+
+                                <input
+                                    type="radio"
+                                    id="sleep_mild"
+                                    name="severity_sleep"
+                                    value="1"
+                                >
+
+                                <label for="sleep_mild">
+                                    🌱 Mild
+                                </label>
+
+                            </div>
+
+
+                            <div class="severity-option">
+
+                                <input
+                                    type="radio"
+                                    id="sleep_moderate"
+                                    name="severity_sleep"
+                                    value="2"
+                                >
+
+                                <label for="sleep_moderate">
+                                    🌸 Moderate
+                                </label>
+
+                            </div>
+
+
+                            <div class="severity-option">
+
+                                <input
+                                    type="radio"
+                                    id="sleep_severe"
+                                    name="severity_sleep"
+                                    value="3"
+                                >
+
+                                <label for="sleep_severe">
+                                    🔴 Severe
+                                </label>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="detail-title">
+                            How many times?
+                        </div>
+
+
+                        <input
+                            class="frequency-input"
+                            type="number"
+                            name="frequency_sleep"
+                            min="1"
+                            value="1"
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- MOOD -->
+
+                <div
+                    class="symptom-card"
+                    id="card-mood"
+                >
+
+                    <label class="symptom-header">
+
+                        <input
+                            type="checkbox"
+                            name="symptoms"
+                            value="mood"
+                            onchange="toggleSymptom(
+                                'mood'
+                            )"
+                        >
+
+                        <span class="symptom-name">
+
+                            😔 Mood Changes
+
+                        </span>
+
+                    </label>
+
+
+                    <div class="symptom-details">
+
+                        <div class="detail-title">
+                            Severity
+                        </div>
+
+
+                        <div class="severity-options">
+
+                            <div class="severity-option">
+
+                                <input
+                                    type="radio"
+                                    id="mood_mild"
+                                    name="severity_mood"
+                                    value="1"
+                                >
+
+                                <label for="mood_mild">
+                                    🌱 Mild
+                                </label>
+
+                            </div>
+
+
+                            <div class="severity-option">
+
+                                <input
+                                    type="radio"
+                                    id="mood_moderate"
+                                    name="severity_mood"
+                                    value="2"
+                                >
+
+                                <label for="mood_moderate">
+                                    🌸 Moderate
+                                </label>
+
+                            </div>
+
+
+                            <div class="severity-option">
+
+                                <input
+                                    type="radio"
+                                    id="mood_severe"
+                                    name="severity_mood"
+                                    value="3"
+                                >
+
+                                <label for="mood_severe">
+                                    🔴 Severe
+                                </label>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="detail-title">
+                            How many times?
+                        </div>
+
+
+                        <input
+                            class="frequency-input"
+                            type="number"
+                            name="frequency_mood"
+                            min="1"
+                            value="1"
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ANXIETY -->
+
+                <div
+                    class="symptom-card"
+                    id="card-anxiety"
+                >
+
+                    <label class="symptom-header">
+
+                        <input
+                            type="checkbox"
+                            name="symptoms"
+                            value="anxiety"
+                            onchange="toggleSymptom(
+                                'anxiety'
+                            )"
+                        >
+
+                        <span class="symptom-name">
+
+                            🧠 Anxiety
+
+                        </span>
+
+                    </label>
+
+
+                    <div class="symptom-details">
+
+                        <div class="detail-title">
+                            Severity
+                        </div>
+
+
+                        <div class="severity-options">
+
+                            <div class="severity-option">
+
+                                <input
+                                    type="radio"
+                                    id="anxiety_mild"
+                                    name="severity_anxiety"
+                                    value="1"
+                                >
+
+                                <label for="anxiety_mild">
+                                    🌱 Mild
+                                </label>
+
+                            </div>
+
+
+                            <div class="severity-option">
+
+                                <input
+                                    type="radio"
+                                    id="anxiety_moderate"
+                                    name="severity_anxiety"
+                                    value="2"
+                                >
+
+                                <label for="anxiety_moderate">
+                                    🌸 Moderate
+                                </label>
+
+                            </div>
+
+
+                            <div class="severity-option">
+
+                                <input
+                                    type="radio"
+                                    id="anxiety_severe"
+                                    name="severity_anxiety"
+                                    value="3"
+                                >
+
+                                <label for="anxiety_severe">
+                                    🔴 Severe
+                                </label>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="detail-title">
+                            How many times?
+                        </div>
+
+
+                        <input
+                            class="frequency-input"
+                            type="number"
+                            name="frequency_anxiety"
+                            min="1"
+                            value="1"
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- FATIGUE -->
+
+                <div
+                    class="symptom-card"
+                    id="card-fatigue"
+                >
+
+                    <label class="symptom-header">
+
+                        <input
+                            type="checkbox"
+                            name="symptoms"
+                            value="fatigue"
+                            onchange="toggleSymptom(
+                                'fatigue'
+                            )"
+                        >
+
+                        <span class="symptom-name">
+
+                            😩 Fatigue
+
+                        </span>
+
+                    </label>
+
+
+                    <div class="symptom-details">
+
+                        <div class="detail-title">
+                            Severity
+                        </div>
+
+
+                        <div class="severity-options">
+
+                            <div class="severity-option">
+
+                                <input
+                                    type="radio"
+                                    id="fatigue_mild"
+                                    name="severity_fatigue"
+                                    value="1"
+                                >
+
+                                <label for="fatigue_mild">
+                                    🌱 Mild
+                                </label>
+
+                            </div>
+
+
+                            <div class="severity-option">
+
+                                <input
+                                    type="radio"
+                                    id="fatigue_moderate"
+                                    name="severity_fatigue"
+                                    value="2"
+                                >
+
+                                <label for="fatigue_moderate">
+                                    🌸 Moderate
+                                </label>
+
+                            </div>
+
+
+                            <div class="severity-option">
+
+                                <input
+                                    type="radio"
+                                    id="fatigue_severe"
+                                    name="severity_fatigue"
+                                    value="3"
+                                >
+
+                                <label for="fatigue_severe">
+                                    🔴 Severe
+                                </label>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="detail-title">
+                            How many times?
+                        </div>
+
+
+                        <input
+                            class="frequency-input"
+                            type="number"
+                            name="frequency_fatigue"
+                            min="1"
+                            value="1"
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- HEADACHE -->
+
+                <div
+                    class="symptom-card"
+                    id="card-headache"
+                >
+
+                    <label class="symptom-header">
+
+                        <input
+                            type="checkbox"
+                            name="symptoms"
+                            value="headache"
+                            onchange="toggleSymptom(
+                                'headache'
+                            )"
+                        >
+
+                        <span class="symptom-name">
+
+                            🤕 Headache
+
+                        </span>
+
+                    </label>
+
+
+                    <div class="symptom-details">
+
+                        <div class="detail-title">
+                            Severity
+                        </div>
+
+
+                        <div class="severity-options">
+
+                            <div class="severity-option">
+
+                                <input
+                                    type="radio"
+                                    id="headache_mild"
+                                    name="severity_headache"
+                                    value="1"
+                                >
+
+                                <label for="headache_mild">
+                                    🌱 Mild
+                                </label>
+
+                            </div>
+
+
+                            <div class="severity-option">
+
+                                <input
+                                    type="radio"
+                                    id="headache_moderate"
+                                    name="severity_headache"
+                                    value="2"
+                                >
+
+                                <label for="headache_moderate">
+                                    🌸 Moderate
+                                </label>
+
+                            </div>
+
+
+                            <div class="severity-option">
+
+                                <input
+                                    type="radio"
+                                    id="headache_severe"
+                                    name="severity_headache"
+                                    value="3"
+                                >
+
+                                <label for="headache_severe">
+                                    🔴 Severe
+                                </label>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="detail-title">
+                            How many times?
+                        </div>
+
+
+                        <input
+                            class="frequency-input"
+                            type="number"
+                            name="frequency_headache"
+                            min="1"
+                            value="1"
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- JOINT PAIN -->
+
+                <div
+                    class="symptom-card"
+                    id="card-joint_pain"
+                >
+
+                    <label class="symptom-header">
+
+                        <input
+                            type="checkbox"
+                            name="symptoms"
+                            value="joint_pain"
+                            onchange="toggleSymptom(
+                                'joint_pain'
+                            )"
+                        >
+
+                        <span class="symptom-name">
+
+                            💪 Joint / Muscle Discomfort
+
+                        </span>
+
+                    </label>
+
+
+                    <div class="symptom-details">
+
+                        <div class="detail-title">
+                            Severity
+                        </div>
+
+
+                        <div class="severity-options">
+
+                            <div class="severity-option">
+
+                                <input
+                                    type="radio"
+                                    id="joint_mild"
+                                    name="severity_joint_pain"
+                                    value="1"
+                                >
+
+                                <label for="joint_mild">
+                                    🌱 Mild
+                                </label>
+
+                            </div>
+
+
+                            <div class="severity-option">
+
+                                <input
+                                    type="radio"
+                                    id="joint_moderate"
+                                    name="severity_joint_pain"
+                                    value="2"
+                                >
+
+                                <label for="joint_moderate">
+                                    🌸 Moderate
+                                </label>
+
+                            </div>
+
+
+                            <div class="severity-option">
+
+                                <input
+                                    type="radio"
+                                    id="joint_severe"
+                                    name="severity_joint_pain"
+                                    value="3"
+                                >
+
+                                <label for="joint_severe">
+                                    🔴 Severe
+                                </label>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="detail-title">
+                            How many times?
+                        </div>
+
+
+                        <input
+                            class="frequency-input"
+                            type="number"
+                            name="frequency_joint_pain"
+                            min="1"
+                            value="1"
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- BRAIN FOG -->
+
+                <div
+                    class="symptom-card"
+                    id="card-brain_fog"
+                >
+
+                    <label class="symptom-header">
+
+                        <input
+                            type="checkbox"
+                            name="symptoms"
+                            value="brain_fog"
+                            onchange="toggleSymptom(
+                                'brain_fog'
+                            )"
+                        >
+
+                        <span class="symptom-name">
+
+                            🧠 Brain Fog
+
+                        </span>
+
+                    </label>
+
+
+                    <div class="symptom-details">
+
+                        <div class="detail-title">
+                            Severity
+                        </div>
+
+
+                        <div class="severity-options">
+
+                            <div class="severity-option">
+
+                                <input
+                                    type="radio"
+                                    id="brain_mild"
+                                    name="severity_brain_fog"
+                                    value="1"
+                                >
+
+                                <label for="brain_mild">
+                                    🌱 Mild
+                                </label>
+
+                            </div>
+
+
+                            <div class="severity-option">
+
+                                <input
+                                    type="radio"
+                                    id="brain_moderate"
+                                    name="severity_brain_fog"
+                                    value="2"
+                                >
+
+                                <label for="brain_moderate">
+                                    🌸 Moderate
+                                </label>
+
+                            </div>
+
+
+                            <div class="severity-option">
+
+                                <input
+                                    type="radio"
+                                    id="brain_severe"
+                                    name="severity_brain_fog"
+                                    value="3"
+                                >
+
+                                <label for="brain_severe">
+                                    🔴 Severe
+                                </label>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="detail-title">
+                            How many times?
+                        </div>
+
+
+                        <input
+                            class="frequency-input"
+                            type="number"
+                            name="frequency_brain_fog"
+                            min="1"
+                            value="1"
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- VAGINAL DRYNESS -->
+
+                <div
+                    class="symptom-card"
+                    id="card-vaginal_dryness"
+                >
+
+                    <label class="symptom-header">
+
+                        <input
+                            type="checkbox"
+                            name="symptoms"
+                            value="vaginal_dryness"
+                            onchange="toggleSymptom(
+                                'vaginal_dryness'
+                            )"
+                        >
+
+                        <span class="symptom-name">
+
+                            🌸 Vaginal Dryness
+
+                        </span>
+
+                    </label>
+
+
+                    <div class="symptom-details">
+
+                        <div class="detail-title">
+                            Severity
+                        </div>
+
+
+                        <div class="severity-options">
+
+                            <div class="severity-option">
+
+                                <input
+                                    type="radio"
+                                    id="dry_mild"
+                                    name="severity_vaginal_dryness"
+                                    value="1"
+                                >
+
+                                <label for="dry_mild">
+                                    🌱 Mild
+                                </label>
+
+                            </div>
+
+
+                            <div class="severity-option">
+
+                                <input
+                                    type="radio"
+                                    id="dry_moderate"
+                                    name="severity_vaginal_dryness"
+                                    value="2"
+                                >
+
+                                <label for="dry_moderate">
+                                    🌸 Moderate
+                                </label>
+
+                            </div>
+
+
+                            <div class="severity-option">
+
+                                <input
+                                    type="radio"
+                                    id="dry_severe"
+                                    name="severity_vaginal_dryness"
+                                    value="3"
+                                >
+
+                                <label for="dry_severe">
+                                    🔴 Severe
+                                </label>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="detail-title">
+                            How many times?
+                        </div>
+
+
+                        <input
+                            class="frequency-input"
+                            type="number"
+                            name="frequency_vaginal_dryness"
+                            min="1"
+                            value="1"
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- URINARY -->
+
+                <div
+                    class="symptom-card"
+                    id="card-urinary"
+                >
+
+                    <label class="symptom-header">
+
+                        <input
+                            type="checkbox"
+                            name="symptoms"
+                            value="urinary"
+                            onchange="toggleSymptom(
+                                'urinary'
+                            )"
+                        >
+
+                        <span class="symptom-name">
+
+                            🚺 Urinary Changes
+
+                        </span>
+
+                    </label>
+
+
+                    <div class="symptom-details">
+
+                        <div class="detail-title">
+                            Severity
+                        </div>
+
+
+                        <div class="severity-options">
+
+                            <div class="severity-option">
+
+                                <input
+                                    type="radio"
+                                    id="urinary_mild"
+                                    name="severity_urinary"
+                                    value="1"
+                                >
+
+                                <label for="urinary_mild">
+                                    🌱 Mild
+                                </label>
+
+                            </div>
+
+
+                            <div class="severity-option">
+
+                                <input
+                                    type="radio"
+                                    id="urinary_moderate"
+                                    name="severity_urinary"
+                                    value="2"
+                                >
+
+                                <label for="urinary_moderate">
+                                    🌸 Moderate
+                                </label>
+
+                            </div>
+
+
+                            <div class="severity-option">
+
+                                <input
+                                    type="radio"
+                                    id="urinary_severe"
+                                    name="severity_urinary"
+                                    value="3"
+                                >
+
+                                <label for="urinary_severe">
+                                    🔴 Severe
+                                </label>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="detail-title">
+                            How many times?
+                        </div>
+
+
+                        <input
+                            class="frequency-input"
+                            type="number"
+                            name="frequency_urinary"
+                            min="1"
+                            value="1"
+                        >
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+<!-- DATE -->
+
+<div class="section">
+
+    <div class="section-title">
+        When did this happen?
+    </div>
+
+    <input
+        class="frequency-input"
+        type="date"
+        name="date"
+        id="recordDate"
+        required
+    >
+
+    <p class="help-text">
+        Select the day you experienced these symptoms.
+    </p>
+
+</div>
+
+            <!-- NOTES -->
+
+            <div class="section">
+
+                <div class="section-title">
+
+                    Anything else you'd like to tell us?
+
+                </div>
+
+
+                <textarea
+                    name="notes"
+                    placeholder="Example: I woke up three times during the night and felt very hot."
+                ></textarea>
+
+            </div>
+
+
+
+            <!-- SAVE -->
+
+            <button
+                type="submit"
+                class="save-button"
+            >
+
+                🌸 Save Today's Symptoms
+
+            </button>
+
+
+        </form>
+
+
+
+        <a
+            href="{% url 'dashboard' %}"
+            class="back"
+        >
+
+            ← Back to Dashboard
+
+        </a>
+
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+
+function toggleSymptom(symptom) {
+
+    const card =
+        document.getElementById(
+            "card-" + symptom
+        );
+
+
+    const checkbox =
+        card.querySelector(
+            'input[type="checkbox"]'
+        );
+
+
+    if (checkbox.checked) {
+
+        card.classList.add("active");
+
+    } else {
+
+        card.classList.remove("active");
+
+    }
+
+}
+
+
+
+function validateForm() {
+
+    const selected =
+        document.querySelectorAll(
+            'input[name="symptoms"]:checked'
+        );
+
+
+    if (selected.length === 0) {
+
+        alert(
+            "Please select at least one symptom."
+        );
+
+        return false;
+
+    }
+
+
+    for (const checkbox of selected) {
+
+        const symptom =
+            checkbox.value;
+
+
+        const severity =
+            document.querySelector(
+                `input[name="severity_${symptom}"]:checked`
+            );
+
+
+        if (!severity) {
+
+            alert(
+                "Please select a severity for " +
+                checkbox.parentElement
+                    .querySelector(".symptom-name")
+                    .innerText
+            );
+
+            return false;
+
+        }
+
+
+        const frequency =
+            document.querySelector(
+                `input[name="frequency_${symptom}"]`
+            );
+
+
+        if (
+            !frequency.value ||
+            frequency.value < 1
+        ) {
+
+            alert(
+                "Please enter the frequency for " +
+                checkbox.parentElement
+                    .querySelector(".symptom-name")
+                    .innerText
+            );
+
+            return false;
+
+        }
+
+    }
+
+
+    return true;
+
+}
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const dateInput =
+            document.getElementById(
+                "recordDate"
+            );
+
+        const today =
+            new Date()
+                .toISOString()
+                .split("T")[0];
+
+        dateInput.value = today;
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

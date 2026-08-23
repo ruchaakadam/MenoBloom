@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Health Reminders | HerBalance
+    </title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background: #fff7fa;
+
+            color: #333;
+
+            min-height: 100vh;
+
+        }
+
+
+        /* ================================
+           MAIN
+           ================================ */
+
+        .container {
+
+            width: 90%;
+
+            max-width: 1150px;
+
+            margin: 45px auto 70px;
+
+        }
+
+
+        /* ================================
+           HEADER
+           ================================ */
+
+        .header {
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .header h1 {
+
+            color: #b95783;
+
+            font-size: 38px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .header p {
+
+            color: #777;
+
+            font-size: 17px;
+
+            line-height: 1.6;
+
+            max-width: 800px;
+
+        }
+
+
+        /* ================================
+           INFORMATION BOX
+           ================================ */
+
+        .info-box {
+
+            background: #fff1f6;
+
+            border-left:
+                5px solid #b95783;
+
+            border-radius: 14px;
+
+            padding: 20px;
+
+            margin-bottom: 25px;
+
+            line-height: 1.7;
+
+            color: #555;
+
+        }
+
+
+        .info-box strong {
+
+            color: #b95783;
+
+        }
+
+
+        /* ================================
+           REMINDER GRID
+           ================================ */
+
+        .reminder-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 22px;
+
+        }
+
+
+        /* ================================
+           REMINDER CARD
+           ================================ */
+
+        .reminder-card {
+
+            background: white;
+
+            border-radius: 20px;
+
+            padding: 27px;
+
+            box-shadow:
+                0 6px 25px
+                rgba(0, 0, 0, 0.06);
+
+            transition: 0.2s;
+
+        }
+
+
+        .reminder-card:hover {
+
+            transform:
+                translateY(-2px);
+
+        }
+
+
+        .reminder-icon {
+
+            font-size: 35px;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .reminder-card h2 {
+
+            font-size: 22px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .reminder-description {
+
+            color: #777;
+
+            line-height: 1.6;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        /* ================================
+           STATUS
+           ================================ */
+
+        .status {
+
+            display: inline-block;
+
+            padding:
+                6px 12px;
+
+            border-radius: 20px;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .status.pending {
+
+            background: #fff1d9;
+
+            color: #a66a00;
+
+        }
+
+
+        .status.completed {
+
+            background: #e8f7ed;
+
+            color: #41825a;
+
+        }
+
+
+        /* ================================
+           FORM
+           ================================ */
+
+        .form-group {
+
+            margin-bottom: 16px;
+
+        }
+
+
+        .form-group label {
+
+            display: block;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            margin-bottom: 7px;
+
+            color: #555;
+
+        }
+
+
+        .form-group input,
+        .form-group select {
+
+            width: 100%;
+
+            padding: 12px 14px;
+
+            border:
+                1px solid #ddd;
+
+            border-radius: 10px;
+
+            font-size: 15px;
+
+            background: white;
+
+        }
+
+
+        .form-group input:focus,
+        .form-group select:focus {
+
+            outline: none;
+
+            border-color: #b95783;
+
+        }
+
+
+        /* ================================
+           BUTTONS
+           ================================ */
+
+        .button {
+
+            border: none;
+
+            border-radius: 10px;
+
+            padding:
+                12px 18px;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+
+        }
+
+
+        .primary-button {
+
+            background: #b95783;
+
+            color: white;
+
+        }
+
+
+        .primary-button:hover {
+
+            opacity: 0.9;
+
+        }
+
+
+        .secondary-button {
+
+            background: #f4e8ee;
+
+            color: #a44773;
+
+        }
+
+
+        .secondary-button:hover {
+
+            background: #eddce5;
+
+        }
+
+
+        /* ================================
+           SCREENING RESULT
+           ================================ */
+
+        .screening-result {
+
+            background: #fff8fb;
+
+            border:
+                1px solid #efdce5;
+
+            border-radius: 12px;
+
+            padding: 16px;
+
+            margin-top: 18px;
+
+            line-height: 1.7;
+
+            display: none;
+
+        }
+
+
+        .screening-result.show {
+
+            display: block;
+
+        }
+
+
+        .screening-result strong {
+
+            color: #b95783;
+
+        }
+
+
+        /* ================================
+           CHECKLIST
+           ================================ */
+
+        .checklist {
+
+            list-style: none;
+
+            margin-top: 10px;
+
+        }
+
+
+        .checklist li {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            padding:
+                13px 0;
+
+            border-bottom:
+                1px solid #f1e5eb;
+
+        }
+
+
+        .checklist li:last-child {
+
+            border-bottom: none;
+
+        }
+
+
+        .checklist input {
+
+            width: 19px;
+
+            height: 19px;
+
+            accent-color: #b95783;
+
+            cursor: pointer;
+
+        }
+
+
+        .checklist label {
+
+            cursor: pointer;
+
+            color: #555;
+
+            line-height: 1.4;
+
+        }
+
+
+        .checklist input:checked
+        + label {
+
+            text-decoration:
+                line-through;
+
+            color: #999;
+
+        }
+
+
+        /* ================================
+           FULL WIDTH CARD
+           ================================ */
+
+        .full-card {
+
+            grid-column:
+                1 / -1;
+
+        }
+
+
+        /* ================================
+           FOOTNOTE
+           ================================ */
+
+        .medical-note {
+
+            margin-top: 28px;
+
+            background: #f7f7f7;
+
+            border-radius: 12px;
+
+            padding: 18px;
+
+            color: #777;
+
+            font-size: 13px;
+
+            line-height: 1.7;
+
+        }
+
+
+        /* ================================
+           BACK BUTTON
+           ================================ */
+
+        .back-button {
+
+            display: inline-block;
+
+            margin-top: 28px;
+
+            padding:
+                13px 22px;
+
+            background: #b95783;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 10px;
+
+            font-weight: 600;
+
+        }
+
+
+        .back-button:hover {
+
+            opacity: 0.9;
+
+        }
+
+
+        /* ================================
+           RESPONSIVE
+           ================================ */
+
+        @media (max-width: 800px) {
+
+            .container {
+
+                width: 94%;
+
+                margin-top: 25px;
+
+            }
+
+
+            .reminder-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .header h1 {
+
+                font-size: 30px;
+
+            }
+
+
+            .full-card {
+
+                grid-column: auto;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- =================================
+         HEADER
+         ================================= -->
+
+    <div class="header">
+
+        <h1>
+            🩺 Health Reminders
+        </h1>
+
+        <p>
+
+            Keep track of important preventive
+            health discussions, screenings and
+            personal wellness activities.
+
+        </p>
+
+    </div>
+
+
+
+    <!-- =================================
+         INFORMATION
+         ================================= -->
+
+    <div class="info-box">
+
+        <strong>
+            🌸 A reminder, not a diagnosis
+        </strong>
+
+        <br>
+
+        HerBalance helps you remember health
+        activities. Screening schedules can
+        depend on your age, previous results,
+        medical history and local guidelines.
+        Always confirm your personal schedule
+        with a qualified healthcare professional.
+
+    </div>
+
+
+
+    <!-- =================================
+         REMINDER CARDS
+         ================================= -->
+
+    <div class="reminder-grid">
+
+
+        <!-- =================================
+             CERVICAL SCREENING
+             ================================= -->
+
+        <div class="reminder-card">
+
+            <div class="reminder-icon">
+                🩺
+            </div>
+
+            <h2>
+                Cervical Cancer Screening
+            </h2>
+
+            <p class="reminder-description">
+
+                Keep a record of your cervical
+                cancer screening and discuss
+                the appropriate test and interval
+                with your healthcare provider.
+
+            </p>
+
+
+            <span
+                class="status pending"
+                id="screeningStatus"
+            >
+                Not Recorded
+            </span>
+
+
+            <div class="form-group">
+
+                <label for="age">
+
+                    Your age
+
+                </label>
+
+                <input
+                    type="number"
+                    id="age"
+                    min="18"
+                    max="100"
+                    placeholder="Enter your age"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="screeningDate">
+
+                    Last screening date
+
+                </label>
+
+                <input
+                    type="date"
+                    id="screeningDate"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="screeningMethod">
+
+                    Screening method
+
+                </label>
+
+                <select
+                    id="screeningMethod"
+                >
+
+                    <option value="">
+
+                        Select method
+
+                    </option>
+
+                    <option value="HPV">
+
+                        HPV test
+
+                    </option>
+
+                    <option value="Pap">
+
+                        Pap smear / cytology
+
+                    </option>
+
+                    <option value="VIA">
+
+                        VIA
+
+                    </option>
+
+                    <option value="Other">
+
+                        Other / not sure
+
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <button
+                class="
+                    button
+                    primary-button
+                "
+                onclick="saveScreening()"
+            >
+
+                Save Screening Record
+
+            </button>
+
+
+            <div
+                id="screeningResult"
+                class="screening-result"
+            ></div>
+
+        </div>
+
+
+
+        <!-- =================================
+             BONE HEALTH
+             ================================= -->
+
+        <div class="reminder-card">
+
+            <div class="reminder-icon">
+                🦴
+            </div>
+
+            <h2>
+                Bone Health
+            </h2>
+
+            <p class="reminder-description">
+
+                Menopause can be a useful time
+                to discuss bone health and
+                osteoporosis risk with your
+                healthcare professional.
+
+            </p>
+
+
+            <span
+                class="status pending"
+                id="boneStatus"
+            >
+                To Discuss
+            </span>
+
+
+            <button
+                class="
+                    button
+                    secondary-button
+                "
+                onclick="toggleReminder('bone')"
+            >
+
+                Mark as Discussed
+
+            </button>
+
+        </div>
+
+
+
+        <!-- =================================
+             ROUTINE HEALTH CHECK
+             ================================= -->
+
+        <div class="reminder-card">
+
+            <div class="reminder-icon">
+                ❤️
+            </div>
+
+            <h2>
+                Routine Health Check
+            </h2>
+
+            <p class="reminder-description">
+
+                Keep up with routine preventive
+                healthcare visits and discuss
+                changes in your health with
+                your healthcare provider.
+
+            </p>
+
+
+            <span
+                class="status pending"
+                id="routineStatus"
+            >
+                Pending
+
+            </span>
+
+
+            <button
+                class="
+                    button
+                    secondary-button
+                "
+                onclick="toggleReminder('routine')"
+            >
+
+                Mark as Completed
+
+            </button>
+
+        </div>
+
+
+
+        <!-- =================================
+             WELLNESS CHECKLIST
+             ================================= -->
+
+        <div
+            class="
+                reminder-card
+                full-card
+            "
+        >
+
+            <div class="reminder-icon">
+                🌿
+            </div>
+
+            <h2>
+                Personal Wellness Checklist
+            </h2>
+
+            <p class="reminder-description">
+
+                Small habits can help you stay
+                aware of your wellbeing.
+
+            </p>
+
+
+            <ul class="checklist">
+
+
+                <li>
+
+                    <input
+                        type="checkbox"
+                        id="water"
+                    >
+
+                    <label for="water">
+
+                        I drank enough water today.
+
+                    </label>
+
+                </li>
+
+
+                <li>
+
+                    <input
+                        type="checkbox"
+                        id="activity"
+                    >
+
+                    <label for="activity">
+
+                        I included some physical
+                        activity today.
+
+                    </label>
+
+                </li>
+
+
+                <li>
+
+                    <input
+                        type="checkbox"
+                        id="sleep"
+                    >
+
+                    <label for="sleep">
+
+                        I followed a consistent
+                        sleep routine.
+
+                    </label>
+
+                </li>
+
+
+                <li>
+
+                    <input
+                        type="checkbox"
+                        id="food"
+                    >
+
+                    <label for="food">
+
+                        I included nutritious foods
+                        in my meals today.
+
+                    </label>
+
+                </li>
+
+
+                <li>
+
+                    <input
+                        type="checkbox"
+                        id="stress"
+                    >
+
+                    <label for="stress">
+
+                        I gave myself some time
+                        to relax or unwind.
+
+                    </label>
+
+                </li>
+
+
+            </ul>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =================================
+         MEDICAL NOTE
+         ================================= -->
+
+    <div class="medical-note">
+
+        <strong>
+            Important:
+        </strong>
+
+        Screening recommendations vary according
+        to country, age, previous screening results,
+        vaccination/history and other factors.
+        HerBalance should not be used to determine
+        whether someone has a disease or replace
+        professional medical advice.
+
+    </div>
+
+
+
+    <!-- =================================
+         BACK
+         ================================= -->
+
+    <a
+        href="{% url 'dashboard' %}"
+        class="back-button"
+    >
+
+        ← Back to Dashboard
+
+    </a>
+
+
+</div>
+
+
+
+<script>
+
+
+    /* =================================
+       LOCAL STORAGE KEY
+       ================================= */
+
+    const STORAGE_KEY =
+        "herBalanceReminders";
+
+
+
+    /* =================================
+       LOAD SAVED DATA
+       ================================= */
+
+    let reminderData = {
+
+        screening: null,
+
+        bone: false,
+
+        routine: false
+
+    };
+
+
+    const savedData =
+        localStorage.getItem(
+            STORAGE_KEY
+        );
+
+
+    if (savedData) {
+
+        try {
+
+            reminderData =
+                JSON.parse(
+                    savedData
+                );
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "Unable to load reminders",
+                error
+            );
+
+        }
+
+    }
+
+
+
+    /* =================================
+       SAVE ALL REMINDERS
+       ================================= */
+
+    function saveReminderData() {
+
+        localStorage.setItem(
+
+            STORAGE_KEY,
+
+            JSON.stringify(
+                reminderData
+            )
+
+        );
+
+    }
+
+
+
+    /* =================================
+       SAVE SCREENING
+       ================================= */
+
+    function saveScreening() {
+
+
+        const age =
+            document.getElementById(
+                "age"
+            ).value;
+
+
+        const date =
+            document.getElementById(
+                "screeningDate"
+            ).value;
+
+
+        const method =
+            document.getElementById(
+                "screeningMethod"
+            ).value;
+
+
+        const result =
+            document.getElementById(
+                "screeningResult"
+            );
+
+
+        if (!age) {
+
+            result.innerHTML = `
+
+                Please enter your age
+                before saving the record.
+
+            `;
+
+            result.classList.add(
+                "show"
+            );
+
+            return;
+
+        }
+
+
+        reminderData.screening = {
+
+            age: age,
+
+            date: date,
+
+            method: method
+
+        };
+
+
+        saveReminderData();
+
+
+        const status =
+            document.getElementById(
+                "screeningStatus"
+            );
+
+
+        status.textContent =
+            "Record Saved";
+
+
+        status.className =
+            "status completed";
+
+
+        result.innerHTML = `
+
+            <strong>
+                Screening record saved.
+            </strong>
+
+            <br><br>
+
+            Age:
+            ${age}
+
+            <br>
+
+            Last screening:
+            ${
+                date
+                ?
+                formatDate(date)
+                :
+                "Not entered"
+            }
+
+            <br>
+
+            Method:
+            ${
+                method
+                ||
+                "Not specified"
+            }
+
+            <br><br>
+
+            Please confirm your next screening
+            date with your healthcare provider.
+
+        `;
+
+
+        result.classList.add(
+            "show"
+        );
+
+    }
+
+
+
+    /* =================================
+       FORMAT DATE
+       ================================= */
+
+    function formatDate(
+        dateString
+    ) {
+
+        const date =
+            new Date(
+                dateString
+            );
+
+
+        return date.toLocaleDateString(
+            "en-IN",
+            {
+
+                day: "numeric",
+
+                month: "short",
+
+                year: "numeric"
+
+            }
+        );
+
+    }
+
+
+
+    /* =================================
+       TOGGLE REMINDER
+       ================================= */
+
+    function toggleReminder(
+        type
+    ) {
+
+
+        reminderData[type] =
+            !reminderData[type];
+
+
+        saveReminderData();
+
+
+        updateReminderUI();
+
+    }
+
+
+
+    /* =================================
+       UPDATE REMINDER UI
+       ================================= */
+
+    function updateReminderUI() {
+
+
+        const boneStatus =
+            document.getElementById(
+                "boneStatus"
+            );
+
+
+        const routineStatus =
+            document.getElementById(
+                "routineStatus"
+            );
+
+
+        if (
+            reminderData.bone
+        ) {
+
+            boneStatus.textContent =
+                "Completed";
+
+            boneStatus.className =
+                "status completed";
+
+        }
+
+        else {
+
+            boneStatus.textContent =
+                "To Discuss";
+
+            boneStatus.className =
+                "status pending";
+
+        }
+
+
+        if (
+            reminderData.routine
+        ) {
+
+            routineStatus.textContent =
+                "Completed";
+
+            routineStatus.className =
+                "status completed";
+
+        }
+
+        else {
+
+            routineStatus.textContent =
+                "Pending";
+
+            routineStatus.className =
+                "status pending";
+
+        }
+
+    }
+
+
+
+    /* =================================
+       LOAD SCREENING UI
+       ================================= */
+
+    function loadScreeningUI() {
+
+
+        if (
+            !reminderData.screening
+        ) {
+
+            return;
+
+        }
+
+
+        const data =
+            reminderData.screening;
+
+
+        document.getElementById(
+            "age"
+        ).value =
+            data.age || "";
+
+
+        document.getElementById(
+            "screeningDate"
+        ).value =
+            data.date || "";
+
+
+        document.getElementById(
+            "screeningMethod"
+        ).value =
+            data.method || "";
+
+
+        const status =
+            document.getElementById(
+                "screeningStatus"
+            );
+
+
+        status.textContent =
+            "Record Saved";
+
+
+        status.className =
+            "status completed";
+
+    }
+
+
+
+    /* =================================
+       CHECKLIST STORAGE
+       ================================= */
+
+    const checklistItems = [
+
+        "water",
+
+        "activity",
+
+        "sleep",
+
+        "food",
+
+        "stress"
+
+    ];
+
+
+    checklistItems.forEach(
+        id => {
+
+
+            const checkbox =
+                document.getElementById(
+                    id
+                );
+
+
+            const saved =
+                localStorage.getItem(
+                    "herBalance_" + id
+                );
+
+
+            if (
+                saved === "true"
+            ) {
+
+                checkbox.checked =
+                    true;
+
+            }
+
+
+            checkbox.addEventListener(
+                "change",
+                function() {
+
+                    localStorage.setItem(
+
+                        "herBalance_" + id,
+
+                        checkbox.checked
+
+                    );
+
+                }
+            );
+
+        }
+    );
+
+
+
+    /* =================================
+       INITIALIZE
+       ================================= */
+
+    loadScreeningUI();
+
+    updateReminderUI();
+
+
+</script>
+
+
+</body>
+
+</html>
