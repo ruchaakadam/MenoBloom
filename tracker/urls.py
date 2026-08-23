@@ -8,12 +8,7 @@ urlpatterns = [
     # ========================================================
     # MAIN
     # ========================================================
-
-    path(
-        "",
-        views.dashboard,
-        name="dashboard"
-    ),
+     path("", views.login_view, name="home"),
 
     # ========================================================
     # SYMPTOMS
@@ -102,4 +97,15 @@ urlpatterns = [
         views.family,
         name="family"
     ),
+
+    path("menopause/", views.menopause_info, name="menopause_info"),
+
+    path("dashboard/", views.dashboard, name="dashboard"),
+    
+     path(
+    "woman-onboarding/",
+    views.woman_onboarding,
+    name="woman_onboarding"
+),
+    
 ]

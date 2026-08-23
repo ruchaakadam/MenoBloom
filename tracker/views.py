@@ -317,11 +317,16 @@ def set_role(request, role):
     # --------------------------------------------------------
     # WOMAN
     # --------------------------------------------------------
-
     if role == "woman":
 
-        return redirect("dashboard")
+     return redirect("woman_onboarding")
 
+   
+
+    return render(
+        request,
+        "tracker/woman_onboarding.html"
+    )
     # --------------------------------------------------------
     # FAMILY MEMBER
     # --------------------------------------------------------
@@ -363,3 +368,98 @@ def logout_view(request):
     logout(request)
 
     return redirect("login")
+def menopause_info(request):
+    return render(
+        request,
+        "tracker/menopause_info.html"
+    )
+
+@login_required(login_url="/login/")
+def woman_onboarding(request):
+
+    if request.method == "POST":
+
+        age = request.POST.get("age")
+
+        period_status = request.POST.get(
+            "period_status"
+        )
+
+        period_changes = request.POST.getlist(
+            "period_changes"
+        )
+
+        symptoms = request.POST.getlist(
+            "symptoms"
+        )
+
+
+        # ---------------------------------------------
+        # Estimate the stage
+        # ---------------------------------------------
+
+        if period_status == "12_months":
+
+            stage = "postmenopause"
+
+        elif period_status in [
+            "irregular",
+            "months_missing"
+        ]:
+
+            stage = "perimenopause"
+
+        elif period_status == "regular":
+
+            stage = "premenopause"
+
+        else:
+
+            stage = "unknown"
+
+
+        request.session["age"] = age
+
+        request.session["period_status"] = (
+            period_status
+        )
+
+        request.session["period_changes"] = (
+            period_changes
+        )
+
+        request.session["onboarding_symptoms"] = (
+            symptoms
+        )
+
+        request.session["menopause_stage"] = (
+            stage
+        )
+
+
+        return redirect(
+            "stage_result"
+        )
+
+
+    return render(
+        request,
+        "tracker/woman_onboarding.html"
+    )
+@login_required(login_url="/login/")
+def woman_onboarding(request):
+
+    if request.method == "POST":
+
+        age = request.POST.get("age")
+        stage = request.POST.get("stage")
+
+        request.session["age"] = age
+        request.session["menopause_stage"] = stage
+
+        return redirect("dashboard")
+
+    return render(
+        request,
+        "tracker/woman_onboarding.html"
+    )

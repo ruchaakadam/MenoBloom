@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Your Journey | MenoBloom</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            min-height: 100vh;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #fff7fa,
+                    #fff0f6
+                );
+
+            color: #3d3037;
+
+            padding: 30px 20px;
+        }
+
+
+        /* MAIN */
+
+        .page {
+
+            width: 100%;
+
+            max-width: 850px;
+
+            margin: auto;
+        }
+
+
+        /* BRAND */
+
+        .brand {
+
+            text-align: center;
+
+            margin-bottom: 25px;
+        }
+
+        .brand h1 {
+
+            color: #bd5b88;
+
+            font-size: 34px;
+        }
+
+        .brand p {
+
+            color: #777;
+
+            margin-top: 7px;
+
+            font-size: 15px;
+        }
+
+
+        /* CARD */
+
+        .card {
+
+            background: white;
+
+            border-radius: 25px;
+
+            padding: 40px;
+
+            box-shadow:
+                0 15px 40px
+                rgba(189, 91, 136, 0.12);
+        }
+
+
+        /* PROGRESS */
+
+        .progress-container {
+
+            margin-bottom: 30px;
+        }
+
+        .progress-text {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            color: #888;
+
+            font-size: 13px;
+
+            margin-bottom: 8px;
+        }
+
+        .progress-bar {
+
+            width: 100%;
+
+            height: 7px;
+
+            background: #f4e3eb;
+
+            border-radius: 10px;
+
+            overflow: hidden;
+        }
+
+        .progress {
+
+            width: 25%;
+
+            height: 100%;
+
+            background: #bd5b88;
+
+            border-radius: 10px;
+        }
+
+
+        /* HEADING */
+
+        .heading {
+
+            margin-bottom: 30px;
+        }
+
+        .heading h2 {
+
+            font-size: 29px;
+
+            color: #333;
+
+            margin-bottom: 10px;
+        }
+
+        .heading p {
+
+            color: #777;
+
+            line-height: 1.6;
+        }
+
+
+        /* QUESTIONS */
+
+        .question {
+
+            margin-bottom: 30px;
+        }
+
+        .question-title {
+
+            font-size: 17px;
+
+            font-weight: 700;
+
+            color: #444;
+
+            margin-bottom: 12px;
+        }
+
+        .required {
+
+            color: #bd5b88;
+        }
+
+
+        /* AGE */
+
+        .age-input {
+
+            width: 180px;
+
+            padding: 14px 16px;
+
+            border: 1px solid #e4ccd8;
+
+            border-radius: 12px;
+
+            font-size: 16px;
+
+            outline: none;
+        }
+
+        .age-input:focus {
+
+            border-color: #bd5b88;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(189, 91, 136, 0.10);
+        }
+
+
+        /* RADIO OPTIONS */
+
+        .radio-options {
+
+            display: grid;
+
+            gap: 10px;
+        }
+
+        .radio-option {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            padding: 14px 16px;
+
+            border: 1px solid #ead7e0;
+
+            border-radius: 12px;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+
+            color: #555;
+        }
+
+        .radio-option:hover {
+
+            background: #fff7fa;
+
+            border-color: #bd5b88;
+        }
+
+        .radio-option input {
+
+            accent-color: #bd5b88;
+
+            width: 18px;
+
+            height: 18px;
+        }
+
+
+        /* CHECKLIST */
+
+        .checklist {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 10px;
+        }
+
+        .check-option {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            padding: 13px 15px;
+
+            border: 1px solid #ead7e0;
+
+            border-radius: 12px;
+
+            cursor: pointer;
+
+            color: #555;
+
+            transition: 0.2s;
+        }
+
+        .check-option:hover {
+
+            background: #fff7fa;
+
+            border-color: #bd5b88;
+        }
+
+        .check-option input {
+
+            width: 18px;
+
+            height: 18px;
+
+            accent-color: #bd5b88;
+        }
+
+
+        /* BUTTON */
+
+        .continue-button {
+
+            width: 100%;
+
+            border: none;
+
+            padding: 15px;
+
+            border-radius: 12px;
+
+            background: #bd5b88;
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            margin-top: 5px;
+
+            transition: 0.2s;
+        }
+
+        .continue-button:hover {
+
+            background: #a94c77;
+
+            transform: translateY(-1px);
+        }
+
+
+        /* NOTE */
+
+        .note {
+
+            margin-top: 20px;
+
+            padding: 15px;
+
+            background: #fff8fb;
+
+            border-radius: 12px;
+
+            color: #777;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 15px;
+            }
+
+            .card {
+                padding: 25px 20px;
+            }
+
+            .heading h2 {
+                font-size: 24px;
+            }
+
+            .checklist {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="page">
+
+
+    <!-- BRAND -->
+
+    <div class="brand">
+
+        <h1>
+            🌸 MenoBloom
+        </h1>
+
+        <p>
+            Understanding your journey, one step at a time.
+        </p>
+
+    </div>
+
+
+    <!-- CARD -->
+
+    <div class="card">
+
+
+        <!-- PROGRESS -->
+
+        <div class="progress-container">
+
+            <div class="progress-text">
+
+                <span>
+                    Getting to know you
+                </span>
+
+                <span>
+                    Step 1 of 1
+                </span>
+
+            </div>
+
+            <div class="progress-bar">
+
+                <div class="progress"></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- HEADING -->
+
+        <div class="heading">
+
+            <h2>
+                Let's understand where you are 🌷
+            </h2>
+
+            <p>
+                A few questions will help MenoBloom
+                understand your current stage and
+                personalize your experience.
+            </p>
+
+        </div>
+
+
+        <!-- FORM -->
+
+        <form
+            method="POST"
+            action="{% url 'woman_onboarding' %}"
+        >
+
+            {% csrf_token %}
+
+
+            <!-- AGE -->
+
+            <div class="question">
+
+                <div class="question-title">
+
+                    1. What is your age?
+                    <span class="required">*</span>
+
+                </div>
+
+                <input
+                    type="number"
+                    name="age"
+                    class="age-input"
+                    min="18"
+                    max="100"
+                    placeholder="Your age"
+                    required
+                >
+
+            </div>
+
+
+            <!-- PERIOD STATUS -->
+
+            <div class="question">
+
+                <div class="question-title">
+
+                    2. What best describes your periods?
+                    <span class="required">*</span>
+
+                </div>
+
+
+                <div class="radio-options">
+
+
+                    <label class="radio-option">
+
+                        <input
+                            type="radio"
+                            name="period_status"
+                            value="regular"
+                            required
+                        >
+
+                        <span>
+                            I have regular periods
+                        </span>
+
+                    </label>
+
+
+                    <label class="radio-option">
+
+                        <input
+                            type="radio"
+                            name="period_status"
+                            value="irregular"
+                        >
+
+                        <span>
+                            My periods have become irregular
+                        </span>
+
+                    </label>
+
+
+                    <label class="radio-option">
+
+                        <input
+                            type="radio"
+                            name="period_status"
+                            value="months_missing"
+                        >
+
+                        <span>
+                            I have missed periods for several months
+                        </span>
+
+                    </label>
+
+
+                    <label class="radio-option">
+
+                        <input
+                            type="radio"
+                            name="period_status"
+                            value="12_months"
+                        >
+
+                        <span>
+                            I have not had a period for 12 months or more
+                        </span>
+
+                    </label>
+
+
+                    <label class="radio-option">
+
+                        <input
+                            type="radio"
+                            name="period_status"
+                            value="unsure"
+                        >
+
+                        <span>
+                            I'm not sure
+                        </span>
+
+                    </label>
+
+
+                </div>
+
+            </div>
+
+
+            <!-- PERIOD CHANGES -->
+
+            <div class="question">
+
+                <div class="question-title">
+
+                    3. Have you noticed any changes
+                    in your periods?
+
+                </div>
+
+
+                <div class="checklist">
+
+
+                    <label class="check-option">
+
+                        <input
+                            type="checkbox"
+                            name="period_changes"
+                            value="irregular"
+                        >
+
+                        Periods becoming irregular
+
+                    </label>
+
+
+                    <label class="check-option">
+
+                        <input
+                            type="checkbox"
+                            name="period_changes"
+                            value="closer"
+                        >
+
+                        Periods becoming closer together
+
+                    </label>
+
+
+                    <label class="check-option">
+
+                        <input
+                            type="checkbox"
+                            name="period_changes"
+                            value="farther"
+                        >
+
+                        Periods becoming farther apart
+
+                    </label>
+
+
+                    <label class="check-option">
+
+                        <input
+                            type="checkbox"
+                            name="period_changes"
+                            value="flow"
+                        >
+
+                        Changes in flow
+
+                    </label>
+
+
+                    <label class="check-option">
+
+                        <input
+                            type="checkbox"
+                            name="period_changes"
+                            value="none"
+                        >
+
+                        No major changes
+
+                    </label>
+
+
+                </div>
+
+            </div>
+
+
+            <!-- SYMPTOMS -->
+
+            <div class="question">
+
+                <div class="question-title">
+
+                    4. Which symptoms have you experienced?
+
+                    <span class="required">*</span>
+
+                </div>
+
+
+                <div class="checklist">
+
+
+                    <label class="check-option">
+
+                        <input
+                            type="checkbox"
+                            name="symptoms"
+                            value="hot_flashes"
+                        >
+
+                        🔥 Hot flashes
+
+                    </label>
+
+
+                    <label class="check-option">
+
+                        <input
+                            type="checkbox"
+                            name="symptoms"
+                            value="night_sweats"
+                        >
+
+                        💧 Night sweats
+
+                    </label>
+
+
+                    <label class="check-option">
+
+                        <input
+                            type="checkbox"
+                            name="symptoms"
+                            value="sleep"
+                        >
+
+                        🌙 Sleep difficulties
+
+                    </label>
+
+
+                    <label class="check-option">
+
+                        <input
+                            type="checkbox"
+                            name="symptoms"
+                            value="mood"
+                        >
+
+                        💭 Mood changes
+
+                    </label>
+
+
+                    <label class="check-option">
+
+                        <input
+                            type="checkbox"
+                            name="symptoms"
+                            value="brain_fog"
+                        >
+
+                        🧠 Brain fog
+
+                    </label>
+
+
+                    <label class="check-option">
+
+                        <input
+                            type="checkbox"
+                            name="symptoms"
+                            value="energy"
+                        >
+
+                        ⚡ Changes in energy
+
+                    </label>
+
+
+                    <label class="check-option">
+
+                        <input
+                            type="checkbox"
+                            name="symptoms"
+                            value="joint"
+                        >
+
+                        🦴 Joint or muscle discomfort
+
+                    </label>
+
+
+                    <label class="check-option">
+
+                        <input
+                            type="checkbox"
+                            name="symptoms"
+                            value="vaginal"
+                        >
+
+                        🌸 Vaginal or urinary changes
+
+                    </label>
+
+
+                    <label class="check-option">
+
+                        <input
+                            type="checkbox"
+                            name="symptoms"
+                            value="none"
+                        >
+
+                        ✓ None of these
+
+                    </label>
+
+
+                </div>
+
+            </div>
+
+
+            <!-- BUTTON -->
+
+            <button
+                type="submit"
+                class="continue-button"
+            >
+
+                Understand My Stage →
+
+            </button>
+
+
+            <!-- NOTE -->
+
+            <div class="note">
+
+                🌸 <strong>A gentle reminder:</strong>
+
+                MenoBloom provides an educational estimate
+                based on the information you provide. It does
+                not diagnose menopause or replace advice from
+                a healthcare professional.
+
+            </div>
+
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

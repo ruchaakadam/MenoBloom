@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Your MenoBloom Journey</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            min-height: 100vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 25px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #fff7fa,
+                    #fff0f6
+                );
+
+            color: #444;
+        }
+
+
+        .card {
+
+            width: 100%;
+
+            max-width: 650px;
+
+            background: white;
+
+            border-radius: 28px;
+
+            padding: 45px;
+
+            text-align: center;
+
+            box-shadow:
+                0 15px 45px
+                rgba(189, 91, 136, 0.12);
+        }
+
+
+        .flower {
+
+            font-size: 55px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .small-title {
+
+            color: #bd5b88;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            letter-spacing: 1.5px;
+
+            margin-bottom: 8px;
+        }
+
+
+        h1 {
+
+            font-size: 32px;
+
+            color: #333;
+
+            margin-bottom: 15px;
+        }
+
+
+        .stage {
+
+            display: inline-block;
+
+            padding: 12px 24px;
+
+            border-radius: 25px;
+
+            background: #fff0f6;
+
+            color: #bd5b88;
+
+            font-size: 20px;
+
+            font-weight: 700;
+
+            margin: 15px 0 20px;
+        }
+
+
+        .description {
+
+            color: #666;
+
+            line-height: 1.7;
+
+            font-size: 16px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .info {
+
+            background: #fff8fb;
+
+            border: 1px solid #f1dce6;
+
+            padding: 18px;
+
+            border-radius: 15px;
+
+            text-align: left;
+
+            line-height: 1.6;
+
+            color: #666;
+
+            font-size: 14px;
+        }
+
+
+        .button {
+
+            display: block;
+
+            margin-top: 25px;
+
+            padding: 15px;
+
+            border-radius: 12px;
+
+            background: #bd5b88;
+
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: 600;
+        }
+
+
+        .button:hover {
+
+            background: #a94c77;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="card">
+
+
+    <div class="flower">
+        🌸
+    </div>
+
+
+    <div class="small-title">
+        YOUR MENOBLOOM JOURNEY
+    </div>
+
+
+    <h1>
+        Here's what your answers suggest
+    </h1>
+
+
+    {% if stage == "premenopause" %}
+
+        <div class="stage">
+            🌱 Premenopause
+        </div>
+
+        <p class="description">
+
+            Your answers indicate that you are currently
+            having regular periods. This may be consistent
+            with the reproductive stage before the menopause
+            transition.
+
+        </p>
+
+
+    {% elif stage == "perimenopause" %}
+
+        <div class="stage">
+            🌷 Perimenopause
+        </div>
+
+        <p class="description">
+
+            Your answers indicate changes in your periods
+            that may be consistent with the menopause
+            transition.
+
+        </p>
+
+
+    {% elif stage == "postmenopause" %}
+
+        <div class="stage">
+            🌸 Menopause / Postmenopause
+        </div>
+
+        <p class="description">
+
+            You reported going 12 months or more without
+            a period. Menopause is generally defined as
+            12 consecutive months without a menstrual period,
+            when another cause has not been identified.
+
+        </p>
+
+
+    {% else %}
+
+        <div class="stage">
+            🌿 Not enough information yet
+        </div>
+
+        <p class="description">
+
+            We don't have enough information to estimate
+            your stage yet. You can continue tracking your
+            periods and symptoms in MenoBloom.
+
+        </p>
+
+    {% endif %}
+
+
+    <div class="info">
+
+        <strong>Important:</strong>
+
+        This is an educational estimate based on your
+        answers and is not a medical diagnosis. If you
+        have concerns about changes in your periods or
+        symptoms, consider discussing them with a
+        healthcare professional.
+
+    </div>
+
+
+    <a
+        href="{% url 'dashboard' %}"
+        class="button"
+    >
+        Continue to MenoBloom 🌸
+    </a>
+
+
+</div>
+
+
+</body>
+
+</html>
