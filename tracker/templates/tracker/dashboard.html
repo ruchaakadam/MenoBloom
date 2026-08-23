@@ -447,6 +447,132 @@
     }
 
 }
+/* =====================================================
+   WHAT IS MENOPAUSE CARD
+===================================================== */
+
+.menopause-intro {
+    width: 100%;
+    margin: 25px 0 30px;
+}
+
+.menopause-content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+
+    padding: 30px 35px;
+
+    border-radius: 24px;
+
+    background: linear-gradient(
+        135deg,
+        #fff8fb,
+        #fdf3f8
+    );
+
+    border: 1px solid #f3dce7;
+
+    box-shadow:
+        0 10px 30px rgba(189, 91, 136, 0.08);
+
+    overflow: hidden;
+}
+
+.menopause-icon {
+    min-width: 75px;
+    height: 75px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: white;
+    border-radius: 50%;
+
+    font-size: 38px;
+
+    box-shadow:
+        0 8px 20px rgba(189, 91, 136, 0.10);
+}
+
+.menopause-text {
+    flex: 1;
+}
+
+.menopause-label {
+    display: inline-block;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    color: #bd5b88;
+
+    margin-bottom: 7px;
+}
+
+.menopause-text h2 {
+    margin: 0 0 8px;
+
+    font-size: 26px;
+
+    color: #333;
+}
+
+.menopause-text p {
+    margin: 0 0 16px;
+
+    color: #777;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+
+    max-width: 650px;
+}
+
+.learn-more-btn {
+    border: none;
+
+    padding: 11px 20px;
+
+    border-radius: 10px;
+
+    background: #bd5b88;
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.learn-more-btn:hover {
+    background: #a94c77;
+    transform: translateY(-2px);
+}
+
+.menopause-decoration {
+    position: absolute;
+
+    right: 30px;
+    bottom: 15px;
+
+    display: flex;
+
+    gap: 12px;
+
+    font-size: 25px;
+
+    opacity: 0.6;
+}
     </style>
 
 </head>
@@ -458,7 +584,7 @@
 <nav>
 
     <h1>
-        🌸 HerBalance
+        🌸 MenoBloom
     </h1>
 
 
@@ -472,9 +598,50 @@
 
 <div class="container">
 
+    <!-- WHAT IS MENOPAUSE -->
+
+    <section class="menopause-intro">
+
+        <div class="menopause-content">
+
+            <div class="menopause-icon">
+                🌸
+            </div>
+
+            <div class="menopause-text">
+
+                <span class="menopause-label">
+                    UNDERSTAND YOUR JOURNEY
+                </span>
+
+                <h2>
+                    What is Menopause?
+                </h2>
+
+                <p>
+                    Menopause is a natural stage of life when
+                    menstrual periods permanently stop as
+                    hormone levels change.
+                </p>
+
+                <a href="{% url 'menopause_info' %}" class="learn-more-btn">
+    Learn More →
+</a>
+
+            </div>
+
+            <div class="menopause-decoration">
+                🌿 🌷 ✨
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- GOOD MORNING -->
 
     <div class="welcome">
-
         <h2>
             Good morning 🌷
         </h2>

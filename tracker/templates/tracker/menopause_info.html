@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>What is Menopause? | MenoBloom</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #fff7fa,
+                    #fff0f6
+                );
+
+            min-height: 100vh;
+
+            color: #3d3037;
+        }
+
+        .page {
+            max-width: 1000px;
+
+            margin: auto;
+
+            padding: 40px 25px;
+        }
+
+        .back {
+            display: inline-block;
+
+            margin-bottom: 25px;
+
+            text-decoration: none;
+
+            color: #b65a86;
+
+            font-weight: 600;
+        }
+
+        .card {
+            background: white;
+
+            border-radius: 28px;
+
+            padding: 50px;
+
+            box-shadow:
+                0 15px 40px
+                rgba(189, 91, 136, 0.12);
+        }
+
+        .heading {
+            text-align: center;
+
+            margin-bottom: 35px;
+        }
+
+        .heading .flower {
+            font-size: 45px;
+        }
+
+        .heading h1 {
+            font-size: 40px;
+
+            color: #b65a86;
+
+            margin-top: 10px;
+        }
+
+        .heading p {
+            color: #777;
+
+            font-size: 17px;
+
+            margin-top: 10px;
+        }
+
+        .definition {
+            background: #fff4f8;
+
+            border-left: 5px solid #b65a86;
+
+            padding: 25px;
+
+            border-radius: 15px;
+
+            margin-bottom: 30px;
+        }
+
+        .definition h2 {
+            color: #b65a86;
+
+            margin-bottom: 12px;
+        }
+
+        .definition p {
+            font-size: 17px;
+
+            line-height: 1.7;
+        }
+
+        .section {
+            margin-top: 30px;
+        }
+
+        .section h2 {
+            color: #b65a86;
+
+            margin-bottom: 15px;
+        }
+
+        .section p {
+            line-height: 1.8;
+
+            color: #555;
+
+            font-size: 16px;
+        }
+
+        .symptoms {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(180px, 1fr));
+
+            gap: 15px;
+
+            margin-top: 20px;
+        }
+
+        .symptom {
+            background: #fff8fb;
+
+            border: 1px solid #f0d7e3;
+
+            padding: 18px;
+
+            border-radius: 15px;
+
+            text-align: center;
+
+            font-weight: 600;
+
+            color: #765467;
+        }
+
+        .note {
+            margin-top: 35px;
+
+            padding: 20px;
+
+            background: #fdf6f9;
+
+            border-radius: 15px;
+
+            color: #666;
+
+            line-height: 1.6;
+        }
+
+        .dashboard-button {
+            display: block;
+
+            width: fit-content;
+
+            margin: 35px auto 0;
+
+            padding: 14px 28px;
+
+            background: #b65a86;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 12px;
+
+            font-weight: 600;
+        }
+
+        .dashboard-button:hover {
+            background: #9f4b74;
+        }
+
+        @media (max-width: 600px) {
+
+            .card {
+                padding: 30px 20px;
+            }
+
+            .heading h1 {
+                font-size: 30px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="page">
+
+    <a href="{% url 'dashboard' %}"
+       class="back">
+
+        ← Back to Dashboard
+
+    </a>
+
+
+    <div class="card">
+
+
+        <div class="heading">
+
+            <div class="flower">
+                🌸
+            </div>
+
+            <h1>
+                What is Menopause?
+            </h1>
+
+            <p>
+                Understanding your body, one step at a time.
+            </p>
+
+        </div>
+
+
+        <div class="definition">
+
+            <h2>
+                🌷 Menopause
+            </h2>
+
+            <p>
+                Menopause is a natural stage of life when
+                menstrual periods permanently stop because
+                the ovaries gradually produce less of the
+                hormones estrogen and progesterone.
+            </p>
+
+        </div>
+
+
+        <div class="section">
+
+            <h2>
+                What happens during menopause?
+            </h2>
+
+            <p>
+                During the transition to menopause, hormone
+                levels can change. These changes may affect
+                periods, sleep, mood, energy levels and other
+                parts of everyday wellbeing.
+            </p>
+
+        </div>
+
+
+        <div class="section">
+
+            <h2>
+                Common symptoms
+            </h2>
+
+            <div class="symptoms">
+
+                <div class="symptom">
+                    🔥 Hot flashes
+                </div>
+
+                <div class="symptom">
+                    🌙 Sleep changes
+                </div>
+
+                <div class="symptom">
+                    💭 Mood changes
+                </div>
+
+                <div class="symptom">
+                    💧 Night sweats
+                </div>
+
+                <div class="symptom">
+                    ❤️ Changes in wellbeing
+                </div>
+
+                <div class="symptom">
+                    🌸 Period changes
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="note">
+
+            <strong>Remember:</strong>
+
+            Every woman's menopause experience
+            can be different. Tracking symptoms and
+            noticing changes can help you understand
+            your own wellbeing.
+
+        </div>
+
+
+        <a href="{% url 'dashboard' %}"
+           class="dashboard-button">
+
+            Continue to MenoBloom 🌸
+
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
