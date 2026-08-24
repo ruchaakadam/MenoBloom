@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    
+
+    <title>Find a Gynecologist | HerBalance</title>
+<link rel="stylesheet" href="{% static 'tracker/gynecologist.css' %}">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #fff7fa,
+                    #fff0f6
+                );
+
+            min-height: 100vh;
+
+            color: #333;
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        nav {
+
+            background: white;
+
+            height: 75px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding:
+                0 7%;
+
+            box-shadow:
+                0 3px 15px
+                rgba(189, 91, 136, 0.08);
+        }
+
+
+        .logo {
+
+            font-size: 27px;
+
+            font-weight: 700;
+
+            color: #bd5b88;
+
+            text-decoration: none;
+        }
+
+
+        .back {
+
+            color: #bd5b88;
+
+            text-decoration: none;
+
+            font-weight: 600;
+        }
+
+
+        /* =====================================================
+           MAIN
+        ===================================================== */
+
+        .container {
+
+            max-width: 1100px;
+
+            margin:
+                50px auto;
+
+            padding:
+                0 25px;
+        }
+
+
+        .hero {
+
+            background: white;
+
+            border-radius: 25px;
+
+            padding:
+                45px;
+
+            text-align: center;
+
+            box-shadow:
+                0 15px 40px
+                rgba(189, 91, 136, 0.10);
+        }
+
+
+        .hero-icon {
+
+            font-size: 55px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .hero h1 {
+
+            font-size: 36px;
+
+            margin-bottom: 12px;
+
+            color: #333;
+        }
+
+
+        .hero p {
+
+            color: #777;
+
+            font-size: 17px;
+
+            line-height: 1.6;
+
+            max-width: 700px;
+
+            margin:
+                0 auto 30px;
+        }
+
+
+        /* =====================================================
+           LOCATION BUTTON
+        ===================================================== */
+
+        .location-button {
+
+            border: none;
+
+            background: #bd5b88;
+
+            color: white;
+
+            padding:
+                15px 28px;
+
+            border-radius: 12px;
+
+            font-size: 16px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition:
+                0.2s;
+        }
+
+
+        .location-button:hover {
+
+            background: #a94c77;
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        /* =====================================================
+           STATUS
+        ===================================================== */
+
+        #status {
+
+            margin-top: 20px;
+
+            color: #777;
+
+            font-size: 15px;
+        }
+
+
+        /* =====================================================
+           OPTIONS
+        ===================================================== */
+
+        .options {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 25px;
+
+            margin-top: 30px;
+        }
+
+
+        .option-card {
+
+            background: white;
+
+            border:
+                1px solid #efd5e1;
+
+            border-radius: 20px;
+
+            padding: 30px;
+
+            text-align: center;
+
+            transition:
+                0.2s;
+        }
+
+
+        .option-card:hover {
+
+            transform:
+                translateY(-4px);
+
+            box-shadow:
+                0 10px 25px
+                rgba(189, 91, 136, 0.10);
+        }
+
+
+        .option-icon {
+
+            font-size: 40px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .option-card h3 {
+
+            font-size: 20px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .option-card p {
+
+            color: #777;
+
+            line-height: 1.5;
+
+            margin-bottom: 20px;
+        }
+
+
+        .map-button {
+
+            display: inline-block;
+
+            background: #f7dce8;
+
+            color: #a94c77;
+
+            text-decoration: none;
+
+            padding:
+                11px 20px;
+
+            border-radius: 10px;
+
+            font-weight: 600;
+        }
+
+
+        .map-button:hover {
+
+            background: #efc9da;
+        }
+
+
+        /* =====================================================
+           INFORMATION
+        ===================================================== */
+
+        .info {
+
+            margin-top: 30px;
+
+            background: white;
+
+            border-radius: 20px;
+
+            padding: 30px;
+
+            box-shadow:
+                0 10px 30px
+                rgba(189, 91, 136, 0.07);
+        }
+
+
+        .info h2 {
+
+            margin-bottom: 15px;
+
+            font-size: 24px;
+        }
+
+
+        .info ul {
+
+            padding-left: 22px;
+
+            color: #666;
+
+            line-height: 2;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media
+        (max-width: 700px) {
+
+            nav {
+
+                padding:
+                    0 20px;
+            }
+
+
+            .hero {
+
+                padding: 30px 20px;
+            }
+
+
+            .hero h1 {
+
+                font-size: 28px;
+            }
+
+
+            .options {
+
+                grid-template-columns:
+                    1fr;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<nav>
+
+    <a
+        href="{% url 'dashboard' %}"
+        class="logo"
+    >
+        🌸 HerBalance
+    </a>
+
+
+    <a
+        href="{% url 'dashboard' %}"
+        class="back"
+    >
+        ← Dashboard
+    </a>
+
+</nav>
+
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<div class="container">
+
+
+    <section class="hero">
+
+        <div class="hero-icon">
+            🩺
+        </div>
+
+
+        <h1>
+            Find a Gynecologist
+        </h1>
+
+
+        <p>
+
+            Find gynecologists, women's health
+            specialists and menopause care
+            services near you.
+
+        </p>
+
+
+        <button
+            class="location-button"
+            onclick="findDoctors()"
+        >
+            📍 Find Near Me
+        </button>
+
+
+        <div id="status"></div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         SEARCH OPTIONS
+    ====================================================== -->
+
+    <section class="options">
+
+
+        <div class="option-card">
+
+            <div class="option-icon">
+                🩺
+            </div>
+
+
+            <h3>
+                Gynecologist
+            </h3>
+
+
+            <p>
+                Find gynecologists and women's
+                health specialists near your
+                current location.
+            </p>
+
+
+            <a
+                href="https://www.google.com/maps/search/gynecologist+near+me"
+                target="_blank"
+                class="map-button"
+            >
+                Search Doctors
+            </a>
+
+        </div>
+
+
+
+        <div class="option-card">
+
+            <div class="option-icon">
+                🌸
+            </div>
+
+
+            <h3>
+                Menopause Specialist
+            </h3>
+
+
+            <p>
+                Search for doctors and clinics
+                offering menopause-related care.
+            </p>
+
+
+            <a
+                href="https://www.google.com/maps/search/menopause+specialist+near+me"
+                target="_blank"
+                class="map-button"
+            >
+                Find Specialists
+            </a>
+
+        </div>
+
+
+
+        <div class="option-card">
+
+            <div class="option-icon">
+                🏥
+            </div>
+
+
+            <h3>
+                Women's Health Clinic
+            </h3>
+
+
+            <p>
+                Locate hospitals and clinics
+                providing women's healthcare.
+            </p>
+
+
+            <a
+                href="https://www.google.com/maps/search/women's+health+clinic+near+me"
+                target="_blank"
+                class="map-button"
+            >
+                Find Clinics
+            </a>
+
+        </div>
+
+
+
+        <div class="option-card">
+
+            <div class="option-icon">
+                🚨
+            </div>
+
+
+            <h3>
+                Emergency Care
+            </h3>
+
+
+            <p>
+                Quickly locate nearby hospitals
+                if you need urgent medical attention.
+            </p>
+
+
+            <a
+                href="https://www.google.com/maps/search/hospital+near+me"
+                target="_blank"
+                class="map-button"
+            >
+                Find Hospitals
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         INFORMATION
+    ====================================================== -->
+
+    <section class="info">
+
+        <h2>
+            🌷 When should you consider seeing a doctor?
+        </h2>
+
+
+        <ul>
+
+            <li>
+                Menstrual changes are significantly
+                affecting your daily life.
+            </li>
+
+            <li>
+                Symptoms are becoming difficult
+                to manage.
+            </li>
+
+            <li>
+                You have concerns about unusual
+                bleeding or other changes.
+            </li>
+
+            <li>
+                You want professional guidance
+                during the menopause transition.
+            </li>
+
+            <li>
+                You want to discuss treatment
+                or lifestyle options.
+            </li>
+
+        </ul>
+
+    </section>
+
+</div>
+
+
+
+<script>
+
+    function findDoctors() {
+
+        const status =
+            document.getElementById("status");
+
+
+        status.innerText =
+            "📍 Getting your location...";
+
+
+        if (!navigator.geolocation) {
+
+            status.innerText =
+                "Location is not supported by your browser.";
+
+            return;
+        }
+
+
+        navigator.geolocation.getCurrentPosition(
+
+            function(position) {
+
+                const latitude =
+                    position.coords.latitude;
+
+                const longitude =
+                    position.coords.longitude;
+
+
+                status.innerText =
+                    "✅ Location found. Opening nearby doctors...";
+
+
+                const mapsURL =
+                    "https://www.google.com/maps/search/gynecologist/@"
+                    + latitude
+                    + ","
+                    + longitude
+                    + ",14z";
+
+
+                window.open(
+                    mapsURL,
+                    "_blank"
+                );
+
+            },
+
+
+            function(error) {
+
+                status.innerText =
+                    "Unable to access your location. "
+                    + "You can use the search options below.";
+
+            }
+
+        );
+
+    }
+
+</script>
+
+
+</body>
+
+</html>

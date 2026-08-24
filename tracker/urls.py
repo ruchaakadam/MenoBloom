@@ -1,81 +1,37 @@
 from django.urls import path
-
 from . import views
-
 
 urlpatterns = [
 
-    # ========================================================
-    # MAIN
-    # ========================================================
-     path("", views.login_view, name="home"),
-
-    # ========================================================
-    # SYMPTOMS
-    # ========================================================
-
+    # HOME
     path(
-        "add-symptom/",
-        views.add_symptom,
-        name="add_symptom"
+        "",
+        views.home,
+        name="home"
     ),
 
-    # ========================================================
-    # ANALYSIS
-    # ========================================================
-
-    path(
-        "analysis/",
-        views.analysis,
-        name="analysis"
-    ),
-
-    # ========================================================
-    # REMINDERS
-    # ========================================================
-
-    path(
-        "reminders/",
-        views.reminders,
-        name="reminders"
-    ),
-
-    # ========================================================
-    # FOOD
-    # ========================================================
-
-    path(
-        "food/",
-        views.food,
-        name="food"
-    ),
-
-    # ========================================================
-    # AUTHENTICATION
-    # ========================================================
-
+    # LOGIN
     path(
         "login/",
         views.login_view,
         name="login"
     ),
 
+    # SIGN UP
     path(
         "signup/",
         views.signup,
         name="signup"
     ),
 
+    # LOGOUT
     path(
         "logout/",
         views.logout_view,
         name="logout"
     ),
 
-    # ========================================================
     # ROLE SELECTION
-    # ========================================================
-
     path(
         "choose-role/",
         views.choose_role,
@@ -88,24 +44,64 @@ urlpatterns = [
         name="set_role"
     ),
 
-    # ========================================================
-    # FAMILY
-    # ========================================================
+    # WOMAN DETAILS
+    path(
+        "woman-onboarding/",
+        views.woman_onboarding,
+        name="woman_onboarding"
+    ),
 
+    # DASHBOARD
+    path(
+        "dashboard/",
+        views.dashboard,
+        name="dashboard"
+    ),
+
+    # SYMPTOMS
+    path(
+        "add-symptom/",
+        views.add_symptom,
+        name="add_symptom"
+    ),
+
+    # ANALYSIS
+    path(
+        "analysis/",
+        views.analysis,
+        name="analysis"
+    ),
+
+    # REMINDERS
+    path(
+        "reminders/",
+        views.reminders,
+        name="reminders"
+    ),
+
+    # FOOD
+    path(
+        "food/",
+        views.food,
+        name="food"
+    ),
+
+    # FAMILY
     path(
         "family/",
         views.family,
         name="family"
     ),
 
-    path("menopause/", views.menopause_info, name="menopause_info"),
-
-    path("dashboard/", views.dashboard, name="dashboard"),
-    
-     path(
-    "woman-onboarding/",
-    views.woman_onboarding,
-    name="woman_onboarding"
+    # MENOPAUSE INFORMATION
+    path(
+        "menopause/",
+        views.menopause_info,
+        name="menopause_info"
+    ),
+    path(
+    "gynecologist/",
+    views.gynecologist,
+    name="gynecologist"
 ),
-    
 ]

@@ -573,6 +573,68 @@
 
     opacity: 0.6;
 }
+.tool-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    background: #fff8fb;
+
+    border: 1px solid #efd5e1;
+
+    border-radius: 18px;
+
+    padding: 24px;
+
+    text-decoration: none;
+
+    color: inherit;
+
+    transition: 0.2s;
+
+    cursor: pointer;
+}
+
+.tool-card:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 20px
+        rgba(189, 91, 136, 0.12);
+}
+
+.tool-card .tool-icon {
+    width: 60px;
+    height: 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #fde5ef;
+
+    border-radius: 15px;
+
+    font-size: 30px;
+
+    flex-shrink: 0;
+}
+
+.tool-card h3 {
+    margin: 0 0 7px 0;
+
+    font-size: 20px;
+
+    color: #333;
+}
+
+.tool-card p {
+    margin: 0;
+
+    color: #777;
+
+    font-size: 15px;
+}
     </style>
 
 </head>
@@ -874,7 +936,30 @@
         </a>
 
     </div>
+    <a
+    href="{% url 'gynecologist' %}"
+    class="tool-card"
+    style="text-decoration: none; color: inherit;"
+>
 
+    <div class="tool-icon">
+        🩺
+    </div>
+
+    <div>
+
+        <h3>
+            Find a Gynecologist
+        </h3>
+
+        <p>
+            Find women's health specialists
+            near your location.
+        </p>
+
+    </div>
+
+</a>
 </section>
 
 
@@ -900,6 +985,7 @@
         >
             📊 View Analysis
         </a>
+        
 
 
     </div>

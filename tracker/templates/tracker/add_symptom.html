@@ -10,326 +10,197 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>
-        Record Symptoms | HerBalance
-    </title>
-
+    <title>Record Symptoms | MenoBloom</title>
 
     <style>
 
         * {
             box-sizing: border-box;
-
             margin: 0;
-
             padding: 0;
-
-            font-family: Arial, sans-serif;
         }
 
-
         body {
-            background: #fff8fb;
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
+            background: #fff7fa;
 
             color: #333;
         }
 
 
-        .container {
-            width: 92%;
+        /* =========================================
+           NAVBAR
+           ========================================= */
 
-            max-width: 800px;
+        .navbar {
 
-            margin: 45px auto;
-        }
+            height: 75px;
 
-
-        .box {
             background: white;
-
-            padding: 40px;
-
-            border-radius: 24px;
-
-            box-shadow:
-                0 5px 25px
-                rgba(0, 0, 0, 0.07);
-        }
-
-
-        /* HEADER */
-
-        .heading {
-            margin-bottom: 35px;
-        }
-
-
-        .heading h1 {
-            color: #b65c88;
-
-            font-size: 32px;
-
-            margin-bottom: 10px;
-        }
-
-
-        .heading p {
-            color: #777;
-
-            line-height: 1.6;
-        }
-
-
-        /* SECTION */
-
-        .section {
-            margin-bottom: 35px;
-        }
-
-
-        .section-title {
-            font-size: 20px;
-
-            font-weight: bold;
-
-            margin-bottom: 15px;
-        }
-
-
-        /* SYMPTOM */
-
-        .symptom-card {
-
-            border: 1px solid #eadde4;
-
-            border-radius: 16px;
-
-            margin-bottom: 12px;
-
-            overflow: hidden;
-
-            transition: 0.2s;
-        }
-
-
-        .symptom-card:hover {
-
-            border-color: #d994b3;
-
-        }
-
-
-        .symptom-header {
 
             display: flex;
 
             align-items: center;
 
-            gap: 14px;
+            justify-content: space-between;
 
-            padding: 18px;
+            padding: 0 8%;
 
-            cursor: pointer;
-
-            background: white;
+            border-bottom:
+                1px solid #f2dce6;
         }
 
 
-        .symptom-header input {
+        .logo {
 
-            width: 21px;
+            color: #b95783;
 
-            height: 21px;
+            font-size: 25px;
 
-            accent-color: #b65c88;
+            font-weight: 700;
 
-            cursor: pointer;
+            text-decoration: none;
         }
 
 
-        .symptom-name {
+        .back {
 
-            font-size: 17px;
+            text-decoration: none;
+
+            color: #b95783;
 
             font-weight: 600;
         }
 
 
-        /* DETAILS */
+        /* =========================================
+           CONTAINER
+           ========================================= */
 
-        .symptom-details {
+        .container {
 
-            display: none;
+            width: 90%;
 
-            padding: 20px;
+            max-width: 950px;
 
-            background: #fff7fa;
-
-            border-top: 1px solid #eee;
+            margin: 40px auto 70px;
         }
 
 
-        .symptom-card.active
-        .symptom-details {
+        /* =========================================
+           HEADER
+           ========================================= */
 
-            display: block;
+        .page-header {
+
+            margin-bottom: 30px;
         }
 
 
-        /* SEVERITY */
+        .page-header h1 {
 
-        .detail-title {
+            font-size: 35px;
 
-            font-size: 14px;
-
-            font-weight: bold;
-
-            margin-bottom: 10px;
-
-            color: #555;
+            margin-bottom: 8px;
         }
 
 
-        .severity-options {
+        .page-header p {
+
+            color: #777;
+
+            font-size: 16px;
+        }
+
+
+        /* =========================================
+           VOICE CARD
+           ========================================= */
+
+        .voice-card {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #fff0f6,
+                    #fffafd
+                );
+
+            border:
+                1px solid #f0d6e2;
+
+            border-radius: 25px;
+
+            padding: 35px;
+
+            margin-bottom: 30px;
+
+            text-align: center;
+        }
+
+
+        .voice-icon {
+
+            width: 75px;
+
+            height: 75px;
+
+            margin: 0 auto 15px;
+
+            border-radius: 50%;
+
+            background: #f8dce8;
 
             display: flex;
 
-            gap: 10px;
+            align-items: center;
 
-            margin-bottom: 20px;
+            justify-content: center;
+
+            font-size: 35px;
         }
 
 
-        .severity-option {
+        .voice-card h2 {
 
-            flex: 1;
+            font-size: 25px;
 
-            position: relative;
+            margin-bottom: 8px;
         }
 
 
-        .severity-option input {
+        .voice-card p {
 
-            position: absolute;
+            color: #777;
 
-            opacity: 0;
+            max-width: 650px;
+
+            margin: 0 auto 20px;
+
+            line-height: 1.6;
         }
 
 
-        .severity-option label {
-
-            display: block;
-
-            text-align: center;
-
-            padding: 11px 8px;
-
-            border: 1px solid #ddd;
-
-            border-radius: 10px;
-
-            background: white;
-
-            cursor: pointer;
-
-            font-size: 14px;
-        }
-
-
-        .severity-option
-        input:checked + label {
-
-            background: #b65c88;
-
-            color: white;
-
-            border-color: #b65c88;
-        }
-
-
-        /* FREQUENCY */
-
-        .frequency-input {
-
-            width: 100%;
-
-            padding: 12px;
-
-            border: 1px solid #ddd;
-
-            border-radius: 10px;
-
-            background: white;
-
-            font-size: 15px;
-
-            outline: none;
-        }
-
-
-        .frequency-input:focus {
-
-            border-color: #b65c88;
-        }
-
-
-        .help-text {
-
-            color: #999;
-
-            font-size: 13px;
-
-            margin-top: 6px;
-        }
-
-
-        /* NOTES */
-
-        textarea {
-
-            width: 100%;
-
-            height: 130px;
-
-            padding: 14px;
-
-            border: 1px solid #ddd;
-
-            border-radius: 12px;
-
-            resize: vertical;
-
-            font-size: 15px;
-
-            outline: none;
-        }
-
-
-        textarea:focus {
-
-            border-color: #b65c88;
-        }
-
-
-        /* BUTTON */
-
-        .save-button {
-
-            width: 100%;
-
-            padding: 16px;
+        .voice-button {
 
             border: none;
 
-            border-radius: 12px;
-
-            background: #b65c88;
+            background: #b95783;
 
             color: white;
 
-            font-size: 17px;
+            padding: 14px 28px;
 
-            font-weight: bold;
+            border-radius: 12px;
+
+            font-size: 16px;
+
+            font-weight: 700;
 
             cursor: pointer;
 
@@ -337,61 +208,423 @@
         }
 
 
-        .save-button:hover {
+        .voice-button:hover {
 
-            background: #a34d79;
+            transform:
+                translateY(-2px);
 
-            transform: translateY(-1px);
+            background: #a94b75;
         }
 
 
-        .back {
+        .voice-button.listening {
 
-            display: block;
+            background: #8e3e64;
 
-            text-align: center;
+            animation:
+                pulse 1.4s infinite;
+        }
+
+
+        @keyframes pulse {
+
+            0% {
+
+                box-shadow:
+                    0 0 0 0
+                    rgba(
+                        185,
+                        87,
+                        131,
+                        0.4
+                    );
+            }
+
+            70% {
+
+                box-shadow:
+                    0 0 0 14px
+                    rgba(
+                        185,
+                        87,
+                        131,
+                        0
+                    );
+            }
+
+            100% {
+
+                box-shadow:
+                    0 0 0 0
+                    rgba(
+                        185,
+                        87,
+                        131,
+                        0
+                    );
+            }
+
+        }
+
+
+        .voice-status {
+
+            margin-top: 15px;
+
+            font-size: 14px;
+
+            color: #777;
+        }
+
+
+        /* =========================================
+           TRANSCRIPT
+           ========================================= */
+
+        .transcript-box {
+
+            display: none;
+
+            background: white;
+
+            border:
+                1px solid #ead8e0;
+
+            border-radius: 18px;
+
+            padding: 25px;
 
             margin-top: 20px;
 
+            text-align: left;
+        }
+
+
+        .transcript-box.show {
+
+            display: block;
+        }
+
+
+        .transcript-box h3 {
+
+            margin-bottom: 10px;
+
+            font-size: 18px;
+        }
+
+
+        #transcript {
+
+            color: #555;
+
+            line-height: 1.7;
+
+            min-height: 45px;
+        }
+
+
+        /* =========================================
+           DETECTION RESULT
+           ========================================= */
+
+        .detection-box {
+
+            display: none;
+
+            margin-top: 20px;
+
+            padding: 20px;
+
+            background: #fff7fb;
+
+            border:
+                1px solid #efcddd;
+
+            border-radius: 15px;
+
+            text-align: left;
+        }
+
+
+        .detection-box.show {
+
+            display: block;
+        }
+
+
+        .detection-box h3 {
+
+            color: #b95783;
+
+            margin-bottom: 12px;
+        }
+
+
+        .detected-item {
+
+            padding: 8px 0;
+
+            color: #555;
+        }
+
+
+        .detected-item strong {
+
+            color: #333;
+        }
+
+
+        /* =========================================
+           SYMPTOM FORM
+           ========================================= */
+
+        .form-card {
+
+            background: white;
+
+            border-radius: 25px;
+
+            padding: 35px;
+
+            box-shadow:
+                0 8px 30px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    0.04
+                );
+        }
+
+
+        .form-card h2 {
+
+            font-size: 25px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .form-description {
+
             color: #777;
 
-            text-decoration: none;
+            margin-bottom: 25px;
         }
 
 
-        .back:hover {
+        /* =========================================
+           SYMPTOM CHECKLIST
+           ========================================= */
 
-            color: #b65c88;
+        .symptom-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 12px;
+
+            margin-bottom: 30px;
         }
 
 
-        /* MOBILE */
+        .symptom-item {
 
-        @media (max-width: 600px) {
+            border:
+                1px solid #eadce3;
+
+            border-radius: 13px;
+
+            padding: 15px;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+
+        .symptom-item:hover {
+
+            border-color: #c56b93;
+
+            background: #fff8fb;
+        }
+
+
+        .symptom-item.selected {
+
+            border-color: #b95783;
+
+            background: #fff0f6;
+        }
+
+
+        .symptom-item input {
+
+            margin-right: 10px;
+        }
+
+
+        .symptom-name {
+
+            font-weight: 600;
+        }
+
+
+        /* =========================================
+           FREQUENCY
+           ========================================= */
+
+        .frequency-area {
+
+            display: none;
+
+            margin-top: 10px;
+
+            padding-left: 25px;
+        }
+
+
+        .frequency-area.show {
+
+            display: block;
+        }
+
+
+        .frequency-area label {
+
+            display: block;
+
+            font-size: 13px;
+
+            color: #777;
+
+            margin-bottom: 5px;
+        }
+
+
+        .frequency-input {
+
+            width: 90px;
+
+            padding: 8px 10px;
+
+            border:
+                1px solid #e3d4dc;
+
+            border-radius: 8px;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================================
+           DETAILS
+           ========================================= */
+
+        .details {
+
+            margin-top: 25px;
+        }
+
+
+        .details label {
+
+            display: block;
+
+            font-weight: 600;
+
+            margin-bottom: 8px;
+        }
+
+
+        .details input,
+        .details textarea {
+
+            width: 100%;
+
+            padding: 12px;
+
+            border:
+                1px solid #e3d4dc;
+
+            border-radius: 10px;
+
+            font-size: 15px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .details textarea {
+
+            min-height: 100px;
+
+            resize: vertical;
+        }
+
+
+        .save-button {
+
+            border: none;
+
+            background: #b95783;
+
+            color: white;
+
+            padding: 14px 28px;
+
+            border-radius: 11px;
+
+            font-size: 16px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+
+        .save-button:hover {
+
+            background: #a94b75;
+        }
+
+
+        .browser-note {
+
+            margin-top: 18px;
+
+            color: #999;
+
+            font-size: 13px;
+        }
+
+
+        /* =========================================
+           MOBILE
+           ========================================= */
+
+        @media(max-width: 700px) {
+
+            .symptom-grid {
+
+                grid-template-columns: 1fr;
+            }
+
 
             .container {
 
-                width: 95%;
-
-                margin: 20px auto;
+                width: 94%;
             }
 
 
-            .box {
+            .form-card,
+            .voice-card {
 
-                padding: 25px 18px;
-            }
-
-
-            .heading h1 {
-
-                font-size: 27px;
-            }
-
-
-            .severity-options {
-
-                flex-direction: column;
+                padding: 25px;
             }
 
         }
@@ -404,1417 +637,1609 @@
 <body>
 
 
-<div class="container">
+<!-- =========================================
+     NAVBAR
+     ========================================= -->
+
+<nav class="navbar">
+
+    <a
+        href="{% url 'dashboard' %}"
+        class="logo"
+    >
+        🌸 MenoBloom
+    </a>
 
 
-    <div class="box">
+    <a
+        href="{% url 'dashboard' %}"
+        class="back"
+    >
+        ← Dashboard
+    </a>
+
+</nav>
 
 
-        <!-- HEADER -->
 
-        <div class="heading">
+<main class="container">
 
-            <h1>
-                How are you feeling? 🌸
-            </h1>
 
-            <p>
+    <!-- =========================================
+         HEADER
+         ========================================= -->
 
-                Select the symptoms you've
-                experienced and tell us a little
-                more about each one.
+    <div class="page-header">
 
+        <h1>
+            Record Your Symptoms
+        </h1>
+
+        <p>
+            Track how you're feeling today.
+            You can use the checklist or simply
+            tell MenoBloom what you're experiencing.
+        </p>
+
+    </div>
+
+
+
+    <!-- =========================================
+         VOICE ASSISTANT
+         ========================================= -->
+
+    <section class="voice-card">
+
+        <div class="voice-icon">
+            🎙️
+        </div>
+
+
+        <h2>
+            Tell MenoBloom How You're Feeling
+        </h2>
+
+
+        <p>
+
+            You can describe your symptoms naturally.
+
+            For example:
+
+            <strong>
+                "I've been having hot flashes
+                three times this week."
+            </strong>
+
+        </p>
+
+
+        <button
+            type="button"
+            id="voiceButton"
+            class="voice-button"
+        >
+
+            🎙️ Start Speaking
+
+        </button>
+
+
+        <div
+            id="voiceStatus"
+            class="voice-status"
+        >
+
+            Press the button and start speaking.
+
+        </div>
+
+
+        <!-- TRANSCRIPT -->
+
+        <div
+            id="transcriptBox"
+            class="transcript-box"
+        >
+
+            <h3>
+                📝 What I heard
+            </h3>
+
+
+            <p id="transcript">
             </p>
+
+
+            <!-- DETECTION RESULT -->
+
+            <div
+                id="detectionBox"
+                class="detection-box"
+            >
+
+                <h3>
+                    🧠 What MenoBloom detected
+                </h3>
+
+
+                <div id="detectionResults">
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         SYMPTOM FORM
+         ========================================= -->
+
+    <form
+        method="POST"
+        class="form-card"
+    >
+
+        {% csrf_token %}
+
+
+        <h2>
+            🌸 Select Your Symptoms
+        </h2>
+
+
+        <p class="form-description">
+
+            Check everything you've experienced.
+            Voice detection will automatically
+            select matching symptoms for you.
+
+        </p>
+
+
+
+        <!-- =====================================
+             CHECKLIST
+             ===================================== -->
+
+        <div class="symptom-grid">
+
+
+            <!-- HOT FLASHES -->
+
+            <label class="symptom-item">
+
+                <input
+                    type="checkbox"
+                    name="symptoms"
+                    value="hot_flashes"
+                    id="hot_flashes"
+                >
+
+                <span class="symptom-name">
+                    🔥 Hot Flashes
+                </span>
+
+                <div
+                    class="frequency-area"
+                    id="frequency_area_hot_flashes"
+                >
+
+                    <label>
+                        How many times?
+                    </label>
+
+                    <input
+                        type="number"
+                        min="1"
+                        value="1"
+                        name="frequency_hot_flashes"
+                        id="frequency_hot_flashes"
+                        class="frequency-input"
+                    >
+
+                </div>
+
+            </label>
+
+
+
+            <!-- NIGHT SWEATS -->
+
+            <label class="symptom-item">
+
+                <input
+                    type="checkbox"
+                    name="symptoms"
+                    value="night_sweats"
+                    id="night_sweats"
+                >
+
+                <span class="symptom-name">
+                    🌙 Night Sweats
+                </span>
+
+                <div
+                    class="frequency-area"
+                    id="frequency_area_night_sweats"
+                >
+
+                    <label>
+                        How many times?
+                    </label>
+
+                    <input
+                        type="number"
+                        min="1"
+                        value="1"
+                        name="frequency_night_sweats"
+                        id="frequency_night_sweats"
+                        class="frequency-input"
+                    >
+
+                </div>
+
+            </label>
+
+
+
+            <!-- SLEEP -->
+
+            <label class="symptom-item">
+
+                <input
+                    type="checkbox"
+                    name="symptoms"
+                    value="sleep"
+                    id="sleep"
+                >
+
+                <span class="symptom-name">
+                    😴 Sleep Problems
+                </span>
+
+                <div
+                    class="frequency-area"
+                    id="frequency_area_sleep"
+                >
+
+                    <label>
+                        How many times?
+                    </label>
+
+                    <input
+                        type="number"
+                        min="1"
+                        value="1"
+                        name="frequency_sleep"
+                        id="frequency_sleep"
+                        class="frequency-input"
+                    >
+
+                </div>
+
+            </label>
+
+
+
+            <!-- MOOD -->
+
+            <label class="symptom-item">
+
+                <input
+                    type="checkbox"
+                    name="symptoms"
+                    value="mood"
+                    id="mood"
+                >
+
+                <span class="symptom-name">
+                    💭 Mood Changes
+                </span>
+
+                <div
+                    class="frequency-area"
+                    id="frequency_area_mood"
+                >
+
+                    <label>
+                        How many times?
+                    </label>
+
+                    <input
+                        type="number"
+                        min="1"
+                        value="1"
+                        name="frequency_mood"
+                        id="frequency_mood"
+                        class="frequency-input"
+                    >
+
+                </div>
+
+            </label>
+
+
+
+            <!-- ANXIETY -->
+
+            <label class="symptom-item">
+
+                <input
+                    type="checkbox"
+                    name="symptoms"
+                    value="anxiety"
+                    id="anxiety"
+                >
+
+                <span class="symptom-name">
+                    😟 Anxiety
+                </span>
+
+                <div
+                    class="frequency-area"
+                    id="frequency_area_anxiety"
+                >
+
+                    <label>
+                        How many times?
+                    </label>
+
+                    <input
+                        type="number"
+                        min="1"
+                        value="1"
+                        name="frequency_anxiety"
+                        id="frequency_anxiety"
+                        class="frequency-input"
+                    >
+
+                </div>
+
+            </label>
+
+
+
+            <!-- FATIGUE -->
+
+            <label class="symptom-item">
+
+                <input
+                    type="checkbox"
+                    name="symptoms"
+                    value="fatigue"
+                    id="fatigue"
+                >
+
+                <span class="symptom-name">
+                    🪫 Fatigue
+                </span>
+
+                <div
+                    class="frequency-area"
+                    id="frequency_area_fatigue"
+                >
+
+                    <label>
+                        How many times?
+                    </label>
+
+                    <input
+                        type="number"
+                        min="1"
+                        value="1"
+                        name="frequency_fatigue"
+                        id="frequency_fatigue"
+                        class="frequency-input"
+                    >
+
+                </div>
+
+            </label>
+
+
+
+            <!-- HEADACHE -->
+
+            <label class="symptom-item">
+
+                <input
+                    type="checkbox"
+                    name="symptoms"
+                    value="headache"
+                    id="headache"
+                >
+
+                <span class="symptom-name">
+                    🤕 Headache
+                </span>
+
+                <div
+                    class="frequency-area"
+                    id="frequency_area_headache"
+                >
+
+                    <label>
+                        How many times?
+                    </label>
+
+                    <input
+                        type="number"
+                        min="1"
+                        value="1"
+                        name="frequency_headache"
+                        id="frequency_headache"
+                        class="frequency-input"
+                    >
+
+                </div>
+
+            </label>
+
+
+
+            <!-- JOINT PAIN -->
+
+            <label class="symptom-item">
+
+                <input
+                    type="checkbox"
+                    name="symptoms"
+                    value="joint_pain"
+                    id="joint_pain"
+                >
+
+                <span class="symptom-name">
+                    🦴 Joint / Muscle Discomfort
+                </span>
+
+                <div
+                    class="frequency-area"
+                    id="frequency_area_joint_pain"
+                >
+
+                    <label>
+                        How many times?
+                    </label>
+
+                    <input
+                        type="number"
+                        min="1"
+                        value="1"
+                        name="frequency_joint_pain"
+                        id="frequency_joint_pain"
+                        class="frequency-input"
+                    >
+
+                </div>
+
+            </label>
+
+
+
+            <!-- BRAIN FOG -->
+
+            <label class="symptom-item">
+
+                <input
+                    type="checkbox"
+                    name="symptoms"
+                    value="brain_fog"
+                    id="brain_fog"
+                >
+
+                <span class="symptom-name">
+                    🧠 Brain Fog
+                </span>
+
+                <div
+                    class="frequency-area"
+                    id="frequency_area_brain_fog"
+                >
+
+                    <label>
+                        How many times?
+                    </label>
+
+                    <input
+                        type="number"
+                        min="1"
+                        value="1"
+                        name="frequency_brain_fog"
+                        id="frequency_brain_fog"
+                        class="frequency-input"
+                    >
+
+                </div>
+
+            </label>
+
+
+
+            <!-- VAGINAL DRYNESS -->
+
+            <label class="symptom-item">
+
+                <input
+                    type="checkbox"
+                    name="symptoms"
+                    value="vaginal_dryness"
+                    id="vaginal_dryness"
+                >
+
+                <span class="symptom-name">
+                    🌸 Vaginal Dryness
+                </span>
+
+                <div
+                    class="frequency-area"
+                    id="frequency_area_vaginal_dryness"
+                >
+
+                    <label>
+                        How many times?
+                    </label>
+
+                    <input
+                        type="number"
+                        min="1"
+                        value="1"
+                        name="frequency_vaginal_dryness"
+                        id="frequency_vaginal_dryness"
+                        class="frequency-input"
+                    >
+
+                </div>
+
+            </label>
+
+
+
+            <!-- URINARY -->
+
+            <label class="symptom-item">
+
+                <input
+                    type="checkbox"
+                    name="symptoms"
+                    value="urinary"
+                    id="urinary"
+                >
+
+                <span class="symptom-name">
+                    🚻 Urinary Changes
+                </span>
+
+                <div
+                    class="frequency-area"
+                    id="frequency_area_urinary"
+                >
+
+                    <label>
+                        How many times?
+                    </label>
+
+                    <input
+                        type="number"
+                        min="1"
+                        value="1"
+                        name="frequency_urinary"
+                        id="frequency_urinary"
+                        class="frequency-input"
+                    >
+
+                </div>
+
+            </label>
+
 
         </div>
 
 
 
-        <form
-            method="POST"
-            onsubmit="return validateForm()"
-        >
+        <!-- =====================================
+             DETAILS
+             ===================================== -->
 
-            {% csrf_token %}
+        <div class="details">
 
 
+            <label for="date">
+                Date
+            </label>
 
-            <!-- SYMPTOMS -->
 
-            <div class="section">
-
-                <div class="section-title">
-
-                    What are you experiencing?
-
-                </div>
-
-
-
-                <!-- HOT FLASHES -->
-
-                <div
-                    class="symptom-card"
-                    id="card-hot_flashes"
-                >
-
-                    <label class="symptom-header">
-
-                        <input
-                            type="checkbox"
-                            name="symptoms"
-                            value="hot_flashes"
-                            onchange="toggleSymptom(
-                                'hot_flashes'
-                            )"
-                        >
-
-                        <span class="symptom-name">
-
-                            🔥 Hot Flashes
-
-                        </span>
-
-                    </label>
-
-
-                    <div class="symptom-details">
-
-                        <div class="detail-title">
-                            Severity
-                        </div>
-
-
-                        <div class="severity-options">
-
-                            <div
-                                class="severity-option"
-                            >
-
-                                <input
-                                    type="radio"
-                                    id="hot_mild"
-                                    name="severity_hot_flashes"
-                                    value="1"
-                                >
-
-                                <label for="hot_mild">
-                                    🌱 Mild
-                                </label>
-
-                            </div>
-
-
-                            <div
-                                class="severity-option"
-                            >
-
-                                <input
-                                    type="radio"
-                                    id="hot_moderate"
-                                    name="severity_hot_flashes"
-                                    value="2"
-                                >
-
-                                <label for="hot_moderate">
-                                    🌸 Moderate
-                                </label>
-
-                            </div>
-
-
-                            <div
-                                class="severity-option"
-                            >
-
-                                <input
-                                    type="radio"
-                                    id="hot_severe"
-                                    name="severity_hot_flashes"
-                                    value="3"
-                                >
-
-                                <label for="hot_severe">
-                                    🔴 Severe
-                                </label>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="detail-title">
-                            How many times?
-                        </div>
-
-
-                        <input
-                            class="frequency-input"
-                            type="number"
-                            name="frequency_hot_flashes"
-                            min="1"
-                            value="1"
-                        >
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- NIGHT SWEATS -->
-
-                <div
-                    class="symptom-card"
-                    id="card-night_sweats"
-                >
-
-                    <label class="symptom-header">
-
-                        <input
-                            type="checkbox"
-                            name="symptoms"
-                            value="night_sweats"
-                            onchange="toggleSymptom(
-                                'night_sweats'
-                            )"
-                        >
-
-                        <span class="symptom-name">
-
-                            🌙 Night Sweats
-
-                        </span>
-
-                    </label>
-
-
-                    <div class="symptom-details">
-
-                        <div class="detail-title">
-                            Severity
-                        </div>
-
-
-                        <div class="severity-options">
-
-                            <div
-                                class="severity-option"
-                            >
-
-                                <input
-                                    type="radio"
-                                    id="sweat_mild"
-                                    name="severity_night_sweats"
-                                    value="1"
-                                >
-
-                                <label for="sweat_mild">
-                                    🌱 Mild
-                                </label>
-
-                            </div>
-
-
-                            <div
-                                class="severity-option"
-                            >
-
-                                <input
-                                    type="radio"
-                                    id="sweat_moderate"
-                                    name="severity_night_sweats"
-                                    value="2"
-                                >
-
-                                <label for="sweat_moderate">
-                                    🌸 Moderate
-                                </label>
-
-                            </div>
-
-
-                            <div
-                                class="severity-option"
-                            >
-
-                                <input
-                                    type="radio"
-                                    id="sweat_severe"
-                                    name="severity_night_sweats"
-                                    value="3"
-                                >
-
-                                <label for="sweat_severe">
-                                    🔴 Severe
-                                </label>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="detail-title">
-                            How many times?
-                        </div>
-
-
-                        <input
-                            class="frequency-input"
-                            type="number"
-                            name="frequency_night_sweats"
-                            min="1"
-                            value="1"
-                        >
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- SLEEP -->
-
-                <div
-                    class="symptom-card"
-                    id="card-sleep"
-                >
-
-                    <label class="symptom-header">
-
-                        <input
-                            type="checkbox"
-                            name="symptoms"
-                            value="sleep"
-                            onchange="toggleSymptom(
-                                'sleep'
-                            )"
-                        >
-
-                        <span class="symptom-name">
-
-                            😴 Sleep Problems
-
-                        </span>
-
-                    </label>
-
-
-                    <div class="symptom-details">
-
-                        <div class="detail-title">
-                            Severity
-                        </div>
-
-
-                        <div class="severity-options">
-
-                            <div class="severity-option">
-
-                                <input
-                                    type="radio"
-                                    id="sleep_mild"
-                                    name="severity_sleep"
-                                    value="1"
-                                >
-
-                                <label for="sleep_mild">
-                                    🌱 Mild
-                                </label>
-
-                            </div>
-
-
-                            <div class="severity-option">
-
-                                <input
-                                    type="radio"
-                                    id="sleep_moderate"
-                                    name="severity_sleep"
-                                    value="2"
-                                >
-
-                                <label for="sleep_moderate">
-                                    🌸 Moderate
-                                </label>
-
-                            </div>
-
-
-                            <div class="severity-option">
-
-                                <input
-                                    type="radio"
-                                    id="sleep_severe"
-                                    name="severity_sleep"
-                                    value="3"
-                                >
-
-                                <label for="sleep_severe">
-                                    🔴 Severe
-                                </label>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="detail-title">
-                            How many times?
-                        </div>
-
-
-                        <input
-                            class="frequency-input"
-                            type="number"
-                            name="frequency_sleep"
-                            min="1"
-                            value="1"
-                        >
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- MOOD -->
-
-                <div
-                    class="symptom-card"
-                    id="card-mood"
-                >
-
-                    <label class="symptom-header">
-
-                        <input
-                            type="checkbox"
-                            name="symptoms"
-                            value="mood"
-                            onchange="toggleSymptom(
-                                'mood'
-                            )"
-                        >
-
-                        <span class="symptom-name">
-
-                            😔 Mood Changes
-
-                        </span>
-
-                    </label>
-
-
-                    <div class="symptom-details">
-
-                        <div class="detail-title">
-                            Severity
-                        </div>
-
-
-                        <div class="severity-options">
-
-                            <div class="severity-option">
-
-                                <input
-                                    type="radio"
-                                    id="mood_mild"
-                                    name="severity_mood"
-                                    value="1"
-                                >
-
-                                <label for="mood_mild">
-                                    🌱 Mild
-                                </label>
-
-                            </div>
-
-
-                            <div class="severity-option">
-
-                                <input
-                                    type="radio"
-                                    id="mood_moderate"
-                                    name="severity_mood"
-                                    value="2"
-                                >
-
-                                <label for="mood_moderate">
-                                    🌸 Moderate
-                                </label>
-
-                            </div>
-
-
-                            <div class="severity-option">
-
-                                <input
-                                    type="radio"
-                                    id="mood_severe"
-                                    name="severity_mood"
-                                    value="3"
-                                >
-
-                                <label for="mood_severe">
-                                    🔴 Severe
-                                </label>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="detail-title">
-                            How many times?
-                        </div>
-
-
-                        <input
-                            class="frequency-input"
-                            type="number"
-                            name="frequency_mood"
-                            min="1"
-                            value="1"
-                        >
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- ANXIETY -->
-
-                <div
-                    class="symptom-card"
-                    id="card-anxiety"
-                >
-
-                    <label class="symptom-header">
-
-                        <input
-                            type="checkbox"
-                            name="symptoms"
-                            value="anxiety"
-                            onchange="toggleSymptom(
-                                'anxiety'
-                            )"
-                        >
-
-                        <span class="symptom-name">
-
-                            🧠 Anxiety
-
-                        </span>
-
-                    </label>
-
-
-                    <div class="symptom-details">
-
-                        <div class="detail-title">
-                            Severity
-                        </div>
-
-
-                        <div class="severity-options">
-
-                            <div class="severity-option">
-
-                                <input
-                                    type="radio"
-                                    id="anxiety_mild"
-                                    name="severity_anxiety"
-                                    value="1"
-                                >
-
-                                <label for="anxiety_mild">
-                                    🌱 Mild
-                                </label>
-
-                            </div>
-
-
-                            <div class="severity-option">
-
-                                <input
-                                    type="radio"
-                                    id="anxiety_moderate"
-                                    name="severity_anxiety"
-                                    value="2"
-                                >
-
-                                <label for="anxiety_moderate">
-                                    🌸 Moderate
-                                </label>
-
-                            </div>
-
-
-                            <div class="severity-option">
-
-                                <input
-                                    type="radio"
-                                    id="anxiety_severe"
-                                    name="severity_anxiety"
-                                    value="3"
-                                >
-
-                                <label for="anxiety_severe">
-                                    🔴 Severe
-                                </label>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="detail-title">
-                            How many times?
-                        </div>
-
-
-                        <input
-                            class="frequency-input"
-                            type="number"
-                            name="frequency_anxiety"
-                            min="1"
-                            value="1"
-                        >
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- FATIGUE -->
-
-                <div
-                    class="symptom-card"
-                    id="card-fatigue"
-                >
-
-                    <label class="symptom-header">
-
-                        <input
-                            type="checkbox"
-                            name="symptoms"
-                            value="fatigue"
-                            onchange="toggleSymptom(
-                                'fatigue'
-                            )"
-                        >
-
-                        <span class="symptom-name">
-
-                            😩 Fatigue
-
-                        </span>
-
-                    </label>
-
-
-                    <div class="symptom-details">
-
-                        <div class="detail-title">
-                            Severity
-                        </div>
-
-
-                        <div class="severity-options">
-
-                            <div class="severity-option">
-
-                                <input
-                                    type="radio"
-                                    id="fatigue_mild"
-                                    name="severity_fatigue"
-                                    value="1"
-                                >
-
-                                <label for="fatigue_mild">
-                                    🌱 Mild
-                                </label>
-
-                            </div>
-
-
-                            <div class="severity-option">
-
-                                <input
-                                    type="radio"
-                                    id="fatigue_moderate"
-                                    name="severity_fatigue"
-                                    value="2"
-                                >
-
-                                <label for="fatigue_moderate">
-                                    🌸 Moderate
-                                </label>
-
-                            </div>
-
-
-                            <div class="severity-option">
-
-                                <input
-                                    type="radio"
-                                    id="fatigue_severe"
-                                    name="severity_fatigue"
-                                    value="3"
-                                >
-
-                                <label for="fatigue_severe">
-                                    🔴 Severe
-                                </label>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="detail-title">
-                            How many times?
-                        </div>
-
-
-                        <input
-                            class="frequency-input"
-                            type="number"
-                            name="frequency_fatigue"
-                            min="1"
-                            value="1"
-                        >
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- HEADACHE -->
-
-                <div
-                    class="symptom-card"
-                    id="card-headache"
-                >
-
-                    <label class="symptom-header">
-
-                        <input
-                            type="checkbox"
-                            name="symptoms"
-                            value="headache"
-                            onchange="toggleSymptom(
-                                'headache'
-                            )"
-                        >
-
-                        <span class="symptom-name">
-
-                            🤕 Headache
-
-                        </span>
-
-                    </label>
-
-
-                    <div class="symptom-details">
-
-                        <div class="detail-title">
-                            Severity
-                        </div>
-
-
-                        <div class="severity-options">
-
-                            <div class="severity-option">
-
-                                <input
-                                    type="radio"
-                                    id="headache_mild"
-                                    name="severity_headache"
-                                    value="1"
-                                >
-
-                                <label for="headache_mild">
-                                    🌱 Mild
-                                </label>
-
-                            </div>
-
-
-                            <div class="severity-option">
-
-                                <input
-                                    type="radio"
-                                    id="headache_moderate"
-                                    name="severity_headache"
-                                    value="2"
-                                >
-
-                                <label for="headache_moderate">
-                                    🌸 Moderate
-                                </label>
-
-                            </div>
-
-
-                            <div class="severity-option">
-
-                                <input
-                                    type="radio"
-                                    id="headache_severe"
-                                    name="severity_headache"
-                                    value="3"
-                                >
-
-                                <label for="headache_severe">
-                                    🔴 Severe
-                                </label>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="detail-title">
-                            How many times?
-                        </div>
-
-
-                        <input
-                            class="frequency-input"
-                            type="number"
-                            name="frequency_headache"
-                            min="1"
-                            value="1"
-                        >
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- JOINT PAIN -->
-
-                <div
-                    class="symptom-card"
-                    id="card-joint_pain"
-                >
-
-                    <label class="symptom-header">
-
-                        <input
-                            type="checkbox"
-                            name="symptoms"
-                            value="joint_pain"
-                            onchange="toggleSymptom(
-                                'joint_pain'
-                            )"
-                        >
-
-                        <span class="symptom-name">
-
-                            💪 Joint / Muscle Discomfort
-
-                        </span>
-
-                    </label>
-
-
-                    <div class="symptom-details">
-
-                        <div class="detail-title">
-                            Severity
-                        </div>
-
-
-                        <div class="severity-options">
-
-                            <div class="severity-option">
-
-                                <input
-                                    type="radio"
-                                    id="joint_mild"
-                                    name="severity_joint_pain"
-                                    value="1"
-                                >
-
-                                <label for="joint_mild">
-                                    🌱 Mild
-                                </label>
-
-                            </div>
-
-
-                            <div class="severity-option">
-
-                                <input
-                                    type="radio"
-                                    id="joint_moderate"
-                                    name="severity_joint_pain"
-                                    value="2"
-                                >
-
-                                <label for="joint_moderate">
-                                    🌸 Moderate
-                                </label>
-
-                            </div>
-
-
-                            <div class="severity-option">
-
-                                <input
-                                    type="radio"
-                                    id="joint_severe"
-                                    name="severity_joint_pain"
-                                    value="3"
-                                >
-
-                                <label for="joint_severe">
-                                    🔴 Severe
-                                </label>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="detail-title">
-                            How many times?
-                        </div>
-
-
-                        <input
-                            class="frequency-input"
-                            type="number"
-                            name="frequency_joint_pain"
-                            min="1"
-                            value="1"
-                        >
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- BRAIN FOG -->
-
-                <div
-                    class="symptom-card"
-                    id="card-brain_fog"
-                >
-
-                    <label class="symptom-header">
-
-                        <input
-                            type="checkbox"
-                            name="symptoms"
-                            value="brain_fog"
-                            onchange="toggleSymptom(
-                                'brain_fog'
-                            )"
-                        >
-
-                        <span class="symptom-name">
-
-                            🧠 Brain Fog
-
-                        </span>
-
-                    </label>
-
-
-                    <div class="symptom-details">
-
-                        <div class="detail-title">
-                            Severity
-                        </div>
-
-
-                        <div class="severity-options">
-
-                            <div class="severity-option">
-
-                                <input
-                                    type="radio"
-                                    id="brain_mild"
-                                    name="severity_brain_fog"
-                                    value="1"
-                                >
-
-                                <label for="brain_mild">
-                                    🌱 Mild
-                                </label>
-
-                            </div>
-
-
-                            <div class="severity-option">
-
-                                <input
-                                    type="radio"
-                                    id="brain_moderate"
-                                    name="severity_brain_fog"
-                                    value="2"
-                                >
-
-                                <label for="brain_moderate">
-                                    🌸 Moderate
-                                </label>
-
-                            </div>
-
-
-                            <div class="severity-option">
-
-                                <input
-                                    type="radio"
-                                    id="brain_severe"
-                                    name="severity_brain_fog"
-                                    value="3"
-                                >
-
-                                <label for="brain_severe">
-                                    🔴 Severe
-                                </label>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="detail-title">
-                            How many times?
-                        </div>
-
-
-                        <input
-                            class="frequency-input"
-                            type="number"
-                            name="frequency_brain_fog"
-                            min="1"
-                            value="1"
-                        >
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- VAGINAL DRYNESS -->
-
-                <div
-                    class="symptom-card"
-                    id="card-vaginal_dryness"
-                >
-
-                    <label class="symptom-header">
-
-                        <input
-                            type="checkbox"
-                            name="symptoms"
-                            value="vaginal_dryness"
-                            onchange="toggleSymptom(
-                                'vaginal_dryness'
-                            )"
-                        >
-
-                        <span class="symptom-name">
-
-                            🌸 Vaginal Dryness
-
-                        </span>
-
-                    </label>
-
-
-                    <div class="symptom-details">
-
-                        <div class="detail-title">
-                            Severity
-                        </div>
-
-
-                        <div class="severity-options">
-
-                            <div class="severity-option">
-
-                                <input
-                                    type="radio"
-                                    id="dry_mild"
-                                    name="severity_vaginal_dryness"
-                                    value="1"
-                                >
-
-                                <label for="dry_mild">
-                                    🌱 Mild
-                                </label>
-
-                            </div>
-
-
-                            <div class="severity-option">
-
-                                <input
-                                    type="radio"
-                                    id="dry_moderate"
-                                    name="severity_vaginal_dryness"
-                                    value="2"
-                                >
-
-                                <label for="dry_moderate">
-                                    🌸 Moderate
-                                </label>
-
-                            </div>
-
-
-                            <div class="severity-option">
-
-                                <input
-                                    type="radio"
-                                    id="dry_severe"
-                                    name="severity_vaginal_dryness"
-                                    value="3"
-                                >
-
-                                <label for="dry_severe">
-                                    🔴 Severe
-                                </label>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="detail-title">
-                            How many times?
-                        </div>
-
-
-                        <input
-                            class="frequency-input"
-                            type="number"
-                            name="frequency_vaginal_dryness"
-                            min="1"
-                            value="1"
-                        >
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- URINARY -->
-
-                <div
-                    class="symptom-card"
-                    id="card-urinary"
-                >
-
-                    <label class="symptom-header">
-
-                        <input
-                            type="checkbox"
-                            name="symptoms"
-                            value="urinary"
-                            onchange="toggleSymptom(
-                                'urinary'
-                            )"
-                        >
-
-                        <span class="symptom-name">
-
-                            🚺 Urinary Changes
-
-                        </span>
-
-                    </label>
-
-
-                    <div class="symptom-details">
-
-                        <div class="detail-title">
-                            Severity
-                        </div>
-
-
-                        <div class="severity-options">
-
-                            <div class="severity-option">
-
-                                <input
-                                    type="radio"
-                                    id="urinary_mild"
-                                    name="severity_urinary"
-                                    value="1"
-                                >
-
-                                <label for="urinary_mild">
-                                    🌱 Mild
-                                </label>
-
-                            </div>
-
-
-                            <div class="severity-option">
-
-                                <input
-                                    type="radio"
-                                    id="urinary_moderate"
-                                    name="severity_urinary"
-                                    value="2"
-                                >
-
-                                <label for="urinary_moderate">
-                                    🌸 Moderate
-                                </label>
-
-                            </div>
-
-
-                            <div class="severity-option">
-
-                                <input
-                                    type="radio"
-                                    id="urinary_severe"
-                                    name="severity_urinary"
-                                    value="3"
-                                >
-
-                                <label for="urinary_severe">
-                                    🔴 Severe
-                                </label>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="detail-title">
-                            How many times?
-                        </div>
-
-
-                        <input
-                            class="frequency-input"
-                            type="number"
-                            name="frequency_urinary"
-                            min="1"
-                            value="1"
-                        >
-
-                    </div>
-
-                </div>
-
-
-            </div>
-
-<!-- DATE -->
-
-<div class="section">
-
-    <div class="section-title">
-        When did this happen?
-    </div>
-
-    <input
-        class="frequency-input"
-        type="date"
-        name="date"
-        id="recordDate"
-        required
-    >
-
-    <p class="help-text">
-        Select the day you experienced these symptoms.
-    </p>
-
-</div>
-
-            <!-- NOTES -->
-
-            <div class="section">
-
-                <div class="section-title">
-
-                    Anything else you'd like to tell us?
-
-                </div>
-
-
-                <textarea
-                    name="notes"
-                    placeholder="Example: I woke up three times during the night and felt very hot."
-                ></textarea>
-
-            </div>
-
-
-
-            <!-- SAVE -->
-
-            <button
-                type="submit"
-                class="save-button"
+            <input
+                type="date"
+                id="date"
+                name="date"
+                required
             >
 
-                🌸 Save Today's Symptoms
-
-            </button>
 
 
-        </form>
+            <label for="notes">
+                Additional Notes
+            </label>
+
+
+            <textarea
+                id="notes"
+                name="notes"
+                placeholder="Anything else you'd like to record?"
+            ></textarea>
+
+
+        </div>
 
 
 
-        <a
-            href="{% url 'dashboard' %}"
-            class="back"
+        <button
+            type="submit"
+            class="save-button"
         >
 
-            ← Back to Dashboard
+            💾 Save Symptoms
 
-        </a>
+        </button>
 
 
-    </div>
+        <p class="browser-note">
 
-</div>
+            🎙️ Voice input works best in Google Chrome or Microsoft Edge.
+
+        </p>
+
+
+    </form>
+
+
+</main>
 
 
 
 <script>
 
 
-function toggleSymptom(symptom) {
+/* ========================================================
+   VOICE ASSISTANT
+   ======================================================== */
 
-    const card =
-        document.getElementById(
-            "card-" + symptom
+
+const voiceButton =
+    document.getElementById(
+        "voiceButton"
+    );
+
+
+const voiceStatus =
+    document.getElementById(
+        "voiceStatus"
+    );
+
+
+const transcriptBox =
+    document.getElementById(
+        "transcriptBox"
+    );
+
+
+const transcript =
+    document.getElementById(
+        "transcript"
+    );
+
+
+const detectionBox =
+    document.getElementById(
+        "detectionBox"
+    );
+
+
+const detectionResults =
+    document.getElementById(
+        "detectionResults"
+    );
+
+
+/* ========================================================
+   BROWSER SUPPORT
+   ======================================================== */
+
+
+const SpeechRecognition =
+    window.SpeechRecognition ||
+    window.webkitSpeechRecognition;
+
+
+if (!SpeechRecognition) {
+
+    voiceButton.disabled = true;
+
+    voiceButton.innerText =
+        "🎙️ Voice Not Supported";
+
+    voiceStatus.innerText =
+        "Voice input is not supported in this browser. Try Chrome or Edge.";
+
+}
+
+
+/* ========================================================
+   RECOGNITION
+   ======================================================== */
+
+
+if (SpeechRecognition) {
+
+    const recognition =
+        new SpeechRecognition();
+
+
+    recognition.continuous = false;
+
+    recognition.interimResults = false;
+
+    recognition.lang = "en-IN";
+
+
+    /* ====================================================
+       START LISTENING
+       ==================================================== */
+
+
+    voiceButton.addEventListener(
+        "click",
+        function() {
+
+            try {
+
+                recognition.start();
+
+            } catch (error) {
+
+                console.log(
+                    "Recognition already running."
+                );
+
+            }
+
+
+            voiceButton.innerText =
+                "🔴 Listening...";
+
+
+            voiceButton.classList.add(
+                "listening"
+            );
+
+
+            voiceStatus.innerText =
+                "I'm listening. Tell me how you're feeling.";
+
+        }
+    );
+
+
+    /* ====================================================
+       RESULT
+       ==================================================== */
+
+
+    recognition.addEventListener(
+        "result",
+        function(event) {
+
+
+            const spokenText =
+                event.results[0][0].transcript;
+
+
+            const text =
+                spokenText.toLowerCase();
+
+
+            transcript.innerText =
+                spokenText;
+
+
+            transcriptBox.classList.add(
+                "show"
+            );
+
+
+            voiceStatus.innerText =
+                "I've captured your description.";
+
+
+            /* ==================================================
+               SYMPTOM KEYWORDS
+               ================================================== */
+
+
+            const symptomKeywords = {
+
+                hot_flashes: [
+                    "hot flash",
+                    "hot flashes",
+                    "hot flush",
+                    "hot flushes"
+                ],
+
+                night_sweats: [
+                    "night sweat",
+                    "night sweats",
+                    "sweating at night"
+                ],
+
+                sleep: [
+                    "sleep",
+                    "can't sleep",
+                    "cannot sleep",
+                    "waking up",
+                    "wake up at night",
+                    "insomnia",
+                    "trouble sleeping"
+                ],
+
+                mood: [
+                    "mood",
+                    "irritable",
+                    "irritability",
+                    "mood swings",
+                    "mood change",
+                    "mood changes"
+                ],
+
+                anxiety: [
+                    "anxiety",
+                    "anxious",
+                    "worried",
+                    "panic"
+                ],
+
+                fatigue: [
+                    "tired",
+                    "fatigue",
+                    "exhausted",
+                    "low energy",
+                    "no energy"
+                ],
+
+                headache: [
+                    "headache",
+                    "headaches",
+                    "migraine"
+                ],
+
+                joint_pain: [
+                    "joint pain",
+                    "muscle pain",
+                    "body pain",
+                    "aching joints",
+                    "joint discomfort"
+                ],
+
+                brain_fog: [
+                    "brain fog",
+                    "forgetting",
+                    "difficulty concentrating",
+                    "can't concentrate",
+                    "cannot concentrate"
+                ],
+
+                vaginal_dryness: [
+                    "vaginal dryness",
+                    "vaginal dry",
+                    "dryness"
+                ],
+
+                urinary: [
+                    "urinary",
+                    "urine",
+                    "frequent urination",
+                    "burning while urinating",
+                    "burning urination"
+                ]
+
+            };
+
+
+            /* ==================================================
+               DETECT SYMPTOMS
+               ================================================== */
+
+
+            const detectedSymptoms = [];
+
+
+            for (
+                const symptom in symptomKeywords
+            ) {
+
+
+                const keywords =
+                    symptomKeywords[
+                        symptom
+                    ];
+
+
+                const found =
+                    keywords.some(
+                        keyword =>
+                            text.includes(
+                                keyword
+                            )
+                    );
+
+
+                if (found) {
+
+                    detectedSymptoms.push(
+                        symptom
+                    );
+
+
+                    const checkbox =
+                        document.getElementById(
+                            symptom
+                        );
+
+
+                    if (checkbox) {
+
+                        checkbox.checked =
+                            true;
+
+
+                        updateSymptomStyle(
+                            checkbox
+                        );
+
+
+                        showFrequency(
+                            symptom
+                        );
+
+                    }
+
+                }
+
+            }
+
+
+            /* ==================================================
+               FREQUENCY DETECTION
+               ================================================== */
+
+
+            let detectedFrequency =
+                null;
+
+
+            const numberMatch =
+                text.match(
+                    /(\d+)\s*(times|time|x)\b/
+                );
+
+
+            if (numberMatch) {
+
+                detectedFrequency =
+                    parseInt(
+                        numberMatch[1]
+                    );
+
+            }
+
+
+            /* WORD NUMBERS */
+
+
+            if (!detectedFrequency) {
+
+                if (
+                    text.includes("once")
+                ) {
+
+                    detectedFrequency = 1;
+
+                }
+
+                else if (
+                    text.includes("twice")
+                ) {
+
+                    detectedFrequency = 2;
+
+                }
+
+                else if (
+                    text.includes("three times")
+                ) {
+
+                    detectedFrequency = 3;
+
+                }
+
+                else if (
+                    text.includes("four times")
+                ) {
+
+                    detectedFrequency = 4;
+
+                }
+
+                else if (
+                    text.includes("five times")
+                ) {
+
+                    detectedFrequency = 5;
+
+                }
+
+            }
+
+
+            /* ==================================================
+               APPLY FREQUENCY
+               ================================================== */
+
+
+            if (
+                detectedFrequency &&
+                detectedSymptoms.length > 0
+            ) {
+
+
+                detectedSymptoms.forEach(
+                    function(symptom) {
+
+                        const frequencyInput =
+                            document.getElementById(
+                                "frequency_" +
+                                symptom
+                            );
+
+
+                        if (frequencyInput) {
+
+                            frequencyInput.value =
+                                detectedFrequency;
+
+                        }
+
+                    }
+                );
+
+            }
+
+
+            /* ==================================================
+               DATE DETECTION
+               ================================================== */
+
+
+            const dateInput =
+                document.getElementById(
+                    "date"
+                );
+
+
+            const today =
+                new Date();
+
+
+            if (
+                text.includes("yesterday")
+            ) {
+
+                const yesterday =
+                    new Date();
+
+
+                yesterday.setDate(
+                    yesterday.getDate() - 1
+                );
+
+
+                dateInput.value =
+                    formatDate(
+                        yesterday
+                    );
+
+            }
+
+            else {
+
+                dateInput.value =
+                    formatDate(
+                        today
+                    );
+
+            }
+
+
+            /* ==================================================
+               SHOW DETECTION RESULTS
+               ================================================== */
+
+
+            detectionResults.innerHTML =
+                "";
+
+
+            if (
+                detectedSymptoms.length > 0
+            ) {
+
+
+                detectedSymptoms.forEach(
+                    function(symptom) {
+
+                        const label =
+                            getSymptomName(
+                                symptom
+                            );
+
+
+                        const frequencyInput =
+                            document.getElementById(
+                                "frequency_" +
+                                symptom
+                            );
+
+
+                        let frequency =
+                            1;
+
+
+                        if (
+                            frequencyInput
+                        ) {
+
+                            frequency =
+                                frequencyInput.value;
+
+                        }
+
+
+                        const div =
+                            document.createElement(
+                                "div"
+                            );
+
+
+                        div.className =
+                            "detected-item";
+
+
+                        div.innerHTML =
+                            "✓ <strong>" +
+                            label +
+                            "</strong> — " +
+                            frequency +
+                            " time(s)";
+
+
+                        detectionResults.appendChild(
+                            div
+                        );
+
+                    }
+                );
+
+
+                if (
+                    detectedFrequency
+                ) {
+
+                    voiceStatus.innerText =
+                        "I detected your symptoms and frequency. Please review them before saving.";
+
+                }
+
+                else {
+
+                    voiceStatus.innerText =
+                        "I detected your symptoms. Please check the frequency before saving.";
+
+                }
+
+
+                detectionBox.classList.add(
+                    "show"
+                );
+
+            }
+
+            else {
+
+                const div =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                div.className =
+                    "detected-item";
+
+
+                div.innerText =
+                    "I couldn't identify a symptom. Please select it manually from the checklist.";
+
+
+                detectionResults.appendChild(
+                    div
+                );
+
+
+                detectionBox.classList.add(
+                    "show"
+                );
+
+            }
+
+
+            /* ==================================================
+               ADD VOICE TEXT TO NOTES
+               ================================================== */
+
+
+            const notes =
+                document.getElementById(
+                    "notes"
+                );
+
+
+            if (
+                notes.value.trim() === ""
+            ) {
+
+                notes.value =
+                    "Voice note: " +
+                    spokenText;
+
+            }
+
+            else {
+
+                notes.value +=
+                    "\nVoice note: " +
+                    spokenText;
+
+            }
+
+        }
+    );
+
+
+    /* ====================================================
+       RECOGNITION END
+       ==================================================== */
+
+
+    recognition.addEventListener(
+        "end",
+        function() {
+
+            voiceButton.innerText =
+                "🎙️ Start Speaking";
+
+
+            voiceButton.classList.remove(
+                "listening"
+            );
+
+
+            if (
+                voiceStatus.innerText ===
+                "I'm listening. Tell me how you're feeling."
+            ) {
+
+                voiceStatus.innerText =
+                    "Voice input finished.";
+
+            }
+
+        }
+    );
+
+
+    /* ====================================================
+       ERROR
+       ==================================================== */
+
+
+    recognition.addEventListener(
+        "error",
+        function(event) {
+
+
+            voiceButton.innerText =
+                "🎙️ Start Speaking";
+
+
+            voiceButton.classList.remove(
+                "listening"
+            );
+
+
+            if (
+                event.error ===
+                "not-allowed"
+            ) {
+
+                voiceStatus.innerText =
+                    "Microphone permission was denied.";
+
+            }
+
+            else if (
+                event.error ===
+                "no-speech"
+            ) {
+
+                voiceStatus.innerText =
+                    "I couldn't hear anything. Please try again.";
+
+            }
+
+            else {
+
+                voiceStatus.innerText =
+                    "Something went wrong with voice input. Please try again.";
+
+            }
+
+        }
+    );
+
+}
+
+
+/* ========================================================
+   CHECKBOX VISUAL STYLE
+   ======================================================== */
+
+
+const allCheckboxes =
+    document.querySelectorAll(
+        'input[type="checkbox"][name="symptoms"]'
+    );
+
+
+allCheckboxes.forEach(
+    function(checkbox) {
+
+
+        checkbox.addEventListener(
+            "change",
+            function() {
+
+                updateSymptomStyle(
+                    checkbox
+                );
+
+
+                showFrequency(
+                    checkbox.id
+                );
+
+            }
+        );
+
+    }
+);
+
+
+/* ========================================================
+   UPDATE SYMPTOM STYLE
+   ======================================================== */
+
+
+function updateSymptomStyle(
+    checkbox
+) {
+
+    const parent =
+        checkbox.closest(
+            ".symptom-item"
         );
 
 
-    const checkbox =
-        card.querySelector(
-            'input[type="checkbox"]'
-        );
+    if (!parent) {
+        return;
+    }
 
 
     if (checkbox.checked) {
 
-        card.classList.add("active");
+        parent.classList.add(
+            "selected"
+        );
 
-    } else {
+    }
 
-        card.classList.remove("active");
+    else {
+
+        parent.classList.remove(
+            "selected"
+        );
 
     }
 
 }
 
 
+/* ========================================================
+   SHOW FREQUENCY INPUT
+   ======================================================== */
 
-function validateForm() {
 
-    const selected =
-        document.querySelectorAll(
-            'input[name="symptoms"]:checked'
+function showFrequency(
+    symptom
+) {
+
+    const checkbox =
+        document.getElementById(
+            symptom
         );
 
 
-    if (selected.length === 0) {
-
-        alert(
-            "Please select at least one symptom."
+    const area =
+        document.getElementById(
+            "frequency_area_" +
+            symptom
         );
 
-        return false;
+
+    if (
+        !checkbox ||
+        !area
+    ) {
+
+        return;
 
     }
 
 
-    for (const checkbox of selected) {
+    if (checkbox.checked) {
 
-        const symptom =
-            checkbox.value;
-
-
-        const severity =
-            document.querySelector(
-                `input[name="severity_${symptom}"]:checked`
-            );
-
-
-        if (!severity) {
-
-            alert(
-                "Please select a severity for " +
-                checkbox.parentElement
-                    .querySelector(".symptom-name")
-                    .innerText
-            );
-
-            return false;
-
-        }
-
-
-        const frequency =
-            document.querySelector(
-                `input[name="frequency_${symptom}"]`
-            );
-
-
-        if (
-            !frequency.value ||
-            frequency.value < 1
-        ) {
-
-            alert(
-                "Please enter the frequency for " +
-                checkbox.parentElement
-                    .querySelector(".symptom-name")
-                    .innerText
-            );
-
-            return false;
-
-        }
+        area.classList.add(
+            "show"
+        );
 
     }
 
+    else {
 
-    return true;
+        area.classList.remove(
+            "show"
+        );
+
+    }
 
 }
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
 
-        const dateInput =
-            document.getElementById(
-                "recordDate"
-            );
 
-        const today =
-            new Date()
-                .toISOString()
-                .split("T")[0];
+/* ========================================================
+   SYMPTOM DISPLAY NAMES
+   ======================================================== */
 
-        dateInput.value = today;
 
-    }
-);
+function getSymptomName(
+    symptom
+) {
+
+    const names = {
+
+        hot_flashes:
+            "🔥 Hot Flashes",
+
+        night_sweats:
+            "🌙 Night Sweats",
+
+        sleep:
+            "😴 Sleep Problems",
+
+        mood:
+            "💭 Mood Changes",
+
+        anxiety:
+            "😟 Anxiety",
+
+        fatigue:
+            "🪫 Fatigue",
+
+        headache:
+            "🤕 Headache",
+
+        joint_pain:
+            "🦴 Joint / Muscle Discomfort",
+
+        brain_fog:
+            "🧠 Brain Fog",
+
+        vaginal_dryness:
+            "🌸 Vaginal Dryness",
+
+        urinary:
+            "🚻 Urinary Changes"
+
+    };
+
+
+    return (
+        names[symptom] ||
+        symptom
+    );
+
+}
+
+
+/* ========================================================
+   DATE FORMAT
+   ======================================================== */
+
+
+function formatDate(
+    date
+) {
+
+    const year =
+        date.getFullYear();
+
+
+    const month =
+        String(
+            date.getMonth() + 1
+        ).padStart(
+            2,
+            "0"
+        );
+
+
+    const day =
+        String(
+            date.getDate()
+        ).padStart(
+            2,
+            "0"
+        );
+
+
+    return (
+        year +
+        "-" +
+        month +
+        "-" +
+        day
+    );
+
+}
+
+
+/* ========================================================
+   DEFAULT DATE
+   ======================================================== */
+
+
+const dateInput =
+    document.getElementById(
+        "date"
+    );
+
+
+dateInput.value =
+    formatDate(
+        new Date()
+    );
+
 
 </script>
 
