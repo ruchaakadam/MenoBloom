@@ -6,8 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
-from .models import SymptomEntry, UserProfile
-
+from .models import SymptomEntry, UserProfile, Reminder
 
 # ============================================================
 # HELPER
@@ -242,11 +241,110 @@ def analysis(request):
 @login_required(login_url="/login/")
 def reminders(request):
 
-    return render(
-        request,
-        "tracker/reminders.html"
+    reminders_list = Reminder.objects.filter(
+        user=request.user
     )
 
+    pending_reminders = reminders_list.filter(
+        completed=False
+    )
+
+    completed_reminders = reminders_list.filter(
+        completed=True
+    )
+
+    return render(
+        request,
+        "tracker/reminders.html",
+        {
+            "reminders": reminders_list,
+            "pending_reminders": pending_reminders,
+            "completed_reminders": completed_reminders,
+        }
+    )
+@login_required(login_url="/login/")
+def add_reminder(request):
+
+    if request.method == "POST":
+
+        reminder_type = request.POST.get(
+            "reminder_type",
+            "custom"
+        )
+
+        title = request.POST.get(
+            "title",
+            ""
+        ).strip()
+
+        due_date = request.POST.get(
+            "due_date"
+        )
+
+        notes = request.POST.get(
+            "notes",
+            ""
+        ).strip()
+
+        if title:
+
+            Reminder.objects.create(
+
+                user=request.user,
+
+                reminder_type=reminder_type,
+
+                title=title,
+
+                due_date=due_date
+                if due_date
+                else None,
+
+                notes=notes
+
+            )
+
+        return redirect("reminders")
+
+    return redirect("reminders")
+
+
+@login_required(login_url="/login/")
+def complete_reminder(
+    request,
+    reminder_id
+):
+
+    reminder = Reminder.objects.filter(
+        id=reminder_id,
+        user=request.user
+    ).first()
+
+    if reminder:
+
+        reminder.completed = True
+
+        reminder.save()
+
+    return redirect("reminders")
+
+
+@login_required(login_url="/login/")
+def delete_reminder(
+    request,
+    reminder_id
+):
+
+    reminder = Reminder.objects.filter(
+        id=reminder_id,
+        user=request.user
+    ).first()
+
+    if reminder:
+
+        reminder.delete()
+
+    return redirect("reminders")
 
 # ============================================================
 # FOOD & LIFESTYLE

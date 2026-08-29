@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,9 +11,7 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>
-        Health Reminders | HerBalance
-    </title>
+    <title>Health Reminders | HerBalance</title>
 
 
     <style>
@@ -40,9 +39,9 @@
         }
 
 
-        /* ================================
-           MAIN
-           ================================ */
+        /* =========================================
+           MAIN CONTAINER
+           ========================================= */
 
         .container {
 
@@ -55,9 +54,9 @@
         }
 
 
-        /* ================================
+        /* =========================================
            HEADER
-           ================================ */
+           ========================================= */
 
         .header {
 
@@ -85,14 +84,14 @@
 
             line-height: 1.6;
 
-            max-width: 800px;
+            max-width: 850px;
 
         }
 
 
-        /* ================================
+        /* =========================================
            INFORMATION BOX
-           ================================ */
+           ========================================= */
 
         .info-box {
 
@@ -105,7 +104,7 @@
 
             padding: 20px;
 
-            margin-bottom: 25px;
+            margin-bottom: 28px;
 
             line-height: 1.7;
 
@@ -121,9 +120,9 @@
         }
 
 
-        /* ================================
-           REMINDER GRID
-           ================================ */
+        /* =========================================
+           GRID
+           ========================================= */
 
         .reminder-grid {
 
@@ -137,9 +136,9 @@
         }
 
 
-        /* ================================
-           REMINDER CARD
-           ================================ */
+        /* =========================================
+           CARD
+           ========================================= */
 
         .reminder-card {
 
@@ -147,7 +146,7 @@
 
             border-radius: 20px;
 
-            padding: 27px;
+            padding: 28px;
 
             box-shadow:
                 0 6px 25px
@@ -166,9 +165,17 @@
         }
 
 
+        .full-card {
+
+            grid-column:
+                1 / -1;
+
+        }
+
+
         .reminder-icon {
 
-            font-size: 35px;
+            font-size: 36px;
 
             margin-bottom: 12px;
 
@@ -180,6 +187,8 @@
             font-size: 22px;
 
             margin-bottom: 10px;
+
+            color: #333;
 
         }
 
@@ -195,16 +204,16 @@
         }
 
 
-        /* ================================
+        /* =========================================
            STATUS
-           ================================ */
+           ========================================= */
 
         .status {
 
             display: inline-block;
 
             padding:
-                6px 12px;
+                6px 13px;
 
             border-radius: 20px;
 
@@ -235,13 +244,22 @@
         }
 
 
-        /* ================================
+        .status.info {
+
+            background: #f4e8ee;
+
+            color: #a44773;
+
+        }
+
+
+        /* =========================================
            FORM
-           ================================ */
+           ========================================= */
 
         .form-group {
 
-            margin-bottom: 16px;
+            margin-bottom: 17px;
 
         }
 
@@ -266,7 +284,8 @@
 
             width: 100%;
 
-            padding: 12px 14px;
+            padding:
+                12px 14px;
 
             border:
                 1px solid #ddd;
@@ -287,12 +306,16 @@
 
             border-color: #b95783;
 
+            box-shadow:
+                0 0 0 3px
+                rgba(185, 87, 131, 0.08);
+
         }
 
 
-        /* ================================
+        /* =========================================
            BUTTONS
-           ================================ */
+           ========================================= */
 
         .button {
 
@@ -325,7 +348,7 @@
 
         .primary-button:hover {
 
-            opacity: 0.9;
+            background: #a44773;
 
         }
 
@@ -346,9 +369,9 @@
         }
 
 
-        /* ================================
+        /* =========================================
            SCREENING RESULT
-           ================================ */
+           ========================================= */
 
         .screening-result {
 
@@ -359,13 +382,15 @@
 
             border-radius: 12px;
 
-            padding: 16px;
+            padding: 17px;
 
             margin-top: 18px;
 
             line-height: 1.7;
 
             display: none;
+
+            color: #555;
 
         }
 
@@ -384,9 +409,9 @@
         }
 
 
-        /* ================================
+        /* =========================================
            CHECKLIST
-           ================================ */
+           ========================================= */
 
         .checklist {
 
@@ -431,6 +456,8 @@
 
             cursor: pointer;
 
+            flex-shrink: 0;
+
         }
 
 
@@ -456,21 +483,94 @@
         }
 
 
-        /* ================================
-           FULL WIDTH CARD
-           ================================ */
+        /* =========================================
+           DATABASE REMINDERS
+           ========================================= */
 
-        .full-card {
+        .database-list {
 
-            grid-column:
-                1 / -1;
+            margin-top: 20px;
 
         }
 
 
-        /* ================================
-           FOOTNOTE
-           ================================ */
+        .database-reminder {
+
+            border:
+                1px solid #efdce5;
+
+            border-radius: 14px;
+
+            padding: 18px;
+
+            margin-bottom: 12px;
+
+            background: #fffafd;
+
+        }
+
+
+        .database-reminder:last-child {
+
+            margin-bottom: 0;
+
+        }
+
+
+        .database-reminder-header {
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items: center;
+
+            gap: 15px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .database-reminder h3 {
+
+            color: #444;
+
+            font-size: 17px;
+
+        }
+
+
+        .database-reminder p {
+
+            color: #777;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+
+        }
+
+
+        .empty-message {
+
+            background: #faf7f9;
+
+            border-radius: 12px;
+
+            padding: 18px;
+
+            color: #888;
+
+            text-align: center;
+
+        }
+
+
+        /* =========================================
+           MEDICAL NOTE
+           ========================================= */
 
         .medical-note {
 
@@ -491,9 +591,16 @@
         }
 
 
-        /* ================================
+        .medical-note strong {
+
+            color: #555;
+
+        }
+
+
+        /* =========================================
            BACK BUTTON
-           ================================ */
+           ========================================= */
 
         .back-button {
 
@@ -519,14 +626,14 @@
 
         .back-button:hover {
 
-            opacity: 0.9;
+            background: #a44773;
 
         }
 
 
-        /* ================================
+        /* =========================================
            RESPONSIVE
-           ================================ */
+           ========================================= */
 
         @media (max-width: 800px) {
 
@@ -546,6 +653,13 @@
             }
 
 
+            .full-card {
+
+                grid-column: auto;
+
+            }
+
+
             .header h1 {
 
                 font-size: 30px;
@@ -553,9 +667,11 @@
             }
 
 
-            .full-card {
+            .database-reminder-header {
 
-                grid-column: auto;
+                align-items: flex-start;
+
+                flex-direction: column;
 
             }
 
@@ -572,9 +688,9 @@
 <div class="container">
 
 
-    <!-- =================================
+    <!-- =========================================
          HEADER
-         ================================= -->
+         ========================================= -->
 
     <div class="header">
 
@@ -584,9 +700,9 @@
 
         <p>
 
-            Keep track of important preventive
-            health discussions, screenings and
-            personal wellness activities.
+            Keep track of preventive health
+            discussions, screenings, wellness
+            activities and important appointments.
 
         </p>
 
@@ -594,9 +710,9 @@
 
 
 
-    <!-- =================================
+    <!-- =========================================
          INFORMATION
-         ================================= -->
+         ========================================= -->
 
     <div class="info-box">
 
@@ -606,27 +722,31 @@
 
         <br>
 
-        HerBalance helps you remember health
-        activities. Screening schedules can
-        depend on your age, previous results,
-        medical history and local guidelines.
-        Always confirm your personal schedule
-        with a qualified healthcare professional.
+        HerBalance helps you keep track of
+        important health activities.
+
+        Screening schedules can depend on age,
+        previous results, medical history,
+        vaccination history and local guidelines.
+
+        Always confirm your personal screening
+        schedule with a qualified healthcare
+        professional.
 
     </div>
 
 
 
-    <!-- =================================
-         REMINDER CARDS
-         ================================= -->
+    <!-- =========================================
+         REMINDER GRID
+         ========================================= -->
 
     <div class="reminder-grid">
 
 
-        <!-- =================================
-             CERVICAL SCREENING
-             ================================= -->
+        <!-- =====================================
+             CERVICAL CANCER SCREENING
+             ===================================== -->
 
         <div class="reminder-card">
 
@@ -640,10 +760,11 @@
 
             <p class="reminder-description">
 
-                Keep a record of your cervical
-                cancer screening and discuss
-                the appropriate test and interval
-                with your healthcare provider.
+                Keep a record of your previous
+                cervical cancer screening and
+                discuss your next screening
+                schedule with your healthcare
+                provider.
 
             </p>
 
@@ -659,9 +780,7 @@
             <div class="form-group">
 
                 <label for="age">
-
                     Your age
-
                 </label>
 
                 <input
@@ -678,9 +797,7 @@
             <div class="form-group">
 
                 <label for="screeningDate">
-
                     Last screening date
-
                 </label>
 
                 <input
@@ -694,9 +811,7 @@
             <div class="form-group">
 
                 <label for="screeningMethod">
-
                     Screening method
-
                 </label>
 
                 <select
@@ -704,33 +819,23 @@
                 >
 
                     <option value="">
-
                         Select method
-
                     </option>
 
                     <option value="HPV">
-
                         HPV test
-
                     </option>
 
                     <option value="Pap">
-
                         Pap smear / cytology
-
                     </option>
 
                     <option value="VIA">
-
                         VIA
-
                     </option>
 
                     <option value="Other">
-
                         Other / not sure
-
                     </option>
 
                 </select>
@@ -739,10 +844,8 @@
 
 
             <button
-                class="
-                    button
-                    primary-button
-                "
+                type="button"
+                class="button primary-button"
                 onclick="saveScreening()"
             >
 
@@ -760,9 +863,9 @@
 
 
 
-        <!-- =================================
+        <!-- =====================================
              BONE HEALTH
-             ================================= -->
+             ===================================== -->
 
         <div class="reminder-card">
 
@@ -776,7 +879,7 @@
 
             <p class="reminder-description">
 
-                Menopause can be a useful time
+                Menopause can be an important time
                 to discuss bone health and
                 osteoporosis risk with your
                 healthcare professional.
@@ -792,11 +895,12 @@
             </span>
 
 
+            <br>
+
+
             <button
-                class="
-                    button
-                    secondary-button
-                "
+                type="button"
+                class="button secondary-button"
                 onclick="toggleReminder('bone')"
             >
 
@@ -808,9 +912,9 @@
 
 
 
-        <!-- =================================
-             ROUTINE HEALTH CHECK
-             ================================= -->
+        <!-- =====================================
+             ROUTINE HEALTH
+             ===================================== -->
 
         <div class="reminder-card">
 
@@ -826,8 +930,8 @@
 
                 Keep up with routine preventive
                 healthcare visits and discuss
-                changes in your health with
-                your healthcare provider.
+                changes in your health with your
+                healthcare provider.
 
             </p>
 
@@ -837,15 +941,15 @@
                 id="routineStatus"
             >
                 Pending
-
             </span>
 
 
+            <br>
+
+
             <button
-                class="
-                    button
-                    secondary-button
-                "
+                type="button"
+                class="button secondary-button"
                 onclick="toggleReminder('routine')"
             >
 
@@ -857,16 +961,11 @@
 
 
 
-        <!-- =================================
+        <!-- =====================================
              WELLNESS CHECKLIST
-             ================================= -->
+             ===================================== -->
 
-        <div
-            class="
-                reminder-card
-                full-card
-            "
-        >
+        <div class="reminder-card full-card">
 
             <div class="reminder-icon">
                 🌿
@@ -878,7 +977,7 @@
 
             <p class="reminder-description">
 
-                Small habits can help you stay
+                Small daily habits can help you stay
                 aware of your wellbeing.
 
             </p>
@@ -947,7 +1046,7 @@
                     <label for="food">
 
                         I included nutritious foods
-                        in my meals today.
+                        in my meals.
 
                     </label>
 
@@ -976,13 +1075,182 @@
         </div>
 
 
+
+        <!-- =====================================
+             DATABASE REMINDERS
+             ===================================== -->
+
+        <div class="reminder-card full-card">
+
+            <div class="reminder-icon">
+                📅
+            </div>
+
+            <h2>
+                My Upcoming Reminders
+            </h2>
+
+            <p class="reminder-description">
+
+                Your saved health reminders appear
+                here.
+
+            </p>
+
+
+            <div class="database-list">
+
+
+                {% if pending_reminders %}
+
+                    {% for reminder in pending_reminders %}
+
+                        <div class="database-reminder">
+
+                            <div class="database-reminder-header">
+
+                                <h3>
+                                    {{ reminder.title }}
+                                </h3>
+
+                                <span class="status pending">
+                                    Pending
+                                </span>
+
+                            </div>
+
+
+                            <p>
+
+                                {% if reminder.due_date %}
+
+                                    Due:
+                                    {{ reminder.due_date|date:"d M Y" }}
+
+                                {% else %}
+
+                                    No due date specified.
+
+                                {% endif %}
+
+                            </p>
+
+
+                            {% if reminder.notes %}
+
+                                <p>
+
+                                    {{ reminder.notes }}
+
+                                </p>
+
+                            {% endif %}
+
+                        </div>
+
+                    {% endfor %}
+
+
+                {% else %}
+
+                    <div class="empty-message">
+
+                        🌸 You don't have any pending
+                        reminders yet.
+
+                    </div>
+
+                {% endif %}
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =====================================
+             COMPLETED REMINDERS
+             ===================================== -->
+
+        <div class="reminder-card full-card">
+
+            <div class="reminder-icon">
+                ✅
+            </div>
+
+            <h2>
+                Completed Reminders
+            </h2>
+
+
+            <div class="database-list">
+
+
+                {% if completed_reminders %}
+
+                    {% for reminder in completed_reminders %}
+
+                        <div class="database-reminder">
+
+                            <div class="database-reminder-header">
+
+                                <h3>
+                                    {{ reminder.title }}
+                                </h3>
+
+                                <span class="status completed">
+                                    Completed
+                                </span>
+
+                            </div>
+
+
+                            <p>
+
+                                Completed reminder.
+
+                            </p>
+
+
+                            {% if reminder.notes %}
+
+                                <p>
+
+                                    {{ reminder.notes }}
+
+                                </p>
+
+                            {% endif %}
+
+                        </div>
+
+                    {% endfor %}
+
+
+                {% else %}
+
+                    <div class="empty-message">
+
+                        No completed reminders yet.
+
+                    </div>
+
+                {% endif %}
+
+
+            </div>
+
+        </div>
+
+
     </div>
 
 
 
-    <!-- =================================
+    <!-- =========================================
          MEDICAL NOTE
-         ================================= -->
+         ========================================= -->
 
     <div class="medical-note">
 
@@ -992,18 +1260,23 @@
 
         Screening recommendations vary according
         to country, age, previous screening results,
-        vaccination/history and other factors.
+        vaccination history and other factors.
+
         HerBalance should not be used to determine
         whether someone has a disease or replace
         professional medical advice.
+
+        Please speak with a qualified healthcare
+        professional about your individual
+        screening schedule.
 
     </div>
 
 
 
-    <!-- =================================
-         BACK
-         ================================= -->
+    <!-- =========================================
+         BACK BUTTON
+         ========================================= -->
 
     <a
         href="{% url 'dashboard' %}"
@@ -1022,18 +1295,13 @@
 <script>
 
 
-    /* =================================
-       LOCAL STORAGE KEY
-       ================================= */
+    /* =========================================
+       LOCAL STORAGE
+       ========================================= */
 
     const STORAGE_KEY =
         "herBalanceReminders";
 
-
-
-    /* =================================
-       LOAD SAVED DATA
-       ================================= */
 
     let reminderData = {
 
@@ -1045,6 +1313,10 @@
 
     };
 
+
+    /* =========================================
+       LOAD SAVED DATA
+       ========================================= */
 
     const savedData =
         localStorage.getItem(
@@ -1066,7 +1338,7 @@
         catch (error) {
 
             console.error(
-                "Unable to load reminders",
+                "Unable to load reminder data:",
                 error
             );
 
@@ -1076,9 +1348,9 @@
 
 
 
-    /* =================================
-       SAVE ALL REMINDERS
-       ================================= */
+    /* =========================================
+       SAVE REMINDER DATA
+       ========================================= */
 
     function saveReminderData() {
 
@@ -1096,9 +1368,9 @@
 
 
 
-    /* =================================
+    /* =========================================
        SAVE SCREENING
-       ================================= */
+       ========================================= */
 
     function saveScreening() {
 
@@ -1207,7 +1479,8 @@
             <br><br>
 
             Please confirm your next screening
-            date with your healthcare provider.
+            schedule with your healthcare
+            provider.
 
         `;
 
@@ -1220,9 +1493,9 @@
 
 
 
-    /* =================================
+    /* =========================================
        FORMAT DATE
-       ================================= */
+       ========================================= */
 
     function formatDate(
         dateString
@@ -1251,9 +1524,9 @@
 
 
 
-    /* =================================
+    /* =========================================
        TOGGLE REMINDER
-       ================================= */
+       ========================================= */
 
     function toggleReminder(
         type
@@ -1273,9 +1546,9 @@
 
 
 
-    /* =================================
+    /* =========================================
        UPDATE REMINDER UI
-       ================================= */
+       ========================================= */
 
     function updateReminderUI() {
 
@@ -1341,9 +1614,9 @@
 
 
 
-    /* =================================
+    /* =========================================
        LOAD SCREENING UI
-       ================================= */
+       ========================================= */
 
     function loadScreeningUI() {
 
@@ -1396,9 +1669,9 @@
 
 
 
-    /* =================================
-       CHECKLIST STORAGE
-       ================================= */
+    /* =========================================
+       CHECKLIST
+       ========================================= */
 
     const checklistItems = [
 
@@ -1425,9 +1698,13 @@
                 );
 
 
+            const storageKey =
+                "herBalance_" + id;
+
+
             const saved =
                 localStorage.getItem(
-                    "herBalance_" + id
+                    storageKey
                 );
 
 
@@ -1447,7 +1724,7 @@
 
                     localStorage.setItem(
 
-                        "herBalance_" + id,
+                        storageKey,
 
                         checkbox.checked
 
@@ -1461,9 +1738,9 @@
 
 
 
-    /* =================================
+    /* =========================================
        INITIALIZE
-       ================================= */
+       ========================================= */
 
     loadScreeningUI();
 

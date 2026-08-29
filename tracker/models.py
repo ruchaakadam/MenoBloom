@@ -3,6 +3,10 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 
 
+# ============================================================
+# USER PROFILE
+# ============================================================
+
 class UserProfile(models.Model):
 
     ROLE_CHOICES = [
@@ -30,7 +34,6 @@ class UserProfile(models.Model):
         null=True
     )
 
-    # Woman's basic information
     age = models.PositiveIntegerField(
         blank=True,
         null=True
@@ -73,6 +76,10 @@ class UserProfile(models.Model):
         return f"{self.user.username} Profile"
 
 
+# ============================================================
+# SYMPTOM ENTRY
+# ============================================================
+
 class SymptomEntry(models.Model):
 
     SYMPTOM_CHOICES = [
@@ -95,8 +102,6 @@ class SymptomEntry(models.Model):
         (3, "Severe"),
     ]
 
-    # IMPORTANT:
-    # Every symptom now belongs to one specific user.
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
@@ -131,3 +136,78 @@ class SymptomEntry(models.Model):
             f"{self.user.username if self.user else 'No User'} - "
             f"{self.get_symptom_display()} - {self.date}"
         )
+
+
+# ============================================================
+# HEALTH REMINDERS
+# ============================================================
+
+class Reminder(models.Model):
+
+    REMINDER_TYPE_CHOICES = [
+        ("cancer_screening", "Cancer Screening"),
+        ("cervical_screening", "Cervical Cancer Screening"),
+        ("bone_health", "Bone Health"),
+        ("routine_check", "Routine Health Check"),
+        ("medication", "Medication"),
+        ("doctor", "Doctor Appointment"),
+        ("follow_up", "Follow-up"),
+        ("custom", "Custom Reminder"),
+    ]
+
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name="reminders"
+    )
+
+    reminder_type = models.CharField(
+        max_length=40,
+        choices=REMINDER_TYPE_CHOICES
+    )
+
+    title = models.CharField(
+        max_length=200
+    )
+
+    due_date = models.DateField(
+        null=True,
+        blank=True
+    )
+
+    notes = models.TextField(
+        blank=True
+    )
+
+    completed = models.BooleanField(
+        default=False
+    )
+
+    created_at = models.DateTimeField(
+        auto_now_add=True
+    )
+
+    updated_at = models.DateTimeField(
+        auto_now=True
+    )
+
+    class Meta:
+        ordering = [
+            "completed",
+            "due_date",
+            "-created_at"
+        ]
+
+    def __str__(self):
+        return (
+            f"{self.user.username} - "
+            f"{self.title}"
+        )
+
+    @property
+    def is_overdue(self):
+
+        if not self.due_date or self.completed:
+            return False
+
+        return self.due_date < timezone.localdate()
