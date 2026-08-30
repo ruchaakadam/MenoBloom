@@ -2,123 +2,140 @@
 
 ### A Digital Menopause Wellness & Support Platform
 
-MenoBloom is a web-based wellness platform designed to help women navigate menopause through personalized symptom tracking, nutrition management, health reminders, private reflection, and supportive family connections.
+MenoBloom is a web-based wellness platform designed to help women navigate menopause through personalized symptom tracking, nutrition management, health reminders, mental support, private reflection, and trusted family connections.
 
-The platform focuses on making menopause care more organized, personal, and supportive while keeping the woman's privacy and control at the center.
+The platform brings multiple aspects of menopause wellness into one centralized and user-friendly experience while keeping privacy and user control at the center.
 
 ---
 
 ## 🌐 Live Demo
 
-🚀 **MenoBloom is live and accessible online.**
+### 🚀 Try MenoBloom Online
 
-👉 Visit the live application from the project repository's deployment link.
+👉 **https://menobloom-55tf.onrender.com**
+
+MenoBloom is deployed as a live Django web application using Render.
 
 ---
 
-## 💡 Problem Statement
+# 💡 Problem Statement
 
-Menopause is a major stage of life, but many women face difficulties in:
+Menopause is an important stage of life, yet many women face difficulties managing the physical, emotional, and lifestyle changes associated with it.
 
-- Understanding recurring symptoms
-- Tracking symptom patterns over time
+Common challenges include:
+
+- Tracking recurring symptoms
+- Understanding symptom patterns
 - Maintaining healthy nutrition
-- Remembering important health appointments
-- Expressing emotional and mental concerns
-- Getting meaningful support from family members
+- Remembering important health activities
+- Expressing emotional concerns
+- Finding supportive resources
+- Communicating with family members
 - Keeping sensitive personal thoughts private
-- Organizing all of this information in one place
 
-At the same time, family members may want to support someone going through menopause without unintentionally invading their privacy.
+At the same time, family members may want to provide support without invading the woman's privacy.
 
-MenoBloom addresses these challenges through a single, privacy-conscious digital platform.
+MenoBloom was designed to address these challenges through a single digital platform.
 
 ---
 
 # 🌸 Our Solution
 
-MenoBloom provides a centralized wellness platform where users can:
+MenoBloom combines wellness tracking, organization, emotional support, and controlled family connection into one platform.
 
-📊 Track symptoms  
-📈 Analyze symptom patterns  
-🥗 Monitor nutrition  
+Users can:
+
+🌸 Track symptoms  
+📊 Analyze symptom patterns  
+🥗 Track meals and nutrition  
 🔔 Manage health reminders  
-👨‍👩‍👧 Connect trusted family members  
+👨‍👩‍👧 Connect with trusted family members  
 💗 Access mental and emotional support  
-🔒 Maintain private personal notes  
-👩‍⚕️ Access doctor-related support and information  
+🔒 Write private personal notes  
+👩‍⚕️ Access doctor-related support  
 
-The goal is simple:
+### Our core principle:
 
-> **Support women through menopause without taking control away from them.**
+> **Support, don't take over.**
+
+The woman remains in control of her personal information and decides what is shared with connected family members.
 
 ---
 
 # ✨ Key Features
 
-## 1. 👩 Personalized Woman's Dashboard
+## 🌸 1. Personalized Dashboard
 
-The dashboard provides a quick overview of the user's wellness journey.
+The MenoBloom dashboard provides a quick overview of the user's wellness journey.
 
-It includes:
+It displays:
 
 - Menopause stage
 - Symptoms recorded
 - Meals tracked
 - Pending reminders
-- Wellness tracking overview
+- Wellness tracking progress
 - Personalized information
+
+![Woman Dashboard](screenshots/04-woman-dashboard.png)
 
 ---
 
-## 2. 🌸 Symptom Tracking
+# 🌸 2. Symptom Tracking
 
-Users can record symptoms such as:
+Users can record and monitor symptoms associated with menopause.
 
-- Hot flashes
-- Night sweats
-- Sleep problems
-- Mood changes
+Supported symptoms include:
+
+- Hot Flashes
+- Night Sweats
+- Sleep Problems
+- Mood Changes
 - Anxiety
 - Fatigue
-- Headaches
-- Joint/muscle discomfort
-- Brain fog
-- Vaginal dryness
-- Urinary changes
+- Headache
+- Joint/Muscle Discomfort
+- Brain Fog
+- Vaginal Dryness
+- Urinary Changes
 
-Each symptom can include:
+Each entry can contain:
 
+- Symptom
 - Severity
 - Frequency
 - Date
-- Personal notes
+- Notes
 
-This allows users to build a personal history of their symptoms.
+![Symptom Tracking](screenshots/05-symptom-tracking.png)
 
 ---
 
-## 3. 📊 Symptom Analysis
+# 📊 3. Symptom Analysis
 
-MenoBloom transforms recorded symptom information into visual insights.
+MenoBloom converts recorded symptom information into visual insights.
 
-The analysis page provides:
+The analysis section provides:
 
-- Symptom frequency over time
+- Symptom trends
+- Symptom frequency
 - Symptom breakdown
 - Recent symptom entries
 - Visual graphs
-- Tracking insights
 
-The graph updates using the user's actual recorded symptom data.
+This helps users understand their personal tracking patterns over time.
 
-> **Note:** The analysis is intended for wellness tracking and is not a medical diagnosis.
+![Analysis](screenshots/06-analysis.png)
+
+> **Disclaimer:** MenoBloom's analysis is intended for wellness tracking and educational purposes. It is not a medical diagnosis.
 
 ---
 
-## 4. 🥗 Nutrition Tracking
+# 🥗 4. Nutrition Tracking
 
-Users can record their meals and monitor nutritional information including:
+Users can record their meals and monitor nutritional information.
+
+The platform tracks:
 
 - Calories
 - Protein
@@ -127,195 +144,169 @@ Users can record their meals and monitor nutritional information including:
 - Fat
 - Fiber
 
-The platform also stores health and menopause-related benefits associated with meals.
+It also provides stored information about:
 
-This helps users become more aware of their nutritional habits during menopause.
+- Health benefits
+- Menopause-related benefits
+- Food-related wellness insights
+
+![Nutrition](screenshots/07-nutrition.png)
 
 ---
 
-## 5. 🔔 Health Reminders
+# 🔔 5. Health Reminders
 
-Users can create reminders for important health activities.
+MenoBloom helps users keep track of important health activities.
 
-Examples include:
+Reminder categories include:
 
-- Cancer screening
-- Cervical cancer screening
-- Bone health
-- Routine health checks
+- Cancer Screening
+- Cervical Cancer Screening
+- Bone Health
+- Routine Health Check
 - Medication
-- Doctor appointments
-- Follow-ups
-- Custom reminders
+- Doctor Appointment
+- Follow-up
+- Custom Reminder
 
-Users can mark reminders as completed and keep track of upcoming tasks.
+Users can:
 
----
-
-## 6. 👨‍👩‍👧 Family Support & Account Connection
-
-MenoBloom allows a woman to connect with a trusted family member.
-
-The connection system uses a unique connection code.
-
-The woman remains in control of what information is shared.
-
-Possible shared categories include:
-
-- 🌸 Symptoms
-- 🥗 Nutrition
-- 🔔 Reminders
-
-Family members do not automatically receive private health information simply because their accounts are connected.
-
-### Design principle:
-
-> **Support, don't take over.**
-
----
-
-## 7. 💗 Mental & Emotional Support
-
-MenoBloom includes a dedicated mental-support area designed to provide a safe space for users to express what they are feeling.
-
-The feature is intended to provide supportive conversation and emotional encouragement.
-
-It is not intended to replace professional mental-health care.
-
----
-
-## 8. 🔒 Secret Notes
-
-Users can maintain private personal notes where they can write down:
-
-- How they are feeling
-- Personal thoughts
-- Difficult experiences
-- Emotional reflections
-- Things they may want to remember
-- Private wellness observations
-
-These notes are separate from family-sharing functionality.
-
----
-
-## 9. 👩‍⚕️ Doctor Support
-
-MenoBloom also provides a dedicated area for doctor-related guidance and support.
-
-This helps users organize their health journey and encourages appropriate professional consultation when needed.
-
----
-
-# 🖥️ Screenshots
-
-## 🏠 Homepage
-
-![MenoBloom Homepage](screenshots/01-homepage.png)
-
----
-
-## 🔐 Login
-
-![MenoBloom Login](screenshots/02-login.png)
-
----
-
-## 📝 Signup
-
-![MenoBloom Signup](screenshots/03-signup.png)
-
----
-
-## 👩 Woman Dashboard
-
-![Woman Dashboard](screenshots/04-woman-dashboard.png)
-
----
-
-## 🌸 Symptom Tracking
-
-![Symptom Tracking](screenshots/05-symptom-tracking.png)
-
----
-
-## 📊 Analysis
-
-![Analysis](screenshots/06-analysis.png)
-
-The analysis dashboard visualizes recorded symptoms and helps users identify patterns over time.
-
----
-
-## 🥗 Nutrition
-
-![Nutrition Tracking](screenshots/07-nutrition.png)
-
----
-
-## 🔔 Reminders
+- Create reminders
+- Add due dates
+- Add notes
+- Mark reminders as completed
+- View upcoming reminders
 
 ![Health Reminders](screenshots/08-reminder.png)
 
 ---
 
-## 👨‍👩‍👧 Family Support
+# 👨‍👩‍👧 6. Family Support
+
+MenoBloom allows women to connect with trusted family members.
+
+A woman can generate a unique connection code and share it with someone she trusts.
+
+The family member can then use the code to request a connection.
 
 ![Family Support](screenshots/09-family-support.png)
 
 ---
 
-## 🔗 Connected Family Account
+# 🔗 7. Controlled Family Sharing
+
+After accounts are connected, the woman controls what information is shared.
+
+Possible sharing categories include:
+
+- 🌸 Symptoms
+- 🥗 Nutrition
+- 🔔 Reminders
+
+Information is not automatically exposed simply because two accounts are connected.
 
 ![Connected Family Account](screenshots/10-family-connected.png)
 
+### Privacy principle
+
+> **Connected does not mean unrestricted access.**
+
 ---
 
-## 👩‍⚕️ Doctor Help
+# 💗 8. Mental & Emotional Support
+
+MenoBloom includes a dedicated mental-support section where users can express what they are feeling and receive supportive conversational guidance.
+
+The feature is designed to provide:
+
+- Emotional support
+- A space to express feelings
+- Encouragement
+- Supportive conversation
+- A private place to reflect
+
+It is designed as a wellness-support feature and does not replace professional mental-health care.
+
+---
+
+# 🔒 9. Secret Notes
+
+MenoBloom provides a private notes section where users can write down things they may not want to share with anyone else.
+
+Users can write about:
+
+- Personal feelings
+- Emotional experiences
+- Difficult days
+- Private thoughts
+- Personal reflections
+- Wellness observations
+
+These notes are kept separate from the family-sharing system.
+
+---
+
+# 👩‍⚕️ 10. Doctor Support
+
+MenoBloom also provides a doctor-support section to help users access useful health-related guidance and encourage appropriate professional consultation.
 
 ![Doctor Help](screenshots/11-doctor-help.png)
 
 ---
 
+# 🔐 Privacy by Design
+
+Privacy is a core principle of MenoBloom.
+
+The platform is designed so that:
+
+- Personal information remains associated with the user's account.
+- Family members do not automatically receive private information.
+- Sharing is controlled by the woman.
+- Private notes are separate from shared information.
+- Family connections require a connection code.
+- Connected accounts only receive information that has been explicitly shared.
+
+This allows family members to provide meaningful support without removing the woman's control over her information.
+
+---
+
 # 🏗️ System Architecture
 
-MenoBloom follows a Django-based web application architecture.
-
 ```text
-                         ┌─────────────────────┐
-                         │       User          │
-                         └──────────┬──────────┘
-                                    │
-                                    ▼
-                         ┌─────────────────────┐
-                         │     MenoBloom       │
-                         │    Web Interface    │
-                         └──────────┬──────────┘
-                                    │
-                                    ▼
-                         ┌─────────────────────┐
-                         │       Django        │
-                         │   Backend / Views   │
-                         └──────────┬──────────┘
-                                    │
-              ┌─────────────────────┼─────────────────────┐
-              │                     │                     │
-              ▼                     ▼                     ▼
-       ┌─────────────┐       ┌─────────────┐       ┌─────────────┐
-       │   Symptoms  │       │  Nutrition  │       │  Reminders  │
-       └─────────────┘       └─────────────┘       └─────────────┘
-              │                     │                     │
-              └─────────────────────┼─────────────────────┘
-                                    │
-                                    ▼
-                         ┌─────────────────────┐
-                         │     User Data       │
-                         │    & Profiles       │
-                         └──────────┬──────────┘
-                                    │
-                   ┌────────────────┴────────────────┐
-                   │                                 │
-                   ▼                                 ▼
-          ┌─────────────────┐              ┌─────────────────┐
-          │ Family Support  │              │ Private Notes   │
-          └─────────────────┘              └─────────────────┘
+                         ┌───────────────────┐
+                         │       USER        │
+                         └─────────┬─────────┘
+                                   │
+                                   ▼
+                         ┌───────────────────┐
+                         │     MenoBloom     │
+                         │    Web Interface  │
+                         └─────────┬─────────┘
+                                   │
+                                   ▼
+                         ┌───────────────────┐
+                         │      Django       │
+                         │ Backend / Views   │
+                         └─────────┬─────────┘
+                                   │
+              ┌────────────────────┼────────────────────┐
+              │                    │                    │
+              ▼                    ▼                    ▼
+       ┌──────────────┐     ┌──────────────┐     ┌──────────────┐
+       │   Symptoms   │     │  Nutrition   │     │  Reminders   │
+       └──────────────┘     └──────────────┘     └──────────────┘
+              │                    │                    │
+              └────────────────────┼────────────────────┘
+                                   │
+                                   ▼
+                         ┌───────────────────┐
+                         │   User Profile    │
+                         └─────────┬─────────┘
+                                   │
+                    ┌──────────────┴──────────────┐
+                    │                             │
+                    ▼                             ▼
+           ┌─────────────────┐          ┌─────────────────┐
+           │ Family Support  │          │  Private Notes  │
+           └─────────────────┘          └─────────────────┘
