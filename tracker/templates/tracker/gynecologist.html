@@ -372,6 +372,83 @@
             }
         }
 
+    
+        /* =====================================================
+           ENHANCED FINDER
+        ===================================================== */
+
+        .finder-panel {
+            margin-top: 25px;
+            background: #fffafd;
+            border: 1px solid #efd5e1;
+            border-radius: 18px;
+            padding: 22px;
+            text-align: left;
+        }
+
+        .finder-panel h3 {
+            font-size: 17px;
+            margin-bottom: 6px;
+        }
+
+        .finder-panel p {
+            color: #888;
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+
+        .search-row {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr auto;
+            gap: 10px;
+        }
+
+        .search-row input,
+        .search-row select {
+            width: 100%;
+            border: 1px solid #e4d7dd;
+            border-radius: 10px;
+            padding: 12px 13px;
+            background: white;
+            color: #444;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .search-row input:focus,
+        .search-row select:focus {
+            border-color: #bd5b88;
+            box-shadow: 0 0 0 3px rgba(189, 91, 136, 0.10);
+        }
+
+        .search-action {
+            border: none;
+            border-radius: 10px;
+            padding: 12px 17px;
+            background: #bd5b88;
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .search-action:hover {
+            background: #a94c77;
+        }
+
+        .finder-note {
+            margin-top: 12px;
+            color: #999;
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 700px) {
+            .search-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
     </style>
 
 </head>
@@ -442,6 +519,63 @@
 
 
         <div id="status"></div>
+
+        <div class="finder-panel">
+
+            <h3>🔎 Search by area</h3>
+
+            <p>
+                Enter a city or area and choose the type of care
+                you want to find.
+            </p>
+
+            <div class="search-row">
+
+                <input
+                    id="areaInput"
+                    type="text"
+                    placeholder="e.g. Pune, Mumbai, Delhi"
+                    autocomplete="off"
+                >
+
+                <select id="specialtyInput">
+
+                    <option value="gynecologist">
+                        Gynecologist
+                    </option>
+
+                    <option value="menopause specialist">
+                        Menopause Specialist
+                    </option>
+
+                    <option value="women's health clinic">
+                        Women's Health Clinic
+                    </option>
+
+                    <option value="hospital">
+                        Hospital
+                    </option>
+
+                </select>
+
+                <button
+                    type="button"
+                    class="search-action"
+                    onclick="searchByArea()"
+                >
+                    Search
+                </button>
+
+            </div>
+
+            <div class="finder-note">
+                Search opens Google Maps so you can view current
+                nearby listings, directions, ratings and contact
+                information. MenoBloom does not independently
+                verify provider availability or credentials.
+            </div>
+
+        </div>
 
     </section>
 
@@ -534,7 +668,7 @@
 
 
             <a
-                href="https://www.google.com/maps/search/women's+health+clinic+near+me"
+                href="https://www.google.com/maps/search/womens+health+clinic+near+me"
                 target="_blank"
                 class="map-button"
             >
@@ -626,6 +760,58 @@
 
 <script>
 
+    function openMapsSearch(query) {
+
+        const mapsURL =
+            "https://www.google.com/maps/search/" +
+            encodeURIComponent(query);
+
+        window.open(mapsURL, "_blank");
+
+    }
+
+
+    function searchByArea() {
+
+        const area =
+            document.getElementById("areaInput")
+                .value.trim();
+
+        const specialty =
+            document.getElementById("specialtyInput")
+                .value;
+
+        const status =
+            document.getElementById("status");
+
+
+        if (!area) {
+
+            status.innerText =
+                "Please enter a city or area first.";
+
+            document
+                .getElementById("areaInput")
+                .focus();
+
+            return;
+
+        }
+
+
+        status.innerText =
+            "🔎 Opening nearby " +
+            specialty +
+            " listings...";
+
+
+        openMapsSearch(
+            specialty + " near " + area
+        );
+
+    }
+
+
     function findDoctors() {
 
         const status =
@@ -639,9 +825,11 @@
         if (!navigator.geolocation) {
 
             status.innerText =
-                "Location is not supported by your browser.";
+                "Location is not supported by your browser. " +
+                "Use the area search below instead.";
 
             return;
+
         }
 
 
@@ -657,15 +845,17 @@
 
 
                 status.innerText =
-                    "✅ Location found. Opening nearby doctors...";
+                    "✅ Location found. Opening nearby gynecologists...";
 
 
                 const mapsURL =
-                    "https://www.google.com/maps/search/gynecologist/@"
-                    + latitude
-                    + ","
-                    + longitude
-                    + ",14z";
+                    "https://www.google.com/maps/search/" +
+                    encodeURIComponent("gynecologist") +
+                    "/@" +
+                    latitude +
+                    "," +
+                    longitude +
+                    ",14z";
 
 
                 window.open(
@@ -676,19 +866,57 @@
             },
 
 
-            function(error) {
+            function() {
 
                 status.innerText =
-                    "Unable to access your location. "
-                    + "You can use the search options below.";
+                    "Unable to access your location. " +
+                    "You can search by city or area below.";
 
+            },
+
+            {
+                enableHighAccuracy: true,
+                timeout: 10000,
+                maximumAge: 300000
             }
 
         );
 
     }
 
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function() {
+
+            const input =
+                document.getElementById("areaInput");
+
+
+            if (input) {
+
+                input.addEventListener(
+                    "keydown",
+                    function(event) {
+
+                        if (
+                            event.key === "Enter"
+                        ) {
+
+                            searchByArea();
+
+                        }
+
+                    }
+                );
+
+            }
+
+        }
+    );
+
 </script>
+
 
 
 </body>

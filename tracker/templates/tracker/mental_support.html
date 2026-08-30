@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>MenoBloom | Mental Support</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+
+            margin: 0;
+
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
+            background: #fff8fa;
+
+            color: #443939;
+        }
+
+
+        .navbar {
+
+            height: 74px;
+
+            background: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 7%;
+
+            border-bottom:
+                1px solid #f0e2e6;
+        }
+
+
+        .brand {
+
+            font-size: 23px;
+
+            font-weight: 800;
+
+            color: #b45b82;
+
+            text-decoration: none;
+        }
+
+
+        .nav-links {
+
+            display: flex;
+
+            gap: 25px;
+
+            align-items: center;
+        }
+
+
+        .nav-links a {
+
+            text-decoration: none;
+
+            color: #665858;
+
+            font-weight: 600;
+
+            font-size: 14px;
+        }
+
+
+        .page {
+
+            width: min(950px, 92%);
+
+            margin: 45px auto;
+        }
+
+
+        .heading h1 {
+
+            font-size: 34px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .heading p {
+
+            color: #8b7c7c;
+
+            margin-bottom: 30px;
+        }
+
+
+        .chat-card {
+
+            background: white;
+
+            border-radius: 22px;
+
+            border: 1px solid #f0dfe5;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 10px 30px
+                rgba(90,50,60,.05);
+        }
+
+
+        .chat-header {
+
+            padding: 22px 25px;
+
+            background: #fff1f5;
+
+            border-bottom:
+                1px solid #f0dfe5;
+        }
+
+
+        .chat-header h2 {
+
+            margin: 0 0 5px;
+
+            color: #a95078;
+        }
+
+
+        .chat-header p {
+
+            margin: 0;
+
+            color: #8b777d;
+
+            font-size: 13px;
+        }
+
+
+        .chat-area {
+
+            padding: 25px;
+
+            min-height: 420px;
+
+            max-height: 520px;
+
+            overflow-y: auto;
+
+            background: #fffafb;
+        }
+
+
+        .message {
+
+            margin-bottom: 17px;
+
+            display: flex;
+        }
+
+
+        .message.user {
+
+            justify-content: flex-end;
+        }
+
+
+        .bubble {
+
+            max-width: 72%;
+
+            padding: 13px 16px;
+
+            border-radius: 17px;
+
+            font-size: 14px;
+
+            line-height: 1.55;
+        }
+
+
+        .bot .bubble {
+
+            background: white;
+
+            border:
+                1px solid #f0dfe5;
+        }
+
+
+        .user .bubble {
+
+            background: #b65e85;
+
+            color: white;
+        }
+
+
+        .chat-form {
+
+            display: flex;
+
+            gap: 10px;
+
+            padding: 18px;
+
+            border-top:
+                1px solid #f0e2e6;
+
+            background: white;
+        }
+
+
+        .chat-input {
+
+            flex: 1;
+
+            border:
+                1px solid #e6d6da;
+
+            border-radius: 13px;
+
+            padding: 13px;
+
+            font-size: 14px;
+
+            outline: none;
+        }
+
+
+        .chat-input:focus {
+
+            border-color: #c27797;
+        }
+
+
+        .send-button {
+
+            border: none;
+
+            border-radius: 13px;
+
+            padding: 0 22px;
+
+            background: #b45d82;
+
+            color: white;
+
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+
+        .privacy {
+
+            margin-top: 18px;
+
+            padding: 16px;
+
+            border-radius: 13px;
+
+            background: #f7f7f7;
+
+            color: #777;
+
+            font-size: 12px;
+
+            line-height: 1.6;
+        }
+
+
+        @media(max-width:700px) {
+
+            .navbar {
+
+                padding: 0 20px;
+            }
+
+            .nav-links {
+
+                gap: 10px;
+            }
+
+            .nav-links a {
+
+                display: none;
+            }
+
+            .bubble {
+
+                max-width: 85%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<nav class="navbar">
+
+    <a
+        href="{% url 'dashboard' %}"
+        class="brand"
+    >
+        🌸 MenoBloom
+    </a>
+
+
+    <div class="nav-links">
+
+        <a href="{% url 'dashboard' %}">
+            Dashboard
+        </a>
+
+        <a href="{% url 'secret_notes' %}">
+            🔐 Secret Notes
+        </a>
+
+        <a href="{% url 'profile' %}">
+            Profile
+        </a>
+
+        <a href="{% url 'logout' %}">
+            Logout
+        </a>
+
+    </div>
+
+</nav>
+
+
+<main class="page">
+
+
+    <div class="heading">
+
+        <h1>
+            💗 A Safe Space to Talk
+        </h1>
+
+        <p>
+            You can talk about your feelings,
+            worries, stress, or anything that's
+            on your mind.
+        </p>
+
+    </div>
+
+
+    <section class="chat-card">
+
+
+        <div class="chat-header">
+
+            <h2>
+                🌸 MenoBloom Support
+            </h2>
+
+            <p>
+                A gentle space to reflect and
+                feel heard.
+            </p>
+
+        </div>
+
+
+        <div class="chat-area">
+
+
+            {% if not messages %}
+
+                <div class="message bot">
+
+                    <div class="bubble">
+
+                        Hi 🌸 I'm here to listen.
+
+                        <br><br>
+
+                        You can tell me how you're
+                        feeling today, what's worrying
+                        you, or simply write what's
+                        on your mind.
+
+                    </div>
+
+                </div>
+
+            {% endif %}
+
+
+            {% for message in messages %}
+
+                <div
+                    class="
+                        message
+                        {% if message.sender == 'user' %}
+                            user
+                        {% else %}
+                            bot
+                        {% endif %}
+                    "
+                >
+
+                    <div class="bubble">
+
+                        {{ message.message|linebreaksbr }}
+
+                    </div>
+
+                </div>
+
+            {% endfor %}
+
+
+        </div>
+
+
+        <form
+            method="POST"
+            class="chat-form"
+        >
+
+            {% csrf_token %}
+
+            <input
+                type="text"
+                name="message"
+                class="chat-input"
+                placeholder="Tell me how you're feeling..."
+                autocomplete="off"
+                required
+            >
+
+
+            <button
+                type="submit"
+                class="send-button"
+            >
+                Send
+            </button>
+
+        </form>
+
+
+    </section>
+
+
+    <div class="privacy">
+
+        🔒 <strong>Your conversations are private.</strong>
+
+        This support space is not a substitute
+        for professional mental-health care.
+        If you are in immediate danger or think
+        you may hurt yourself, contact emergency
+        services or a qualified professional
+        immediately.
+
+    </div>
+
+
+</main>
+
+
+</body>
+
+</html>

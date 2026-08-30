@@ -1,0 +1,1496 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Profile | Menopause Care</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
+            background: #faf8f6;
+            color: #3f3535;
+        }
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .navbar {
+            height: 76px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 55px;
+
+            background: #ffffff;
+
+            border-bottom: 1px solid #eee5e2;
+
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            text-decoration: none;
+            color: #493b3b;
+
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .brand-icon {
+            width: 38px;
+            height: 38px;
+
+            border-radius: 12px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #f4e4e8;
+
+            font-size: 19px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #756969;
+
+            font-size: 14px;
+            font-weight: 500;
+
+            transition: 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: #9b6874;
+        }
+
+        .nav-links .active {
+            color: #9b6874;
+            font-weight: 700;
+        }
+
+        .logout-btn {
+            padding: 9px 17px;
+
+            border-radius: 10px;
+
+            border: 1px solid #eadde0;
+
+            background: #fff7f8;
+
+            color: #8f5d69 !important;
+        }
+
+        /* =====================================================
+           PAGE
+        ===================================================== */
+
+        .page {
+            width: min(1080px, 92%);
+
+            margin: 45px auto 70px;
+        }
+
+        .page-heading {
+            margin-bottom: 30px;
+        }
+
+        .page-heading h1 {
+            margin: 0 0 8px;
+
+            font-size: 32px;
+
+            color: #463838;
+        }
+
+        .page-heading p {
+            margin: 0;
+
+            color: #8a7d7d;
+
+            font-size: 15px;
+        }
+
+        /* =====================================================
+           ERROR
+        ===================================================== */
+
+        .error-box {
+            margin-bottom: 22px;
+
+            padding: 14px 18px;
+
+            border-radius: 12px;
+
+            background: #fff0f0;
+
+            border: 1px solid #f1cccc;
+
+            color: #a34d4d;
+
+            font-size: 14px;
+        }
+
+        /* =====================================================
+           GRID
+        ===================================================== */
+
+        .profile-grid {
+            display: grid;
+
+            grid-template-columns:
+                minmax(0, 1fr)
+                minmax(0, 1fr);
+
+            gap: 25px;
+        }
+
+        .card {
+            background: #ffffff;
+
+            border: 1px solid #eee5e2;
+
+            border-radius: 20px;
+
+            padding: 28px;
+
+            box-shadow:
+                0 8px 25px rgba(70, 50, 50, 0.045);
+        }
+
+        .card.full {
+            grid-column: 1 / -1;
+        }
+
+        .card-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            margin-bottom: 23px;
+        }
+
+        .card-icon {
+            width: 42px;
+            height: 42px;
+
+            border-radius: 13px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #f7e9ec;
+
+            font-size: 19px;
+        }
+
+        .card-title h2 {
+            margin: 0;
+
+            font-size: 19px;
+
+            color: #493b3b;
+        }
+
+        .card-title p {
+            margin: 3px 0 0;
+
+            color: #968989;
+
+            font-size: 12px;
+        }
+
+        /* =====================================================
+           FORM
+        ===================================================== */
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+
+            margin-bottom: 7px;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            color: #655858;
+        }
+
+        .form-group input {
+            width: 100%;
+
+            padding: 12px 14px;
+
+            border: 1px solid #e7dedd;
+
+            border-radius: 11px;
+
+            background: #fff;
+
+            color: #463838;
+
+            font-size: 14px;
+
+            outline: none;
+
+            transition: 0.2s ease;
+        }
+
+        .form-group input:focus {
+            border-color: #c89ba6;
+
+            box-shadow:
+                0 0 0 3px rgba(200, 155, 166, 0.12);
+        }
+
+        .form-group input:disabled {
+            background: #f8f5f4;
+
+            color: #827575;
+        }
+
+        /* =====================================================
+           ROLE BADGE
+        ===================================================== */
+
+        .role-badge {
+            display: inline-flex;
+
+            align-items: center;
+
+            padding: 7px 12px;
+
+            border-radius: 20px;
+
+            background: #f7e9ec;
+
+            color: #8c5967;
+
+            font-size: 12px;
+
+            font-weight: 700;
+        }
+
+        /* =====================================================
+           INFO ROWS
+        ===================================================== */
+
+        .info-list {
+            display: flex;
+            flex-direction: column;
+
+            gap: 0;
+        }
+
+        .info-row {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 15px 0;
+
+            border-bottom: 1px solid #f0e9e7;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            color: #8a7c7c;
+
+            font-size: 13px;
+        }
+
+        .info-value {
+            color: #4e4141;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            text-align: right;
+        }
+
+        /* =====================================================
+           SAVE BUTTON
+        ===================================================== */
+
+        .save-area {
+            margin-top: 10px;
+
+            display: flex;
+
+            justify-content: flex-end;
+        }
+
+        .save-btn {
+            border: none;
+
+            border-radius: 12px;
+
+            padding: 12px 23px;
+
+            background: #9c6875;
+
+            color: white;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.2s ease;
+        }
+
+        .save-btn:hover {
+            background: #895663;
+
+            transform: translateY(-1px);
+        }
+
+        /* =====================================================
+           FAMILY CONNECTION
+        ===================================================== */
+
+        .connection-box {
+            padding: 20px;
+
+            border-radius: 16px;
+
+            background: #fcf6f7;
+
+            border: 1px solid #f0dfe3;
+
+            margin-bottom: 22px;
+        }
+
+        .connection-label {
+            font-size: 12px;
+
+            color: #927e82;
+
+            margin-bottom: 8px;
+        }
+
+        .connection-code {
+            font-size: 25px;
+
+            letter-spacing: 3px;
+
+            color: #79515c;
+
+            font-weight: 800;
+        }
+
+        .connection-description {
+            margin: 9px 0 0;
+
+            font-size: 12px;
+
+            line-height: 1.6;
+
+            color: #8b7b7f;
+        }
+
+        .connected-person {
+            display: flex;
+
+            align-items: center;
+
+            gap: 13px;
+
+            padding: 15px;
+
+            margin-top: 17px;
+
+            border-radius: 13px;
+
+            background: #ffffff;
+
+            border: 1px solid #eee2e4;
+        }
+
+        .person-avatar {
+            width: 42px;
+            height: 42px;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #f1e1e5;
+
+            font-size: 18px;
+        }
+
+        .person-name {
+            font-size: 14px;
+
+            font-weight: 700;
+
+            color: #4f4040;
+        }
+
+        .person-status {
+            margin-top: 3px;
+
+            font-size: 11px;
+
+            color: #8d7c7c;
+        }
+
+        /* =====================================================
+           SHARING
+        ===================================================== */
+
+        .sharing-intro {
+            font-size: 13px;
+
+            line-height: 1.65;
+
+            color: #887b7b;
+
+            margin-bottom: 20px;
+        }
+
+        .sharing-option {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding: 16px 0;
+
+            border-bottom: 1px solid #f0e9e7;
+        }
+
+        .sharing-option:last-child {
+            border-bottom: none;
+        }
+
+        .sharing-text {
+            flex: 1;
+        }
+
+        .sharing-name {
+            font-size: 14px;
+
+            font-weight: 700;
+
+            color: #514343;
+
+            margin-bottom: 4px;
+        }
+
+        .sharing-description {
+            font-size: 11px;
+
+            line-height: 1.5;
+
+            color: #938686;
+        }
+
+        /* =====================================================
+           SWITCH
+        ===================================================== */
+
+        .switch {
+            position: relative;
+
+            width: 48px;
+            height: 27px;
+
+            flex-shrink: 0;
+        }
+
+        .switch input {
+            opacity: 0;
+
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+
+            cursor: pointer;
+
+            inset: 0;
+
+            background: #ddd5d4;
+
+            border-radius: 30px;
+
+            transition: 0.25s ease;
+        }
+
+        .slider:before {
+            content: "";
+
+            position: absolute;
+
+            width: 21px;
+            height: 21px;
+
+            left: 3px;
+            top: 3px;
+
+            background: white;
+
+            border-radius: 50%;
+
+            box-shadow:
+                0 2px 5px rgba(0,0,0,0.12);
+
+            transition: 0.25s ease;
+        }
+
+        .switch input:checked + .slider {
+            background: #a86e7b;
+        }
+
+        .switch input:checked + .slider:before {
+            transform: translateX(21px);
+        }
+
+        /* =====================================================
+           FAMILY PROFILE
+        ===================================================== */
+
+        .family-empty {
+            text-align: center;
+
+            padding: 20px 10px;
+
+            color: #8d8080;
+        }
+
+        .family-empty-icon {
+            font-size: 34px;
+
+            margin-bottom: 10px;
+        }
+
+        .family-empty h3 {
+            margin: 0 0 7px;
+
+            color: #584848;
+
+            font-size: 17px;
+        }
+
+        .family-empty p {
+            margin: 0;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+        }
+
+        /* =====================================================
+           DISCONNECT
+        ===================================================== */
+
+        .danger-area {
+            margin-top: 25px;
+
+            padding-top: 22px;
+
+            border-top: 1px solid #f0e6e6;
+        }
+
+        .danger-btn {
+            display: inline-block;
+
+            padding: 10px 16px;
+
+            border-radius: 10px;
+
+            border: 1px solid #eccfd2;
+
+            background: #fff6f7;
+
+            color: #a75d67;
+
+            text-decoration: none;
+
+            font-size: 12px;
+
+            font-weight: 700;
+        }
+
+        .danger-btn:hover {
+            background: #fcebed;
+        }
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 800px) {
+
+            .navbar {
+                padding: 0 20px;
+            }
+
+            .nav-links {
+                gap: 13px;
+            }
+
+            .nav-links a:not(.logout-btn) {
+                display: none;
+            }
+
+            .page {
+                margin-top: 30px;
+            }
+
+            .profile-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card.full {
+                grid-column: auto;
+            }
+
+            .card {
+                padding: 22px;
+            }
+
+            .page-heading h1 {
+                font-size: 27px;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<nav class="navbar">
+
+    <a
+        href="{% url 'home' %}"
+        class="brand"
+    >
+
+        <span class="brand-icon">
+            🌸
+        </span>
+
+        <span>
+            Menopause Care
+        </span>
+
+    </a>
+
+
+    <div class="nav-links">
+
+        {% if profile.role == "family" %}
+
+            <a href="{% url 'family' %}">
+                Family Support
+            </a>
+
+        {% else %}
+
+            <a href="{% url 'dashboard' %}">
+                Dashboard
+            </a>
+
+            <a href="{% url 'food' %}">
+                Nutrition
+            </a>
+
+            <a href="{% url 'reminders' %}">
+                Reminders
+            </a>
+
+        {% endif %}
+
+
+        <a
+            href="{% url 'profile' %}"
+            class="active"
+        >
+            Profile
+        </a>
+
+
+        <a
+            href="{% url 'logout' %}"
+            class="logout-btn"
+        >
+            Logout
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main class="page">
+
+
+    <div class="page-heading">
+
+        <h1>
+            Your Profile
+        </h1>
+
+        <p>
+            Manage your account and personal information.
+        </p>
+
+    </div>
+
+
+    {% if error %}
+
+        <div class="error-box">
+            {{ error }}
+        </div>
+
+    {% endif %}
+
+
+    <!-- =====================================================
+         PROFILE FORM
+    ====================================================== -->
+
+    <form
+        method="POST"
+        action="{% url 'profile' %}"
+    >
+
+        {% csrf_token %}
+
+
+        <div class="profile-grid">
+
+
+            <!-- =================================================
+                 BASIC INFORMATION
+            ================================================== -->
+
+            <section class="card">
+
+                <div class="card-title">
+
+                    <div class="card-icon">
+                        👤
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            Account Information
+                        </h2>
+
+                        <p>
+                            Your basic account details
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Username
+                    </label>
+
+                    <input
+                        type="text"
+                        name="username"
+                        value="{{ username }}"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        name="email"
+                        value="{{ email }}"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Account Type
+                    </label>
+
+                    <div>
+
+                        <span class="role-badge">
+
+                            {% if profile.role == "family" %}
+
+                                👨‍👩‍👧 Family Member
+
+                            {% else %}
+
+                                🌸 Woman
+
+                            {% endif %}
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                {% if profile.role == "woman" %}
+
+                    <div class="form-group">
+
+                        <label>
+                            Age
+                        </label>
+
+                        <input
+                            type="number"
+                            name="age"
+                            value="{{ profile.age|default:'' }}"
+                            min="1"
+                            max="120"
+                        >
+
+                    </div>
+
+                {% endif %}
+
+
+            </section>
+
+
+            <!-- =================================================
+                 HEALTH INFORMATION / FAMILY INFO
+            ================================================== -->
+
+            <section class="card">
+
+                {% if profile.role == "woman" %}
+
+                    <div class="card-title">
+
+                        <div class="card-icon">
+                            🌸
+                        </div>
+
+                        <div>
+
+                            <h2>
+                                Health Information
+                            </h2>
+
+                            <p>
+                                Your menopause information
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-list">
+
+
+                        <div class="info-row">
+
+                            <span class="info-label">
+                                Menopause Stage
+                            </span>
+
+                            <span class="info-value">
+                                {{ menopause_stage }}
+                            </span>
+
+                        </div>
+
+
+                        <div class="info-row">
+
+                            <span class="info-label">
+                                Period Status
+                            </span>
+
+                            <span class="info-value">
+                                {{ period_status }}
+                            </span>
+
+                        </div>
+
+
+                        <div class="info-row">
+
+                            <span class="info-label">
+                                Onboarding
+                            </span>
+
+                            <span class="info-value">
+
+                                {% if profile.onboarding_completed %}
+
+                                    Completed ✓
+
+                                {% else %}
+
+                                    Incomplete
+
+                                {% endif %}
+
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+                {% else %}
+
+
+                    <div class="card-title">
+
+                        <div class="card-icon">
+                            👨‍👩‍👧
+                        </div>
+
+                        <div>
+
+                            <h2>
+                                Family Account
+                            </h2>
+
+                            <p>
+                                Your connected account
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    {% if connected_family_member %}
+
+                        <div class="connected-person">
+
+                            <div class="person-avatar">
+                                🌸
+                            </div>
+
+                            <div>
+
+                                <div class="person-name">
+
+                                    {{ connected_family_member.username }}
+
+                                </div>
+
+                                <div class="person-status">
+
+                                    Connected family member
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    {% else %}
+
+                        <div class="family-empty">
+
+                            <div class="family-empty-icon">
+                                🔗
+                            </div>
+
+                            <h3>
+                                No account connected
+                            </h3>
+
+                            <p>
+                                Connect with a woman's account
+                                from the Family Support page.
+                            </p>
+
+                        </div>
+
+                    {% endif %}
+
+
+                {% endif %}
+
+            </section>
+
+
+            <!-- =================================================
+                 FAMILY SHARING
+            ================================================== -->
+
+            {% if profile.role == "woman" %}
+
+                <section class="card full">
+
+                    <div class="card-title">
+
+                        <div class="card-icon">
+                            🔐
+                        </div>
+
+                        <div>
+
+                            <h2>
+                                Family Sharing
+                            </h2>
+
+                            <p>
+                                Choose what your family member
+                                can see
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <p class="sharing-intro">
+
+                        Your health information stays private
+                        unless you choose to share it. Turn
+                        individual categories on or off at
+                        any time.
+
+                    </p>
+
+
+                    {% if family_connection %}
+
+
+                        <!-- SYMPTOMS -->
+
+                        <div class="sharing-option">
+
+                            <div class="sharing-text">
+
+                                <div class="sharing-name">
+                                    🌸 Symptoms
+                                </div>
+
+                                <div class="sharing-description">
+
+                                    Allow your connected family
+                                    member to see your recorded
+                                    symptoms and their severity.
+
+                                </div>
+
+                            </div>
+
+
+                            <label class="switch">
+
+                                <input
+                                    type="checkbox"
+                                    name="share_symptoms"
+
+                                    {% if family_connection.share_symptoms %}
+                                        checked
+                                    {% endif %}
+                                >
+
+                                <span class="slider"></span>
+
+                            </label>
+
+                        </div>
+
+
+                        <!-- NUTRITION -->
+
+                        <div class="sharing-option">
+
+                            <div class="sharing-text">
+
+                                <div class="sharing-name">
+                                    🥗 Nutrition
+                                </div>
+
+                                <div class="sharing-description">
+
+                                    Allow your connected family
+                                    member to see your meal and
+                                    nutrition information.
+
+                                </div>
+
+                            </div>
+
+
+                            <label class="switch">
+
+                                <input
+                                    type="checkbox"
+                                    name="share_nutrition"
+
+                                    {% if family_connection.share_nutrition %}
+                                        checked
+                                    {% endif %}
+                                >
+
+                                <span class="slider"></span>
+
+                            </label>
+
+                        </div>
+
+
+                        <!-- REMINDERS -->
+
+                        <div class="sharing-option">
+
+                            <div class="sharing-text">
+
+                                <div class="sharing-name">
+                                    🔔 Reminders
+                                </div>
+
+                                <div class="sharing-description">
+
+                                    Allow your connected family
+                                    member to see health reminders
+                                    you choose to share.
+
+                                </div>
+
+                            </div>
+
+
+                            <label class="switch">
+
+                                <input
+                                    type="checkbox"
+                                    name="share_reminders"
+
+                                    {% if family_connection.share_reminders %}
+                                        checked
+                                    {% endif %}
+                                >
+
+                                <span class="slider"></span>
+
+                            </label>
+
+                        </div>
+
+
+                    {% else %}
+
+
+                        <div class="family-empty">
+
+                            <div class="family-empty-icon">
+                                🔗
+                            </div>
+
+                            <h3>
+                                No family member connected
+                            </h3>
+
+                            <p>
+                                Connect a family member first.
+                                Once connected, you can choose
+                                what information to share.
+                            </p>
+
+                        </div>
+
+
+                    {% endif %}
+
+
+                </section>
+
+
+                <!-- =================================================
+                     CONNECTION CODE
+                ================================================== -->
+
+                <section class="card full">
+
+                    <div class="card-title">
+
+                        <div class="card-icon">
+                            🔗
+                        </div>
+
+                        <div>
+
+                            <h2>
+                                Family Connection
+                            </h2>
+
+                            <p>
+                                Connect a trusted family member
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    {% if family_connection %}
+
+                        <div class="connection-box">
+
+                            <div class="connection-label">
+                                Your Family Connection Code
+                            </div>
+
+                            <div class="connection-code">
+
+                                {{ family_connection.connection_code }}
+
+                            </div>
+
+                            <p class="connection-description">
+
+                                Give this code to your trusted
+                                family member. They can enter it
+                                from their Family Support page
+                                to request a connection.
+
+                            </p>
+
+
+                            {% if family_connection.family_member %}
+
+                                <div class="connected-person">
+
+                                    <div class="person-avatar">
+                                        👨‍👩‍👧
+                                    </div>
+
+                                    <div>
+
+                                        <div class="person-name">
+
+                                            {{ family_connection.family_member.username }}
+
+                                        </div>
+
+                                        <div class="person-status">
+
+                                            Connected ✓
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            {% endif %}
+
+                        </div>
+
+
+                    {% endif %}
+
+                </section>
+
+
+            {% endif %}
+
+
+            <!-- =================================================
+                 SAVE
+            ================================================== -->
+
+            <section class="card full">
+
+                <div class="save-area">
+
+                    <button
+                        type="submit"
+                        class="save-btn"
+                    >
+                        Save Changes
+                    </button>
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+    </form>
+
+
+    <!-- =====================================================
+         FAMILY DISCONNECT
+    ====================================================== -->
+
+    {% if profile.role == "family" %}
+
+        <section class="card full" style="margin-top: 25px;">
+
+            <div class="card-title">
+
+                <div class="card-icon">
+                    ⚙️
+                </div>
+
+                <div>
+
+                    <h2>
+                        Account Connection
+                    </h2>
+
+                    <p>
+                        Manage your family connection
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            {% if connected_family_member %}
+
+                <p
+                    style="
+                        color:#887b7b;
+                        font-size:13px;
+                        line-height:1.6;
+                        margin-top:0;
+                    "
+                >
+
+                    You are currently connected to
+                    <strong>
+                        {{ connected_family_member.username }}
+                    </strong>.
+
+                    Disconnecting will remove your connection
+                    to this account.
+
+                </p>
+
+
+                <div class="danger-area">
+
+                    <a
+                        href="{% url 'disconnect_family' %}"
+                        class="danger-btn"
+                        onclick="
+                            return confirm(
+                                'Are you sure you want to disconnect this account?'
+                            );
+                        "
+                    >
+                        Disconnect Account
+                    </a>
+
+                </div>
+
+            {% else %}
+
+                <p
+                    style="
+                        color:#887b7b;
+                        font-size:13px;
+                        line-height:1.6;
+                        margin:0;
+                    "
+                >
+
+                    No family account is currently connected.
+
+                </p>
+
+            {% endif %}
+
+        </section>
+
+    {% endif %}
+
+
+</main>
+
+
+</body>
+</html>

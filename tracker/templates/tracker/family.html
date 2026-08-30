@@ -1,418 +1,1741 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Family Support | HerBalance</title>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Family Support | MenoBloom</title>
 
     <style>
 
         * {
             box-sizing: border-box;
-            margin: 0;
-            padding: 0;
         }
 
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #fff7fa;
-            color: #333;
+            margin: 0;
+
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
+            background: #faf8f7;
+
+            color: #493d3d;
         }
 
-        /* NAVBAR */
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
 
         .navbar {
-            height: 78px;
+
+            height: 74px;
+
             background: white;
+
+            border-bottom: 1px solid #eee4e1;
+
             display: flex;
+
             align-items: center;
+
             justify-content: space-between;
-            padding: 0 8%;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+
+            padding: 0 55px;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 100;
         }
 
-        .logo {
-            font-size: 28px;
-            font-weight: bold;
-            color: #b95787;
+
+        .brand {
+
+            text-decoration: none;
+
+            color: #493d3d;
+
+            font-size: 21px;
+
+            font-weight: 700;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
         }
+
+
+        .brand-icon {
+
+            width: 38px;
+
+            height: 38px;
+
+            border-radius: 12px;
+
+            background: #f5e4e8;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 18px;
+        }
+
+
+        .nav-links {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 26px;
+        }
+
+
+        .nav-links a {
+
+            text-decoration: none;
+
+            color: #776b6b;
+
+            font-size: 14px;
+
+            font-weight: 500;
+        }
+
+
+        .nav-links a:hover {
+
+            color: #9c6976;
+        }
+
+
+        .active {
+
+            color: #9c6976 !important;
+
+            font-weight: 700 !important;
+        }
+
 
         .logout {
-            text-decoration: none;
-            color: #b95787;
-            font-weight: bold;
+
+            padding: 9px 16px;
+
+            border-radius: 10px;
+
+            background: #fff5f6;
+
+            border: 1px solid #eddcdf;
+
+            color: #985f6c !important;
         }
 
-        /* HERO */
 
-        .container {
-            width: 78%;
-            margin: 50px auto;
+        /* =====================================================
+           PAGE
+        ===================================================== */
+
+        .page {
+
+            width: min(1100px, 92%);
+
+            margin: 45px auto 70px;
         }
 
-        .hero {
-            background: white;
-            border-radius: 25px;
-            padding: 45px;
-            box-shadow: 0 10px 30px rgba(185,87,135,0.08);
+
+        .heading {
+
             margin-bottom: 30px;
         }
 
-        .hero h1 {
-            font-size: 38px;
-            margin-bottom: 15px;
-        }
 
-        .hero p {
-            font-size: 18px;
-            line-height: 1.7;
-            color: #666;
-        }
+        .heading h1 {
 
-        /* CARDS */
+            margin: 0 0 8px;
 
-        .section-title {
-            font-size: 28px;
-            margin: 35px 0 20px;
-        }
-
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 22px;
-        }
-
-        .card {
-            background: white;
-            padding: 28px;
-            border-radius: 20px;
-            border: 1px solid #f1d8e4;
-            transition: 0.2s;
-        }
-
-        .card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(185,87,135,0.10);
-        }
-
-        .icon {
             font-size: 32px;
-            margin-bottom: 12px;
+
+            color: #493b3b;
         }
 
-        .card h3 {
-            font-size: 21px;
-            margin-bottom: 10px;
-        }
 
-        .card p {
-            color: #666;
+        .heading p {
+
+            margin: 0;
+
+            color: #8d8080;
+
+            font-size: 14px;
+
             line-height: 1.6;
         }
 
-        /* SUPPORT */
 
-        .support {
-            margin-top: 30px;
-            background: #fce8f1;
-            padding: 35px;
-            border-radius: 22px;
+        /* =====================================================
+           MESSAGES
+        ===================================================== */
+
+        .message {
+
+            padding: 14px 18px;
+
+            border-radius: 12px;
+
+            margin-bottom: 20px;
+
+            font-size: 13px;
         }
 
-        .support h2 {
-            margin-bottom: 15px;
+
+        .success {
+
+            background: #eef8f1;
+
+            border: 1px solid #d3ead9;
+
+            color: #4f7959;
         }
 
-        .support ul {
-            padding-left: 25px;
+
+        .error {
+
+            background: #fff0f0;
+
+            border: 1px solid #efd0d0;
+
+            color: #a45252;
         }
 
-        .support li {
-            margin: 12px 0;
+
+        /* =====================================================
+           CONNECTION CARD
+        ===================================================== */
+
+        .connection-card {
+
+            background: white;
+
+            border: 1px solid #eee5e2;
+
+            border-radius: 20px;
+
+            padding: 28px;
+
+            margin-bottom: 25px;
+
+            box-shadow:
+                0 8px 25px rgba(70,50,50,.045);
+        }
+
+
+        .connection-top {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+        }
+
+
+        .avatar {
+
+            width: 52px;
+
+            height: 52px;
+
+            border-radius: 50%;
+
+            background: #f4e4e8;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 22px;
+        }
+
+
+        .connection-title h2 {
+
+            margin: 0 0 4px;
+
+            font-size: 19px;
+        }
+
+
+        .connection-title p {
+
+            margin: 0;
+
+            color: #8e8080;
+
+            font-size: 12px;
+        }
+
+
+        .connected-badge {
+
+            margin-left: auto;
+
+            padding: 7px 12px;
+
+            border-radius: 20px;
+
+            background: #edf7ef;
+
+            color: #52785b;
+
+            font-size: 11px;
+
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           CONNECT FORM
+        ===================================================== */
+
+        .connect-box {
+
+            margin-top: 25px;
+
+            padding-top: 24px;
+
+            border-top: 1px solid #f0e8e6;
+        }
+
+
+        .connect-box h3 {
+
+            margin: 0 0 7px;
+
+            font-size: 16px;
+        }
+
+
+        .connect-box p {
+
+            margin: 0 0 17px;
+
+            color: #8b7e7e;
+
+            font-size: 12px;
+        }
+
+
+        .connect-form {
+
+            display: flex;
+
+            gap: 10px;
+        }
+
+
+        .connect-input {
+
+            flex: 1;
+
+            padding: 12px 14px;
+
+            border: 1px solid #e5dedd;
+
+            border-radius: 11px;
+
+            outline: none;
+
+            font-size: 14px;
+
+            text-transform: uppercase;
+        }
+
+
+        .connect-input:focus {
+
+            border-color: #c79aa5;
+
+            box-shadow:
+                0 0 0 3px rgba(199,154,165,.12);
+        }
+
+
+        .connect-button {
+
+            border: none;
+
+            padding: 12px 20px;
+
+            border-radius: 11px;
+
+            background: #9d6875;
+
+            color: white;
+
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+
+        .connect-button:hover {
+
+            background: #895663;
+        }
+
+
+        /* =====================================================
+           SHARING STATUS
+        ===================================================== */
+
+        .sharing-status {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 12px;
+
+            margin-top: 24px;
+        }
+
+
+        .status-item {
+
+            padding: 15px;
+
+            border-radius: 13px;
+
+            background: #faf7f6;
+
+            border: 1px solid #eee7e5;
+        }
+
+
+        .status-icon {
+
+            font-size: 20px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .status-name {
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            margin-bottom: 4px;
+        }
+
+
+        .status-value {
+
+            font-size: 11px;
+
+            color: #8c8080;
+        }
+
+
+        .shared {
+
+            color: #58775f;
+        }
+
+
+        .not-shared {
+
+            color: #9b8585;
+        }
+
+
+        /* =====================================================
+           SECTION GRID
+        ===================================================== */
+
+        .section-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 24px;
+        }
+
+
+        .data-card {
+
+            background: white;
+
+            border: 1px solid #eee5e2;
+
+            border-radius: 20px;
+
+            padding: 25px;
+
+            box-shadow:
+                0 8px 25px rgba(70,50,50,.04);
+        }
+
+
+        .data-card.full {
+
+            grid-column: 1 / -1;
+        }
+
+
+        .section-title {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .section-icon {
+
+            width: 42px;
+
+            height: 42px;
+
+            border-radius: 13px;
+
+            background: #f6e7ea;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 19px;
+        }
+
+
+        .section-title h2 {
+
+            margin: 0;
+
+            font-size: 18px;
+        }
+
+
+        .section-title p {
+
+            margin: 3px 0 0;
+
+            color: #958888;
+
+            font-size: 11px;
+        }
+
+
+        /* =====================================================
+           DATA ITEMS
+        ===================================================== */
+
+        .data-list {
+
+            display: flex;
+
+            flex-direction: column;
+        }
+
+
+        .data-item {
+
+            padding: 15px 0;
+
+            border-bottom: 1px solid #f0e9e7;
+        }
+
+
+        .data-item:last-child {
+
+            border-bottom: none;
+        }
+
+
+        .data-row {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 15px;
+        }
+
+
+        .data-name {
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            color: #554646;
+        }
+
+
+        .data-date {
+
+            font-size: 11px;
+
+            color: #978989;
+        }
+
+
+        .data-meta {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            margin-top: 7px;
+        }
+
+
+        .pill {
+
+            padding: 5px 9px;
+
+            border-radius: 10px;
+
+            background: #f8eeee;
+
+            color: #8e606a;
+
+            font-size: 10px;
+
+            font-weight: 700;
+        }
+
+
+        .notes {
+
+            margin-top: 7px;
+
+            color: #8d8080;
+
+            font-size: 11px;
+
             line-height: 1.5;
         }
 
-        /* WARNING */
 
-        .warning {
-            margin-top: 30px;
-            background: white;
-            border-left: 5px solid #b95787;
-            padding: 25px;
-            border-radius: 15px;
+        /* =====================================================
+           EMPTY / LOCKED
+        ===================================================== */
+
+        .empty {
+
+            text-align: center;
+
+            padding: 28px 10px;
         }
 
-        .warning h3 {
+
+        .empty-icon {
+
+            font-size: 31px;
+
             margin-bottom: 10px;
         }
 
-        .warning p {
-            color: #666;
+
+        .empty h3 {
+
+            margin: 0 0 7px;
+
+            font-size: 15px;
+
+            color: #5a4b4b;
+        }
+
+
+        .empty p {
+
+            margin: 0;
+
+            color: #918484;
+
+            font-size: 12px;
+
             line-height: 1.6;
         }
 
-        @media(max-width: 800px) {
 
-            .container {
-                width: 90%;
+        .locked {
+
+            background: #fcfaf9;
+
+            border: 1px dashed #e7dedb;
+        }
+
+
+        /* =====================================================
+           REMINDER
+        ===================================================== */
+
+        .reminder-item {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 15px;
+        }
+
+
+        .reminder-title {
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            color: #564747;
+        }
+
+
+        .reminder-type {
+
+            font-size: 10px;
+
+            color: #968989;
+
+            margin-top: 4px;
+        }
+
+
+        .reminder-date {
+
+            font-size: 11px;
+
+            color: #8d6b72;
+
+            white-space: nowrap;
+        }
+
+
+        .completed {
+
+            text-decoration: line-through;
+
+            opacity: .55;
+        }
+
+
+        /* =====================================================
+           DISCONNECT
+        ===================================================== */
+
+        .disconnect-area {
+
+            margin-top: 24px;
+
+            padding-top: 20px;
+
+            border-top: 1px solid #f0e8e6;
+
+            text-align: right;
+        }
+
+
+        .disconnect-button {
+
+            border: 1px solid #eccfd3;
+
+            background: #fff6f7;
+
+            color: #a05e69;
+
+            border-radius: 10px;
+
+            padding: 9px 15px;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 800px) {
+
+            .navbar {
+
+                padding: 0 20px;
             }
 
-            .cards {
+
+            .nav-links {
+
+                gap: 12px;
+            }
+
+
+            .nav-links a:not(.active):not(.logout) {
+
+                display: none;
+            }
+
+
+            .page {
+
+                margin-top: 30px;
+            }
+
+
+            .sharing-status {
+
                 grid-template-columns: 1fr;
             }
 
-            .hero {
-                padding: 30px;
+
+            .section-grid {
+
+                grid-template-columns: 1fr;
             }
 
-            .hero h1 {
-                font-size: 30px;
+
+            .data-card.full {
+
+                grid-column: auto;
+            }
+
+
+            .connect-form {
+
+                flex-direction: column;
+            }
+
+
+            .connected-badge {
+
+                display: none;
             }
 
         }
 
     </style>
+
 </head>
 
 
 <body>
 
-    <!-- NAVBAR -->
 
-    <nav class="navbar">
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
 
-        <div class="logo">
-            🌸 HerBalance
-        </div>
+<nav class="navbar">
 
-        <a href="/login/" class="logout">
+    <a
+        href="{% url 'family' %}"
+        class="brand"
+    >
+
+        <span class="brand-icon">
+            🌸
+        </span>
+
+        <span>
+            MenoBloom
+        </span>
+
+    </a>
+
+
+    <div class="nav-links">
+
+        <a
+            href="{% url 'family' %}"
+            class="active"
+        >
+            Home
+        </a>
+
+
+        <a href="{% url 'reminders' %}">
+            Reminders
+        </a>
+
+
+        <a href="{% url 'profile' %}">
+            Profile
+        </a>
+
+
+        <a
+            href="{% url 'logout' %}"
+            class="logout"
+        >
             Logout
         </a>
 
-    </nav>
+    </div>
+
+</nav>
 
 
-    <!-- MAIN -->
+<!-- =========================================================
+     MAIN
+========================================================= -->
 
-    <main class="container">
-
-        <!-- HERO -->
-
-        <section class="hero">
-
-            <h1>
-                Welcome to HerBalance Family Support 💗
-            </h1>
-
-            <p>
-                Menopause is a natural stage of life that can bring
-                physical, emotional and lifestyle changes. Understanding
-                these changes can help families provide better support,
-                patience and care.
-            </p>
-
-        </section>
+<main class="page">
 
 
-        <!-- UNDERSTANDING MENOPAUSE -->
+    <div class="heading">
 
-        <h2 class="section-title">
-            🌸 Understanding Her Changes
-        </h2>
+        <h1>
+            Family Support
+        </h1>
 
-        <div class="cards">
+        <p>
+            Stay connected with your loved one's
+            menopause journey while respecting
+            their privacy and choices.
+        </p>
 
-            <div class="card">
+    </div>
 
-                <div class="icon">
-                    🔥
+
+    <!-- =====================================================
+         MESSAGES
+    ====================================================== -->
+
+    {% if success %}
+
+        <div class="message success">
+
+            ✓ {{ success }}
+
+        </div>
+
+    {% endif %}
+
+
+    {% if error %}
+
+        <div class="message error">
+
+            {{ error }}
+
+        </div>
+
+    {% endif %}
+
+
+    <!-- =====================================================
+         CONNECTION CARD
+    ====================================================== -->
+
+    <section class="connection-card">
+
+
+        {% if linked_woman %}
+
+
+            <div class="connection-top">
+
+                <div class="avatar">
+                    🌸
                 </div>
 
-                <h3>
-                    Hot Flashes
-                </h3>
 
-                <p>
-                    Sudden feelings of heat and sweating can occur.
-                    Providing a comfortable environment and understanding
-                    her discomfort can help.
-                </p>
+                <div class="connection-title">
+
+                    <h2>
+                        {{ linked_woman.username }}
+                    </h2>
+
+                    <p>
+                        Connected MenoBloom account
+                    </p>
+
+                </div>
+
+
+                <div class="connected-badge">
+                    ✓ CONNECTED
+                </div>
 
             </div>
 
 
-            <div class="card">
+            <!-- =================================================
+                 SHARING STATUS
+            ================================================== -->
 
-                <div class="icon">
-                    😴
+            <div class="sharing-status">
+
+
+                <div class="status-item">
+
+                    <div class="status-icon">
+                        🌸
+                    </div>
+
+                    <div class="status-name">
+                        Symptoms
+                    </div>
+
+                    {% if connection.share_symptoms %}
+
+                        <div class="status-value shared">
+                            ✓ Shared with you
+                        </div>
+
+                    {% else %}
+
+                        <div class="status-value not-shared">
+                            Not shared
+                        </div>
+
+                    {% endif %}
+
                 </div>
 
-                <h3>
-                    Sleep Problems
-                </h3>
 
-                <p>
-                    Hormonal changes can affect sleep. Encourage a calm
-                    bedtime routine and avoid dismissing tiredness as
-                    simply being lazy.
-                </p>
+                <div class="status-item">
+
+                    <div class="status-icon">
+                        🥗
+                    </div>
+
+                    <div class="status-name">
+                        Nutrition
+                    </div>
+
+                    {% if connection.share_nutrition %}
+
+                        <div class="status-value shared">
+                            ✓ Shared with you
+                        </div>
+
+                    {% else %}
+
+                        <div class="status-value not-shared">
+                            Not shared
+                        </div>
+
+                    {% endif %}
+
+                </div>
+
+
+                <div class="status-item">
+
+                    <div class="status-icon">
+                        🔔
+                    </div>
+
+                    <div class="status-name">
+                        Reminders
+                    </div>
+
+                    {% if connection.share_reminders %}
+
+                        <div class="status-value shared">
+                            ✓ Shared with you
+                        </div>
+
+                    {% else %}
+
+                        <div class="status-value not-shared">
+                            Not shared
+                        </div>
+
+                    {% endif %}
+
+                </div>
+
 
             </div>
 
 
-            <div class="card">
+            <!-- =================================================
+                 DISCONNECT
+            ================================================== -->
 
-                <div class="icon">
-                    💭
+            <div class="disconnect-area">
+
+                <form
+                    method="POST"
+                    action="{% url 'disconnect_family' %}"
+                >
+
+                    {% csrf_token %}
+
+                    <button
+                        type="submit"
+                        class="disconnect-button"
+                        onclick="
+                            return confirm(
+                                'Are you sure you want to disconnect this account?'
+                            );
+                        "
+                    >
+                        Disconnect Account
+                    </button>
+
+                </form>
+
+            </div>
+
+
+        {% else %}
+
+
+            <!-- =================================================
+                 NOT CONNECTED
+            ================================================== -->
+
+            <div class="connection-top">
+
+                <div class="avatar">
+                    🔗
                 </div>
 
-                <h3>
-                    Mood Changes
-                </h3>
 
-                <p>
-                    Irritability, anxiety or emotional changes may occur.
-                    Listening without judgement can make a meaningful
-                    difference.
-                </p>
+                <div class="connection-title">
+
+                    <h2>
+                        No account connected yet
+                    </h2>
+
+                    <p>
+                        Connect using the code provided
+                        by your loved one.
+                    </p>
+
+                </div>
 
             </div>
 
 
-            <div class="card">
-
-                <div class="icon">
-                    🦴
-                </div>
+            <div class="connect-box">
 
                 <h3>
-                    Body Changes
+                    Connect an Account
                 </h3>
 
                 <p>
-                    Menopause can affect areas such as bone health,
-                    muscles, metabolism and overall energy.
+                    Enter the connection code from
+                    their MenoBloom Profile.
                 </p>
 
+
+                <form
+                    method="POST"
+                    action="{% url 'family' %}"
+                    class="connect-form"
+                >
+
+                    {% csrf_token %}
+
+                    <input
+                        type="text"
+                        name="connection_code"
+                        class="connect-input"
+                        placeholder="MB-XXXXXX"
+                        autocomplete="off"
+                        required
+                    >
+
+
+                    <button
+                        type="submit"
+                        class="connect-button"
+                    >
+                        Connect Account
+                    </button>
+
+                </form>
+
             </div>
+
+
+        {% endif %}
+
+
+    </section>
+
+
+    <!-- =====================================================
+         SHARED DATA
+    ====================================================== -->
+
+    {% if linked_woman %}
+
+
+        <div class="section-grid">
+
+
+            <!-- =================================================
+                 SYMPTOMS
+            ================================================== -->
+
+            {% if connection.share_symptoms %}
+
+                <section class="data-card">
+
+                    <div class="section-title">
+
+                        <div class="section-icon">
+                            🌸
+                        </div>
+
+                        <div>
+
+                            <h2>
+                                Shared Symptoms
+                            </h2>
+
+                            <p>
+                                Recent symptoms shared with you
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    {% if shared_symptoms %}
+
+                        <div class="data-list">
+
+                            {% for item in shared_symptoms %}
+
+                                <div class="data-item">
+
+                                    <div class="data-row">
+
+                                        <div class="data-name">
+
+                                            {{ item.get_symptom_display }}
+
+                                        </div>
+
+                                        <div class="data-date">
+
+                                            {{ item.date|date:"M d, Y" }}
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="data-meta">
+
+                                        <span class="pill">
+
+                                            {% if item.severity == 1 %}
+                                                Mild
+                                            {% elif item.severity == 2 %}
+                                                Moderate
+                                            {% else %}
+                                                Severe
+                                            {% endif %}
+
+                                        </span>
+
+
+                                        <span
+                                            style="
+                                                font-size:10px;
+                                                color:#958888;
+                                            "
+                                        >
+
+                                            Frequency:
+                                            {{ item.frequency }}
+
+                                        </span>
+
+                                    </div>
+
+
+                                    {% if item.notes %}
+
+                                        <div class="notes">
+
+                                            {{ item.notes }}
+
+                                        </div>
+
+                                    {% endif %}
+
+                                </div>
+
+                            {% endfor %}
+
+                        </div>
+
+                    {% else %}
+
+                        <div class="empty">
+
+                            <div class="empty-icon">
+                                🌿
+                            </div>
+
+                            <h3>
+                                No symptoms recorded
+                            </h3>
+
+                            <p>
+                                There are no shared symptom
+                                entries yet.
+                            </p>
+
+                        </div>
+
+                    {% endif %}
+
+                </section>
+
+            {% else %}
+
+                <section class="data-card locked">
+
+                    <div class="section-title">
+
+                        <div class="section-icon">
+                            🔒
+                        </div>
+
+                        <div>
+
+                            <h2>
+                                Symptoms
+                            </h2>
+
+                            <p>
+                                Private information
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="empty">
+
+                        <div class="empty-icon">
+                            🔒
+                        </div>
+
+                        <h3>
+                            Symptoms are private
+                        </h3>
+
+                        <p>
+                            Your loved one has not enabled
+                            symptom sharing.
+                        </p>
+
+                    </div>
+
+                </section>
+
+            {% endif %}
+
+
+            <!-- =================================================
+                 NUTRITION
+            ================================================== -->
+
+            {% if connection.share_nutrition %}
+
+                <section class="data-card">
+
+                    <div class="section-title">
+
+                        <div class="section-icon">
+                            🥗
+                        </div>
+
+                        <div>
+
+                            <h2>
+                                Shared Nutrition
+                            </h2>
+
+                            <p>
+                                Recent meals shared with you
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    {% if shared_meals %}
+
+                        <div class="data-list">
+
+                            {% for meal in shared_meals %}
+
+                                <div class="data-item">
+
+                                    <div class="data-row">
+
+                                        <div class="data-name">
+
+                                            {{ meal.food_name }}
+
+                                        </div>
+
+                                        <div class="data-date">
+
+                                            {{ meal.date|date:"M d, Y" }}
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="data-meta">
+
+                                        <span class="pill">
+
+                                            {{ meal.get_meal_type_display }}
+
+                                        </span>
+
+
+                                        {% if meal.calories %}
+
+                                            <span
+                                                style="
+                                                    font-size:10px;
+                                                    color:#958888;
+                                                "
+                                            >
+
+                                                {{ meal.calories|floatformat:0 }}
+                                                kcal
+
+                                            </span>
+
+                                        {% endif %}
+
+                                    </div>
+
+
+                                    {% if meal.quantity %}
+
+                                        <div class="notes">
+
+                                            Quantity:
+                                            {{ meal.quantity }}
+
+                                        </div>
+
+                                    {% elif meal.portion %}
+
+                                        <div class="notes">
+
+                                            Portion:
+                                            {{ meal.portion }}
+
+                                        </div>
+
+                                    {% endif %}
+
+                                </div>
+
+                            {% endfor %}
+
+                        </div>
+
+                    {% else %}
+
+                        <div class="empty">
+
+                            <div class="empty-icon">
+                                🥗
+                            </div>
+
+                            <h3>
+                                No meals recorded
+                            </h3>
+
+                            <p>
+                                There are no shared nutrition
+                                entries yet.
+                            </p>
+
+                        </div>
+
+                    {% endif %}
+
+                </section>
+
+            {% else %}
+
+                <section class="data-card locked">
+
+                    <div class="section-title">
+
+                        <div class="section-icon">
+                            🔒
+                        </div>
+
+                        <div>
+
+                            <h2>
+                                Nutrition
+                            </h2>
+
+                            <p>
+                                Private information
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="empty">
+
+                        <div class="empty-icon">
+                            🔒
+                        </div>
+
+                        <h3>
+                            Nutrition is private
+                        </h3>
+
+                        <p>
+                            Your loved one has not enabled
+                            nutrition sharing.
+                        </p>
+
+                    </div>
+
+                </section>
+
+            {% endif %}
+
+
+            <!-- =================================================
+                 REMINDERS
+            ================================================== -->
+
+            {% if connection.share_reminders %}
+
+                <section class="data-card full">
+
+                    <div class="section-title">
+
+                        <div class="section-icon">
+                            🔔
+                        </div>
+
+                        <div>
+
+                            <h2>
+                                Shared Reminders
+                            </h2>
+
+                            <p>
+                                Health reminders shared with you
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    {% if shared_reminders %}
+
+                        <div class="data-list">
+
+                            {% for reminder in shared_reminders %}
+
+                                <div class="data-item">
+
+                                    <div class="reminder-item">
+
+                                        <div>
+
+                                            <div
+                                                class="
+                                                    reminder-title
+                                                    {% if reminder.completed %}
+                                                        completed
+                                                    {% endif %}
+                                                "
+                                            >
+
+                                                {% if reminder.completed %}
+                                                    ✓
+                                                {% else %}
+                                                    🔔
+                                                {% endif %}
+
+                                                {{ reminder.title }}
+
+                                            </div>
+
+
+                                            <div class="reminder-type">
+
+                                                {{ reminder.get_reminder_type_display }}
+
+                                            </div>
+
+                                        </div>
+
+
+                                        {% if reminder.due_date %}
+
+                                            <div class="reminder-date">
+
+                                                {{ reminder.due_date|date:"M d, Y" }}
+
+                                            </div>
+
+                                        {% endif %}
+
+                                    </div>
+
+
+                                    {% if reminder.notes %}
+
+                                        <div class="notes">
+
+                                            {{ reminder.notes }}
+
+                                        </div>
+
+                                    {% endif %}
+
+                                </div>
+
+                            {% endfor %}
+
+                        </div>
+
+                    {% else %}
+
+                        <div class="empty">
+
+                            <div class="empty-icon">
+                                🔔
+                            </div>
+
+                            <h3>
+                                No reminders shared
+                            </h3>
+
+                            <p>
+                                There are no shared reminders
+                                at the moment.
+                            </p>
+
+                        </div>
+
+                    {% endif %}
+
+                </section>
+
+            {% else %}
+
+                <section class="data-card full locked">
+
+                    <div class="section-title">
+
+                        <div class="section-icon">
+                            🔒
+                        </div>
+
+                        <div>
+
+                            <h2>
+                                Reminders
+                            </h2>
+
+                            <p>
+                                Private information
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="empty">
+
+                        <div class="empty-icon">
+                            🔒
+                        </div>
+
+                        <h3>
+                            Reminders are private
+                        </h3>
+
+                        <p>
+                            Your loved one has not enabled
+                            reminder sharing.
+                        </p>
+
+                    </div>
+
+                </section>
+
+            {% endif %}
+
 
         </div>
 
 
-        <!-- HOW TO SUPPORT -->
-
-        <h2 class="section-title">
-            🤝 How You Can Support Her
-        </h2>
-
-        <section class="support">
-
-            <h2>
-                Small things can make a big difference
-            </h2>
-
-            <ul>
-
-                <li>
-                    👂 Listen to her concerns without immediately
-                    dismissing them.
-                </li>
-
-                <li>
-                    💬 Encourage open conversations about how she is
-                    feeling.
-                </li>
-
-                <li>
-                    🌿 Support healthy food, sleep and physical activity
-                    habits.
-                </li>
-
-                <li>
-                    🩺 Encourage regular health check-ups and discussions
-                    with healthcare professionals.
-                </li>
-
-                <li>
-                    ❤️ Be patient when mood or energy levels change.
-                </li>
-
-                <li>
-                    🫶 Ask how you can help instead of assuming what
-                    she needs.
-                </li>
-
-            </ul>
-
-        </section>
+    {% endif %}
 
 
-        <!-- WHAT NOT TO SAY -->
+</main>
 
-        <h2 class="section-title">
-            💬 What To Avoid
-        </h2>
-
-        <div class="cards">
-
-            <div class="card">
-
-                <div class="icon">
-                    ❌
-                </div>
-
-                <h3>
-                    "It's just in your head."
-                </h3>
-
-                <p>
-                    Her symptoms and feelings are real. Avoid dismissing
-                    her experiences.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="icon">
-                    ❌
-                </div>
-
-                <h3>
-                    "Everyone goes through it."
-                </h3>
-
-                <p>
-                    Every woman's experience can be different. Give her
-                    space to describe what she is experiencing.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <!-- MEDICAL NOTE -->
-
-        <section class="warning">
-
-            <h3>
-                🩺 When should she talk to a healthcare professional?
-            </h3>
-
-            <p>
-                If symptoms are persistent, severe, concerning or affecting
-                daily life, encourage her to speak with a qualified
-                healthcare professional. This website is intended to
-                support awareness and tracking, not replace medical care.
-            </p>
-
-        </section>
-
-    </main>
 
 </body>
 

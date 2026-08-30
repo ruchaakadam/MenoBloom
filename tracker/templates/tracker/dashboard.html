@@ -11,7 +11,7 @@
     >
 
     <title>
-        HerBalance | Dashboard
+        MenoBloom | Dashboard
     </title>
 
 
@@ -19,28 +19,36 @@
 
         * {
             box-sizing: border-box;
-
             margin: 0;
-
             padding: 0;
-
-            font-family: Arial, sans-serif;
         }
 
 
         body {
 
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
             background: #fff8fb;
 
             color: #333;
+
+            min-height: 100vh;
+
         }
 
+
+        /* =====================================================
+           NAVIGATION
+           ===================================================== */
 
         nav {
 
             background: white;
 
-            padding: 20px 8%;
+            padding: 18px 7%;
 
             display: flex;
 
@@ -49,14 +57,34 @@
             align-items: center;
 
             box-shadow:
-                0 2px 10px
-                rgba(0,0,0,0.05);
+                0 2px 12px
+                rgba(0, 0, 0, 0.05);
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 20;
+
         }
 
 
         nav h1 {
 
             color: #b65c88;
+
+            font-size: 24px;
+
+        }
+
+
+        .nav-right {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 20px;
 
         }
 
@@ -68,30 +96,58 @@
             text-decoration: none;
 
             font-weight: 600;
+
+            font-size: 14px;
+
         }
 
+
+        nav a:hover {
+
+            color: #b65c88;
+
+        }
+
+
+        .logout {
+
+            color: #b65c88 !important;
+
+        }
+
+
+        /* =====================================================
+           MAIN CONTAINER
+           ===================================================== */
 
         .container {
 
-            width: 84%;
+            width: 88%;
 
-            max-width: 1100px;
+            max-width: 1150px;
 
-            margin: 50px auto;
+            margin: 40px auto 70px;
+
         }
 
 
+        /* =====================================================
+           WELCOME
+           ===================================================== */
+
         .welcome {
 
-            margin-bottom: 35px;
+            margin-bottom: 25px;
+
         }
 
 
         .welcome h2 {
 
-            font-size: 32px;
+            font-size: 34px;
 
-            margin-bottom: 8px;
+            margin-bottom: 7px;
+
         }
 
 
@@ -99,10 +155,114 @@
 
             color: #777;
 
+            font-size: 16px;
+
+            line-height: 1.6;
+
         }
 
 
-        /* SUMMARY */
+        /* =====================================================
+           MENOPAUSE STAGE
+           ===================================================== */
+
+        .stage-card {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #fff,
+                    #fff2f7
+                );
+
+            border:
+                1px solid #f0d9e4;
+
+            border-radius: 22px;
+
+            padding: 25px;
+
+            margin-bottom: 25px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 20px;
+
+            box-shadow:
+                0 7px 25px
+                rgba(
+                    189,
+                    91,
+                    136,
+                    0.07
+                );
+
+        }
+
+
+        .stage-icon {
+
+            width: 65px;
+
+            height: 65px;
+
+            min-width: 65px;
+
+            background: white;
+
+            border-radius: 18px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 32px;
+
+        }
+
+
+        .stage-label {
+
+            font-size: 11px;
+
+            letter-spacing: 1.4px;
+
+            font-weight: 700;
+
+            color: #b95783;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .stage-card h2 {
+
+            font-size: 24px;
+
+            margin-bottom: 6px;
+
+        }
+
+
+        .stage-card p {
+
+            color: #777;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+
+        }
+
+
+        /* =====================================================
+           SUMMARY CARDS
+           ===================================================== */
 
         .cards {
 
@@ -111,9 +271,10 @@
             grid-template-columns:
                 repeat(3, 1fr);
 
-            gap: 20px;
+            gap: 18px;
 
-            margin-bottom: 35px;
+            margin-bottom: 25px;
+
         }
 
 
@@ -121,90 +282,564 @@
 
             background: white;
 
-            padding: 25px;
+            padding: 23px;
 
             border-radius: 18px;
 
             box-shadow:
                 0 5px 20px
-                rgba(0,0,0,0.06);
+                rgba(
+                    0,
+                    0,
+                    0,
+                    0.05
+                );
+
+            border:
+                1px solid #f1e4ea;
+
         }
 
 
-        .card h3 {
+        .card-title {
 
             color: #777;
 
-            margin-bottom: 10px;
+            font-size: 14px;
+
+            margin-bottom: 9px;
+
         }
 
 
-        .number {
+        .card-number {
 
             color: #b65c88;
 
-            font-size: 32px;
+            font-size: 29px;
 
-            font-weight: bold;
+            font-weight: 700;
+
         }
 
 
-        /* SECTION */
+        .card-description {
 
-        .section {
+            color: #999;
 
-            background: white;
+            font-size: 12px;
 
-            padding: 30px;
+            margin-top: 7px;
 
-            border-radius: 20px;
+        }
 
-            margin-bottom: 30px;
+
+        /* =====================================================
+           WELLNESS TRACKING
+           ===================================================== */
+
+        .wellness-card {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #fff,
+                    #fff3f8
+                );
+
+            border:
+                1px solid #efdbe5;
+
+            border-radius: 21px;
+
+            padding: 27px;
+
+            margin-bottom: 25px;
 
             box-shadow:
                 0 5px 20px
-                rgba(0,0,0,0.05);
+                rgba(
+                    0,
+                    0,
+                    0,
+                    0.04
+                );
+
         }
 
 
-        .section h2 {
+        .wellness-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 25px;
+
+        }
+
+
+        .wellness-label {
+
+            font-size: 11px;
+
+            letter-spacing: 1.4px;
+
+            font-weight: 700;
+
+            color: #b95783;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .wellness-header h2 {
+
+            font-size: 24px;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .wellness-header p {
+
+            color: #777;
+
+            font-size: 14px;
+
+            line-height: 1.5;
+
+        }
+
+
+        /* =====================================================
+           SCORE CIRCLE
+           ===================================================== */
+
+        .score-circle {
+
+            width: 95px;
+
+            height: 95px;
+
+            min-width: 95px;
+
+            border-radius: 50%;
+
+            background: white;
+
+            border:
+                7px solid #f5dce8;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            flex-direction: column;
+
+            color: #b95783;
+
+        }
+
+
+        .score-circle span {
+
+            font-size: 27px;
+
+            font-weight: 700;
+
+            line-height: 1;
+
+        }
+
+
+        .score-circle small {
+
+            font-size: 11px;
+
+            color: #999;
+
+            margin-top: 4px;
+
+        }
+
+
+        /* =====================================================
+           PROGRESS
+           ===================================================== */
+
+        .progress-area {
+
+            margin-top: 25px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 16px;
+
+        }
+
+
+        .progress-item {
+
+            width: 100%;
+
+        }
+
+
+        .progress-info {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 7px;
+
+            font-size: 13px;
+
+        }
+
+
+        .progress-info span {
+
+            color: #666;
+
+        }
+
+
+        .progress-info strong {
+
+            color: #b95783;
+
+            font-size: 12px;
+
+        }
+
+
+        .progress-bar {
+
+            width: 100%;
+
+            height: 8px;
+
+            background: #f4e8ed;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+        }
+
+
+        .progress-fill {
+
+            height: 100%;
+
+            background: #b95783;
+
+            border-radius: 20px;
+
+            transition:
+                width 0.6s ease;
+
+        }
+
+
+        .score-note {
+
+            margin-top: 22px;
+
+            padding: 13px 15px;
+
+            background: #fff8fb;
+
+            border-radius: 11px;
+
+            color: #888;
+
+            font-size: 11px;
+
+            line-height: 1.6;
+
+        }
+
+
+        .score-note strong {
+
+            color: #777;
+
+        }
+
+
+        /* =====================================================
+           COMMON SECTIONS
+           ===================================================== */
+
+        .nutrition-section,
+        .reminder-section,
+        .symptom-section {
+
+            background: white;
+
+            border-radius: 21px;
+
+            padding: 27px;
+
+            margin-bottom: 25px;
+
+            box-shadow:
+                0 5px 20px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    0.05
+                );
+
+            border:
+                1px solid #f1e4ea;
+
+        }
+
+
+        .section-heading {
 
             margin-bottom: 20px;
+
         }
 
 
-        /* SYMPTOM */
+        .section-heading h2 {
 
-        .symptom {
+            font-size: 23px;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .section-heading p {
+
+            color: #888;
+
+            font-size: 14px;
+
+        }
+
+
+        /* =====================================================
+           NUTRITION
+           ===================================================== */
+
+        .nutrition-grid {
 
             display: grid;
 
             grid-template-columns:
-                2fr 1fr 1fr 1fr;
+                repeat(4, 1fr);
 
-            gap: 15px;
+            gap: 13px;
+
+        }
+
+
+        .nutrition-item {
+
+            background: #fff8fb;
+
+            border:
+                1px solid #f0dce6;
+
+            border-radius: 14px;
+
+            padding: 17px;
+
+        }
+
+
+        .nutrition-item span {
+
+            display: block;
+
+            color: #999;
+
+            font-size: 12px;
+
+            margin-bottom: 7px;
+
+        }
+
+
+        .nutrition-item strong {
+
+            font-size: 20px;
+
+            color: #b95783;
+
+        }
+
+
+        .nutrition-item small {
+
+            color: #aaa;
+
+            font-size: 11px;
+
+        }
+
+
+        .meal-count {
+
+            margin-top: 16px;
+
+            color: #777;
+
+            font-size: 13px;
+
+        }
+
+
+        /* =====================================================
+           REMINDERS
+           ===================================================== */
+
+        .reminder-list {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 10px;
+
+        }
+
+
+        .reminder {
+
+            display: flex;
+
+            justify-content: space-between;
 
             align-items: center;
 
-            padding: 18px;
+            gap: 15px;
 
-            border: 1px solid #eee;
+            padding:
+                15px 17px;
+
+            background: #fff8fb;
+
+            border:
+                1px solid #f0e1e8;
 
             border-radius: 12px;
 
-            margin-bottom: 12px;
+        }
+
+
+        .reminder-title {
+
+            font-weight: 700;
+
+            font-size: 14px;
+
+        }
+
+
+        .reminder-date {
+
+            color: #999;
+
+            font-size: 12px;
+
+            margin-top: 4px;
+
+        }
+
+
+        .pending-badge {
+
+            background: #fff0d9;
+
+            color: #a66a00;
+
+            padding:
+                6px 10px;
+
+            border-radius: 20px;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+        }
+
+
+        /* =====================================================
+           SYMPTOMS
+           ===================================================== */
+
+        .symptom-list {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 10px;
+
+        }
+
+
+        .symptom-row {
+
+            display: grid;
+
+            grid-template-columns:
+                2fr
+                1fr
+                1fr
+                1fr;
+
+            gap: 12px;
+
+            align-items: center;
+
+            padding: 15px;
+
+            background: #fffafd;
+
+            border:
+                1px solid #f0e3e9;
+
+            border-radius: 12px;
+
         }
 
 
         .symptom-name {
 
-            font-weight: bold;
+            font-weight: 700;
+
+            font-size: 14px;
+
         }
 
 
-        .severity {
+        .symptom-detail {
 
             color: #777;
+
+            font-size: 13px;
+
         }
 
 
@@ -212,7 +847,8 @@
 
             color: #b65c88;
 
-            font-weight: bold;
+            font-weight: 700;
+
         }
 
 
@@ -220,17 +856,147 @@
 
             color: #999;
 
-            font-size: 14px;
+            font-size: 12px;
+
         }
 
 
-        /* BUTTONS */
+        /* =====================================================
+           EMPTY STATE
+           ===================================================== */
+
+        .empty {
+
+            text-align: center;
+
+            color: #999;
+
+            padding: 25px;
+
+            background: #fffafd;
+
+            border-radius: 13px;
+
+            font-size: 14px;
+
+        }
+
+
+        /* =====================================================
+           QUICK ACTIONS
+           ===================================================== */
+
+        .actions-section {
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .actions-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 15px;
+
+        }
+
+
+        .action {
+
+            background: white;
+
+            border:
+                1px solid #f0dce5;
+
+            border-radius: 17px;
+
+            padding: 20px;
+
+            text-decoration: none;
+
+            color: inherit;
+
+            transition:
+                transform 0.2s,
+                box-shadow 0.2s;
+
+        }
+
+
+        .action:hover {
+
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 8px 20px
+                rgba(
+                    189,
+                    91,
+                    136,
+                    0.11
+                );
+
+        }
+
+
+        .action-icon {
+
+            width: 46px;
+
+            height: 46px;
+
+            background: #fde8f0;
+
+            border-radius: 13px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 23px;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .action h3 {
+
+            font-size: 16px;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .action p {
+
+            color: #888;
+
+            font-size: 12px;
+
+            line-height: 1.4;
+
+        }
+
+
+        /* =====================================================
+           BUTTON
+           ===================================================== */
 
         .button {
 
             display: inline-block;
 
-            padding: 13px 22px;
+            padding:
+                11px 18px;
 
             background: #b65c88;
 
@@ -240,401 +1006,428 @@
 
             border-radius: 10px;
 
-            margin-right: 8px;
+            font-size: 13px;
+
+            font-weight: 700;
 
             margin-top: 5px;
+
+            margin-right: 7px;
+
         }
 
 
         .button:hover {
 
             background: #a34d79;
+
         }
 
 
-        .empty {
+        /* =====================================================
+           MEDICAL NOTE
+           ===================================================== */
+
+        .medical-note {
+
+            background: #f7f7f7;
+
+            border-radius: 13px;
+
+            padding: 17px;
 
             color: #888;
+
+            font-size: 12px;
+
+            line-height: 1.6;
+
+            margin-top: 30px;
+
         }
 
 
-        @media(max-width:700px) {
+        /* =====================================================
+           RESPONSIVE
+           ===================================================== */
+
+        @media (max-width: 950px) {
+
+            .nutrition-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+
+            .actions-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
 
             .cards {
 
-                grid-template-columns: 1fr;
+                grid-template-columns:
+                    1fr;
+
+            }
+
+        }
+
+
+        @media (max-width: 650px) {
+
+            nav {
+
+                padding:
+                    16px 5%;
+
+            }
+
+
+            .nav-right {
+
+                gap: 10px;
+
+            }
+
+
+            nav a:not(.logout) {
+
+                display: none;
 
             }
 
 
             .container {
 
-                width: 92%;
+                width: 94%;
+
+                margin-top: 25px;
 
             }
 
 
-            .symptom {
+            .welcome h2 {
 
-                grid-template-columns: 1fr;
+                font-size: 28px;
 
-                gap: 8px;
+            }
+
+
+            .stage-card {
+
+                align-items: flex-start;
+
+            }
+
+
+            .wellness-header {
+
+                align-items: flex-start;
+
+            }
+
+
+            .score-circle {
+
+                width: 78px;
+
+                height: 78px;
+
+                min-width: 78px;
+
+                border-width: 5px;
+
+            }
+
+
+            .score-circle span {
+
+                font-size: 22px;
+
+            }
+
+
+            .nutrition-grid {
+
+                grid-template-columns:
+                    1fr 1fr;
+
+            }
+
+
+            .actions-grid {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .symptom-row {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .reminder {
+
+                align-items: flex-start;
+
+                flex-direction: column;
 
             }
 
         }
-/* =========================================
-   WELLNESS TOOLS
-   ========================================= */
+        /* =====================================================
+   PERSONALIZED WELLNESS CARD
+   ===================================================== */
 
-.wellness-tools {
-
-    background: #ffffff;
-
-    border-radius: 24px;
-
-    padding: 32px;
-
-    margin-top: 30px;
-
-    box-shadow:
-        0 8px 30px rgba(0, 0, 0, 0.05);
-
-}
-
-
-.wellness-header h2 {
-
-    margin: 0 0 8px 0;
-
-    font-size: 28px;
-
-    color: #333;
-
-}
-
-
-.wellness-header p {
-
-    margin: 0 0 28px 0;
-
-    color: #777;
-
-    font-size: 16px;
-
-}
-
-
-/* GRID */
-
-.wellness-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(2, 1fr);
-
-    gap: 18px;
-
-}
-
-
-/* CARD */
-
-.wellness-card {
+.personalized-card {
 
     display: flex;
 
-    align-items: center;
+    align-items: flex-start;
 
-    gap: 18px;
-
-    padding: 22px;
-
-    background: #fff8fb;
-
-    border: 1px solid #f1dce6;
-
-    border-radius: 16px;
-
-    text-decoration: none;
-
-    color: inherit;
-
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        background 0.2s ease;
-
-}
-
-
-/* HOVER */
-
-.wellness-card:hover {
-
-    transform: translateY(-3px);
-
-    background: #fff2f7;
-
-    box-shadow:
-        0 8px 20px rgba(185, 87, 131, 0.12);
-
-}
-
-
-/* ICON */
-
-.wellness-icon {
-
-    width: 55px;
-
-    height: 55px;
-
-    min-width: 55px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    background: #fce5ef;
-
-    border-radius: 14px;
-
-    font-size: 27px;
-
-}
-
-
-/* TITLE */
-
-.wellness-card h3 {
-
-    margin: 0 0 6px 0;
-
-    font-size: 18px;
-
-    color: #333;
-
-}
-
-
-/* DESCRIPTION */
-
-.wellness-card p {
-
-    margin: 0;
-
-    font-size: 14px;
-
-    color: #777;
-
-    line-height: 1.5;
-
-}
-
-
-/* MOBILE */
-
-@media (max-width: 700px) {
-
-    .wellness-grid {
-
-        grid-template-columns: 1fr;
-
-    }
-
-}
-/* =====================================================
-   WHAT IS MENOPAUSE CARD
-===================================================== */
-
-.menopause-intro {
-    width: 100%;
-    margin: 25px 0 30px;
-}
-
-.menopause-content {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 25px;
-
-    padding: 30px 35px;
-
-    border-radius: 24px;
-
-    background: linear-gradient(
-        135deg,
-        #fff8fb,
-        #fdf3f8
-    );
-
-    border: 1px solid #f3dce7;
-
-    box-shadow:
-        0 10px 30px rgba(189, 91, 136, 0.08);
-
-    overflow: hidden;
-}
-
-.menopause-icon {
-    min-width: 75px;
-    height: 75px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: white;
-    border-radius: 50%;
-
-    font-size: 38px;
-
-    box-shadow:
-        0 8px 20px rgba(189, 91, 136, 0.10);
-}
-
-.menopause-text {
-    flex: 1;
-}
-
-.menopause-label {
-    display: inline-block;
-
-    font-size: 11px;
-    font-weight: 700;
-
-    letter-spacing: 1.5px;
-
-    color: #bd5b88;
-
-    margin-bottom: 7px;
-}
-
-.menopause-text h2 {
-    margin: 0 0 8px;
-
-    font-size: 26px;
-
-    color: #333;
-}
-
-.menopause-text p {
-    margin: 0 0 16px;
-
-    color: #777;
-
-    font-size: 15px;
-
-    line-height: 1.6;
-
-    max-width: 650px;
-}
-
-.learn-more-btn {
-    border: none;
-
-    padding: 11px 20px;
-
-    border-radius: 10px;
-
-    background: #bd5b88;
-
-    color: white;
-
-    font-size: 14px;
-
-    font-weight: 600;
-
-    cursor: pointer;
-
-    transition: 0.2s;
-}
-
-.learn-more-btn:hover {
-    background: #a94c77;
-    transform: translateY(-2px);
-}
-
-.menopause-decoration {
-    position: absolute;
-
-    right: 30px;
-    bottom: 15px;
-
-    display: flex;
-
-    gap: 12px;
-
-    font-size: 25px;
-
-    opacity: 0.6;
-}
-.tool-card {
-    display: flex;
-    align-items: center;
     gap: 20px;
 
-    background: #fff8fb;
+    background:
+        linear-gradient(
+            135deg,
+            #fff7fa,
+            #fff0f6
+        );
 
-    border: 1px solid #efd5e1;
+    border:
+        1px solid #efd5e1;
 
-    border-radius: 18px;
+    border-radius: 22px;
 
-    padding: 24px;
+    padding: 25px;
 
-    text-decoration: none;
-
-    color: inherit;
-
-    transition: 0.2s;
-
-    cursor: pointer;
-}
-
-.tool-card:hover {
-    transform: translateY(-3px);
+    margin:
+        25px 0;
 
     box-shadow:
-        0 8px 20px
-        rgba(189, 91, 136, 0.12);
+        0 8px 28px
+        rgba(185, 87, 131, 0.08);
 }
 
-.tool-card .tool-icon {
-    width: 60px;
-    height: 60px;
+
+.personalized-icon {
+
+    min-width: 58px;
+
+    height: 58px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
-    background: #fde5ef;
+    border-radius: 17px;
 
-    border-radius: 15px;
+    background: white;
 
     font-size: 30px;
 
-    flex-shrink: 0;
+    box-shadow:
+        0 4px 15px
+        rgba(0, 0, 0, 0.05);
 }
 
-.tool-card h3 {
-    margin: 0 0 7px 0;
 
-    font-size: 20px;
+.personalized-content {
+
+    flex: 1;
+}
+
+
+.personalized-label {
+
+    color: #b95783;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.2px;
+
+    margin-bottom: 6px;
+}
+
+
+.personalized-content h2 {
 
     color: #333;
+
+    font-size: 22px;
+
+    margin-bottom: 10px;
 }
 
-.tool-card p {
+
+.personalized-content p {
+
+    color: #666;
+
+    line-height: 1.7;
+
+    font-size: 15px;
+
     margin: 0;
+}
+
+
+.insight-meta {
+
+    margin-top: 15px;
+
+    padding-top: 13px;
+
+    border-top:
+        1px solid #efdde5;
 
     color: #777;
 
-    font-size: 15px;
+    font-size: 13px;
 }
+
+
+.insight-meta strong {
+
+    color: #b95783;
+}
+
+
+@media (max-width: 650px) {
+
+    .personalized-card {
+
+        flex-direction: column;
+
+        padding: 20px;
+    }
+
+}
+
+    
+/* =====================================================
+   PERSONALIZED RECOMMENDATIONS
+   ===================================================== */
+
+.recommendations-section {
+    margin: 30px 0;
+}
+
+.recommendations-header {
+    margin-bottom: 18px;
+}
+
+.recommendations-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    color: #b95783;
+    margin-bottom: 6px;
+}
+
+.recommendations-header h2 {
+    margin: 0 0 6px;
+    font-size: 24px;
+    color: #333;
+}
+
+.recommendations-header p {
+    margin: 0;
+    color: #777;
+    font-size: 14px;
+}
+
+.recommendations-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.recommendation-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 21px;
+    background: #ffffff;
+    border: 1px solid #eeeeee;
+    border-radius: 19px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.recommendation-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.07);
+}
+
+.recommendation-icon {
+    width: 48px;
+    min-width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    background: #fff3f7;
+    font-size: 24px;
+}
+
+.recommendation-content {
+    flex: 1;
+}
+
+.recommendation-content h3 {
+    margin: 0 0 7px;
+    color: #333;
+    font-size: 17px;
+}
+
+.recommendation-content p {
+    margin: 0;
+    color: #707070;
+    font-size: 13.5px;
+    line-height: 1.65;
+}
+
+.recommendation-empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 35px;
+    border: 1px dashed #e3d1da;
+    border-radius: 18px;
+    color: #777;
+}
+
+.recommendation-empty div {
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.recommendation-empty p {
+    margin: 0;
+    font-size: 14px;
+}
+
+@media (max-width: 750px) {
+    .recommendations-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
     </style>
 
 </head>
@@ -643,6 +1436,10 @@
 <body>
 
 
+<!-- =========================================================
+     NAVIGATION
+     ========================================================= -->
+
 <nav>
 
     <h1>
@@ -650,9 +1447,31 @@
     </h1>
 
 
-    <a href="{% url 'add_symptom' %}">
-        + Record Symptoms
-    </a>
+    <div class="nav-right">
+
+        <a href="{% url 'menopause_info' %}">
+            Menopause Guide
+        </a>
+        <a href="{% url 'mental_support' %}">
+    💗 Mental Support
+</a>
+
+<a href="{% url 'secret_notes' %}">
+    🔐 Secret Notes
+</a>
+
+        <a href="{% url 'profile' %}">
+    Profile
+</a>
+
+        <a
+            href="{% url 'logout' %}"
+            class="logout"
+        >
+            Logout
+        </a>
+
+    </div>
 
 </nav>
 
@@ -660,333 +1479,1202 @@
 
 <div class="container">
 
-    <!-- WHAT IS MENOPAUSE -->
 
-    <section class="menopause-intro">
+    <!-- =====================================================
+         WELCOME
+         ===================================================== -->
 
-        <div class="menopause-content">
+    <div class="welcome">
 
-            <div class="menopause-icon">
-                🌸
+        <h2>
+
+            Welcome back,
+            {{ request.user.username }} 🌷
+
+        </h2>
+
+
+        <p>
+
+            Here's a quick look at your
+            wellness journey today.
+
+        </p>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         MENOPAUSE STAGE
+         ===================================================== -->
+
+    <div class="stage-card">
+
+
+        <div class="stage-icon">
+            🌸
+        </div>
+
+
+        <div>
+
+            <div class="stage-label">
+
+                YOUR MENOPAUSE JOURNEY
+
             </div>
 
-            <div class="menopause-text">
 
-                <span class="menopause-label">
-                    UNDERSTAND YOUR JOURNEY
-                </span>
+            <h2>
+
+                {{ menopause_stage }}
+
+            </h2>
+
+
+            <p>
+
+                This is an educational estimate
+                based on the information you provided
+                during your initial setup.
+
+                <br>
+
+                It is not a medical diagnosis.
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         SUMMARY CARDS
+         ===================================================== -->
+
+    <div class="cards">
+
+
+        <!-- SYMPTOMS -->
+
+        <div class="card">
+
+            <div class="card-title">
+
+                Symptoms Recorded
+
+            </div>
+
+
+            <div class="card-number">
+
+                {{ total_symptoms }}
+
+            </div>
+
+
+            <div class="card-description">
+
+                Total records in your account
+
+            </div>
+
+        </div>
+
+
+
+        <!-- MEALS -->
+
+        <div class="card">
+
+            <div class="card-title">
+
+                Today's Meals
+
+            </div>
+
+
+            <div class="card-number">
+
+                {{ meal_count }}
+
+            </div>
+
+
+            <div class="card-description">
+
+                Meals logged today
+
+            </div>
+
+        </div>
+
+
+
+        <!-- REMINDERS -->
+
+        <div class="card">
+
+            <div class="card-title">
+
+                Pending Reminders
+
+            </div>
+
+
+            <div class="card-number">
+
+                {{ health_reminders }}
+
+            </div>
+
+
+            <div class="card-description">
+
+                Health activities to review
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         WELLNESS TRACKING SCORE
+         ===================================================== -->
+
+    <div class="wellness-card">
+
+
+        <div class="wellness-header">
+
+
+            <div>
+
+                <div class="wellness-label">
+
+                    WELLNESS TRACKING
+
+                </div>
+
 
                 <h2>
-                    What is Menopause?
+
+                    {{ tracking_status }}
+
                 </h2>
 
+
                 <p>
-                    Menopause is a natural stage of life when
-                    menstrual periods permanently stop as
-                    hormone levels change.
+
+                    {{ tracking_message }}
+
                 </p>
 
-                <a href="{% url 'menopause_info' %}" class="learn-more-btn">
-    Learn More →
-</a>
+            </div>
+
+
+            <div class="score-circle">
+
+                <span>
+
+                    {{ tracking_score }}
+
+                </span>
+
+
+                <small>
+
+                    /100
+
+                </small>
 
             </div>
 
-            <div class="menopause-decoration">
-                🌿 🌷 ✨
+
+        </div>
+
+
+
+        <div class="progress-area">
+
+
+            <!-- SYMPTOM TRACKING -->
+
+            <div class="progress-item">
+
+
+                <div class="progress-info">
+
+                    <span>
+
+                        🌸 Symptom Tracking
+
+                    </span>
+
+
+                    <strong>
+
+                        {{ symptom_progress }}%
+
+                    </strong>
+
+                </div>
+
+
+                <div class="progress-bar">
+
+                    <div
+                        class="progress-fill"
+                        style="
+                            width:
+                            {{ symptom_progress }}%;
+                        "
+                    ></div>
+
+                </div>
+
             </div>
+
+
+
+            <!-- NUTRITION TRACKING -->
+
+            <div class="progress-item">
+
+
+                <div class="progress-info">
+
+                    <span>
+
+                        🥗 Nutrition Tracking
+
+                    </span>
+
+
+                    <strong>
+
+                        {{ nutrition_progress }}%
+
+                    </strong>
+
+                </div>
+
+
+                <div class="progress-bar">
+
+                    <div
+                        class="progress-fill"
+                        style="
+                            width:
+                            {{ nutrition_progress }}%;
+                        "
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- REMINDER MANAGEMENT -->
+
+            <div class="progress-item">
+
+
+                <div class="progress-info">
+
+                    <span>
+
+                        📅 Reminder Management
+
+                    </span>
+
+
+                    <strong>
+
+                        {{ reminder_progress }}%
+
+                    </strong>
+
+                </div>
+
+
+                <div class="progress-bar">
+
+                    <div
+                        class="progress-fill"
+                        style="
+                            width:
+                            {{ reminder_progress }}%;
+                        "
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- OVERALL ENGAGEMENT -->
+
+            <div class="progress-item">
+
+
+                <div class="progress-info">
+
+                    <span>
+
+                        🌿 Overall Engagement
+
+                    </span>
+
+
+                    <strong>
+
+                        {{ engagement_progress }}%
+
+                    </strong>
+
+                </div>
+
+
+                <div class="progress-bar">
+
+                    <div
+                        class="progress-fill"
+                        style="
+                            width:
+                            {{ engagement_progress }}%;
+                        "
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="score-note">
+
+            ℹ️ This score reflects your activity
+            inside MenoBloom.
+
+            <strong>
+
+                It is not a medical or health
+                assessment.
+
+            </strong>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         PERSONALIZED WELLNESS INSIGHT
+         ===================================================== -->
+
+    <section class="personalized-card">
+
+        <div class="personalized-icon">
+            🌸
+        </div>
+
+        <div class="personalized-content">
+
+            <div class="personalized-label">
+                PERSONALIZED FOR YOU
+            </div>
+
+            <h2>
+                {{ insight_title }}
+            </h2>
+
+            <p>
+                {{ personalized_insight }}
+            </p>
+
+            {% if top_symptom %}
+                <div class="insight-meta">
+                    <span>
+                        📊 Most tracked:
+                        <strong>
+                            {{ top_symptom }}
+                        </strong>
+                    </span>
+                </div>
+            {% endif %}
 
         </div>
 
     </section>
 
 
-    <!-- GOOD MORNING -->
+    <!-- =====================================================
+         PERSONALIZED RECOMMENDATIONS
+         ===================================================== -->
 
-    <div class="welcome">
-        <h2>
-            Good morning 🌷
-        </h2>
+    <section class="recommendations-section">
 
+        <div class="recommendations-header">
 
-        <p>
-            Keep track of how you're feeling
-            and understand your wellness journey.
-        </p>
-
-    </div>
-
-
-
-    <!-- SUMMARY -->
-
-    <div class="cards">
-
-
-        <div class="card">
-
-            <h3>
-                Symptoms Recorded
-            </h3>
-
-
-            <div class="number">
-                {{ symptoms|length }}
+            <div class="recommendations-label">
+                PERSONALIZED FOR YOU
             </div>
+
+            <h2>
+                Your Recommendations
+            </h2>
+
+            <p>
+                Suggestions based on the information you've logged.
+            </p>
 
         </div>
 
 
+        <div class="recommendations-grid">
 
-        <div class="card">
+            {% for recommendation in recommendations %}
 
-            <h3>
-                Wellness Status
-            </h3>
+                <div class="recommendation-card">
 
+                    <div class="recommendation-icon">
+                        {{ recommendation.icon }}
+                    </div>
 
-            <div class="number">
-                🌸
-            </div>
+                    <div class="recommendation-content">
 
-        </div>
+                        <h3>
+                            {{ recommendation.title }}
+                        </h3>
 
-
-
-        <div class="card">
-
-           <a href="{% url 'reminders' %}">
-    🩺 View Health Reminders
-</a>
-
-
-            <div class="number">
-                0
-            </div>
-
-        </div>
-
-
-    </div>
-
-
-
-    <!-- HISTORY -->
-
-    <div class="section">
-
-        <h2>
-            📊 Your Symptom History
-        </h2>
-
-
-        {% if symptoms %}
-
-
-            {% for item in symptoms %}
-
-                <div class="symptom">
-
-
-                    <div class="symptom-name">
-
-                        {{ item.get_symptom_display }}
+                        <p>
+                            {{ recommendation.text }}
+                        </p>
 
                     </div>
 
+                </div>
 
-                    <div class="severity">
+            {% empty %}
 
-                        {{ item.get_severity_display }}
+                <div class="recommendation-empty">
 
+                    <div>
+                        🌸
                     </div>
 
-
-                    <div class="frequency">
-
-                        {{ item.frequency }}
-                        time{{ item.frequency|pluralize }}
-
-                    </div>
-
-
-                    <div class="date">
-
-                        {{ item.date }}
-
-                    </div>
-
+                    <p>
+                        Keep logging your symptoms and meals
+                        to unlock personalized recommendations.
+                    </p>
 
                 </div>
 
             {% endfor %}
 
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         TODAY'S NUTRITION
+         ===================================================== -->
+
+    <div class="nutrition-section">
+
+
+        <div class="section-heading">
+
+            <h2>
+
+                🥗 Today's Nutrition
+
+            </h2>
+
+
+            <p>
+
+                Nutrition totals from the meals
+                you've logged today.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="nutrition-grid">
+
+
+            <!-- CALORIES -->
+
+            <div class="nutrition-item">
+
+                <span>
+
+                    Calories
+
+                </span>
+
+
+                <strong>
+
+                    {{ calories }}
+
+                </strong>
+
+
+                <small>
+
+                    kcal
+
+                </small>
+
+            </div>
+
+
+
+            <!-- PROTEIN -->
+
+            <div class="nutrition-item">
+
+                <span>
+
+                    Protein
+
+                </span>
+
+
+                <strong>
+
+                    {{ protein }}
+
+                </strong>
+
+
+                <small>
+
+                    g
+
+                </small>
+
+            </div>
+
+
+
+            <!-- CALCIUM -->
+
+            <div class="nutrition-item">
+
+                <span>
+
+                    Calcium
+
+                </span>
+
+
+                <strong>
+
+                    {{ calcium }}
+
+                </strong>
+
+
+                <small>
+
+                    mg
+
+                </small>
+
+            </div>
+
+
+
+            <!-- FIBER -->
+
+            <div class="nutrition-item">
+
+                <span>
+
+                    Fiber
+
+                </span>
+
+
+                <strong>
+
+                    {{ fiber }}
+
+                </strong>
+
+
+                <small>
+
+                    g
+
+                </small>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="meal-count">
+
+
+            {% if meal_count %}
+
+                🍽️ You've logged
+
+                <strong>
+                    {{ meal_count }}
+                </strong>
+
+                meal{{ meal_count|pluralize }}
+
+                today.
+
+            {% else %}
+
+                🍽️ No meals have been logged
+                today yet.
+
+            {% endif %}
+
+
+        </div>
+
+
+
+        <br>
+
+
+        <a
+            href="{% url 'food' %}"
+            class="button"
+        >
+
+            Log a Meal →
+
+        </a>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         UPCOMING REMINDERS
+         ===================================================== -->
+
+    <div class="reminder-section">
+
+
+        <div class="section-heading">
+
+            <h2>
+
+                📅 Upcoming Health Reminders
+
+            </h2>
+
+
+            <p>
+
+                Keep track of important activities
+                and appointments.
+
+            </p>
+
+        </div>
+
+
+
+        {% if pending_reminders %}
+
+
+            <div class="reminder-list">
+
+
+                {% for reminder in pending_reminders|slice:":4" %}
+
+
+                    <div class="reminder">
+
+
+                        <div>
+
+
+                            <div class="reminder-title">
+
+                                {{ reminder.title }}
+
+                            </div>
+
+
+                            <div class="reminder-date">
+
+
+                                {% if reminder.due_date %}
+
+                                    Due:
+
+                                    {{ reminder.due_date|date:"d M Y" }}
+
+                                {% else %}
+
+                                    No due date
+
+                                {% endif %}
+
+
+                            </div>
+
+
+                        </div>
+
+
+                        <span class="pending-badge">
+
+                            Pending
+
+                        </span>
+
+
+                    </div>
+
+
+                {% endfor %}
+
+
+            </div>
+
 
         {% else %}
 
 
-            <p class="empty">
+            <div class="empty">
 
-                You haven't recorded
-                any symptoms yet.
+                🌿
 
-            </p>
+                <br><br>
+
+                You don't have any pending
+                reminders.
+
+            </div>
 
 
         {% endif %}
 
 
+
+        <br>
+
+
+        <a
+            href="{% url 'reminders' %}"
+            class="button"
+        >
+
+            View All Reminders →
+
+        </a>
+
+
     </div>
 
 
 
-    <!-- TOOLS -->
+    <!-- =====================================================
+         RECENT SYMPTOMS
+         ===================================================== -->
 
-    <div class="section">
-<!-- =========================================
-     WELLNESS TOOLS
-     ========================================= -->
-
-<section class="wellness-tools">
-
-    <div class="wellness-header">
-        <h2>🌿 Wellness Tools</h2>
-
-        <p>
-            Personalized tools to help you understand
-            your symptoms and support your wellbeing.
-        </p>
-    </div>
+    <div class="symptom-section">
 
 
-    <div class="wellness-grid">
+        <div class="section-heading">
 
-        <!-- RECORD SYMPTOMS -->
-        <a href="{% url 'add_symptom' %}" class="wellness-card">
+            <h2>
 
-            <div class="wellness-icon">
+                📊 Recent Symptoms
+
+            </h2>
+
+
+            <p>
+
+                Your most recently recorded
+                symptoms.
+
+            </p>
+
+        </div>
+
+
+
+        {% if recent_symptoms %}
+
+
+            <div class="symptom-list">
+
+
+                {% for item in recent_symptoms %}
+
+
+                    <div class="symptom-row">
+
+
+                        <div class="symptom-name">
+
+                            {{ item.get_symptom_display }}
+
+                        </div>
+
+
+                        <div class="symptom-detail">
+
+                            {{ item.get_severity_display }}
+
+                        </div>
+
+
+                        <div class="frequency">
+
+                            {{ item.frequency }}
+
+                            time{{ item.frequency|pluralize }}
+
+                        </div>
+
+
+                        <div class="date">
+
+                            {{ item.date|date:"d M Y" }}
+
+                        </div>
+
+
+                    </div>
+
+
+                {% endfor %}
+
+
+            </div>
+
+
+        {% else %}
+
+
+            <div class="empty">
+
                 🌸
+
+                <br><br>
+
+                You haven't recorded any
+                symptoms yet.
+
             </div>
 
-            <div>
-                <h3>Record Symptoms</h3>
 
-                <p>
-                    Track how you're feeling today.
-                </p>
-            </div>
-
-        </a>
+        {% endif %}
 
 
-        <!-- ANALYSIS -->
-        <a href="{% url 'analysis' %}" class="wellness-card">
 
-            <div class="wellness-icon">
-                📊
-            </div>
-
-            <div>
-                <h3>View Analysis</h3>
-
-                <p>
-                    Understand your symptom trends
-                    over time.
-                </p>
-            </div>
-
-        </a>
-
-
-        <!-- HEALTH REMINDERS -->
-        <a href="{% url 'reminders' %}" class="wellness-card">
-
-            <div class="wellness-icon">
-                🩺
-            </div>
-
-            <div>
-                <h3>Health Reminders</h3>
-
-                <p>
-                    Keep track of important health
-                    checkups and reminders.
-                </p>
-            </div>
-
-        </a>
-
-
-        <!-- FOOD & LIFESTYLE -->
-        <a href="{% url 'food' %}" class="wellness-card">
-
-            <div class="wellness-icon">
-                🌿
-            </div>
-
-            <div>
-                <h3>Food & Lifestyle</h3>
-
-                <p>
-                    Get personalized food and
-                    lifestyle suggestions.
-                </p>
-            </div>
-
-        </a>
-
-    </div>
-    <a
-    href="{% url 'gynecologist' %}"
-    class="tool-card"
-    style="text-decoration: none; color: inherit;"
->
-
-    <div class="tool-icon">
-        🩺
-    </div>
-
-    <div>
-
-        <h3>
-            Find a Gynecologist
-        </h3>
-
-        <p>
-            Find women's health specialists
-            near your location.
-        </p>
-
-    </div>
-
-</a>
-</section>
-
-
-        <p style="color:#777; margin-bottom:15px;">
-
-            Track symptoms and understand
-            your wellness journey.
-
-        </p>
+        <br>
 
 
         <a
-            class="button"
             href="{% url 'add_symptom' %}"
+            class="button"
         >
-            🌸 Record Symptoms
+
+            + Record Symptoms
+
         </a>
 
 
         <a
-            class="button"
             href="{% url 'analysis' %}"
+            class="button"
         >
-            📊 View Analysis
-        </a>
-        
 
+            View Analysis →
+
+        </a>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         QUICK ACTIONS
+         ===================================================== -->
+
+    <div class="actions-section">
+
+
+        <div class="section-heading">
+
+            <h2>
+
+                🌿 Wellness Tools
+
+            </h2>
+
+
+            <p>
+
+                Quick access to the tools that support
+                your wellness journey.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="actions-grid">
+
+
+            <!-- RECORD SYMPTOMS -->
+
+            <a
+                href="{% url 'add_symptom' %}"
+                class="action"
+            >
+
+                <div class="action-icon">
+
+                    🌸
+
+                </div>
+
+
+                <h3>
+
+                    Record Symptoms
+
+                </h3>
+
+
+                <p>
+
+                    Track how you're feeling today.
+
+                </p>
+
+            </a>
+
+
+
+            <!-- ANALYSIS -->
+
+            <a
+                href="{% url 'analysis' %}"
+                class="action"
+            >
+
+                <div class="action-icon">
+
+                    📊
+
+                </div>
+
+
+                <h3>
+
+                    View Analysis
+
+                </h3>
+
+
+                <p>
+
+                    Understand your symptom patterns.
+
+                </p>
+
+            </a>
+
+
+
+            <!-- FOOD -->
+
+            <a
+                href="{% url 'food' %}"
+                class="action"
+            >
+
+                <div class="action-icon">
+
+                    🥗
+
+                </div>
+
+
+                <h3>
+
+                    Food & Nutrition
+
+                </h3>
+
+
+                <p>
+
+                    Log meals and explore their
+                    nutritional information.
+
+                </p>
+
+            </a>
+
+
+
+            <!-- REMINDERS -->
+
+            <a
+                href="{% url 'reminders' %}"
+                class="action"
+            >
+
+                <div class="action-icon">
+
+                    🩺
+
+                </div>
+
+
+                <h3>
+
+                    Health Reminders
+
+                </h3>
+
+
+                <p>
+
+                    Manage screenings, appointments
+                    and health reminders.
+
+                </p>
+
+            </a>
+
+
+
+            <!-- GYNECOLOGIST -->
+
+            <a
+                href="{% url 'gynecologist' %}"
+                class="action"
+            >
+
+                <div class="action-icon">
+
+                    👩‍⚕️
+
+                </div>
+
+
+                <h3>
+
+                    Find a Gynecologist
+
+                </h3>
+
+
+                <p>
+
+                    Find women's health specialists
+                    near you.
+
+                </p>
+
+            </a>
+
+
+
+            <!-- MENOPAUSE GUIDE -->
+
+            <a
+                href="{% url 'menopause_info' %}"
+                class="action"
+            >
+
+                <div class="action-icon">
+
+                    📖
+
+                </div>
+
+
+                <h3>
+
+                    Menopause Guide
+
+                </h3>
+
+
+                <p>
+
+                    Learn more about the menopause
+                    transition.
+
+                </p>
+
+            </a>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         MEDICAL NOTE
+         ===================================================== -->
+
+    <div class="medical-note">
+
+        <strong>
+
+            Important:
+
+        </strong>
+
+
+        MenoBloom provides educational wellness
+        information and tracking tools.
+
+        Menopause stage estimates, nutrition
+        information and symptom tracking should
+        not replace diagnosis, treatment or advice
+        from a qualified healthcare professional.
 
     </div>
 
