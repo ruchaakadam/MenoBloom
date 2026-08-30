@@ -2,13 +2,13 @@ services:
   - type: web
     name: menobloom
     runtime: python
+    plan: free
 
     buildCommand: "./build.sh"
 
     startCommand: "gunicorn config.wsgi:application"
 
     envVars:
-
       - key: SECRET_KEY
         generateValue: true
 
@@ -20,7 +20,6 @@ services:
           name: menobloom-db
           property: connectionString
 
-
 databases:
-
   - name: menobloom-db
+    plan: free
