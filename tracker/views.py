@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.db.models import Count,Sum
 from django.db.models.functions import TruncWeek
 from django.utils import timezone
-
+import json
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -296,103 +296,72 @@ def add_symptom(request):
         "tracker/add_symptom.html"
     )
 
-
-# ============================================================
-# ANALYSIS
-# ============================================================
-
-@login_required(login_url="/login/")
 def analysis(request):
 
-    user_symptoms = SymptomEntry.objects.filter(
+    # ============================================================
+    # LOGIN CHECK
+    # ============================================================
+
+    if not request.user.is_authenticated:
+        return redirect("login")
+
+
+    # ============================================================
+    # GET ALL SYMPTOMS FOR CURRENT USER
+    # ============================================================
+
+    symptoms = SymptomEntry.objects.filter(
         user=request.user
+    ).order_by(
+        "-date",
+        "-id"
     )
 
-    weekly_queryset = (
-        user_symptoms
-        .annotate(week=TruncWeek("date"))
-        .values("week", "symptom")
-        .annotate(total_frequency=Sum("frequency"))
-        .order_by("week", "symptom")
-    )
+
+    # ============================================================
+    # WEEKLY DATA FOR GRAPH
+    # ============================================================
 
     weekly_data = []
 
-    for item in weekly_queryset:
-        if item["week"]:
-            weekly_data.append({
-                "week": item["week"].strftime("%Y-%m-%d"),
-                "symptom": item["symptom"],
-                "frequency": item["total_frequency"] or 0
-            })
 
-    # Overall frequency by symptom
-    symptom_totals_queryset = (
-        user_symptoms
-        .values("symptom")
-        .annotate(
-            total_frequency=Sum("frequency"),
-            entries=Count("id")
-        )
-        .order_by("-total_frequency", "symptom")
-    )
+    for entry in symptoms:
 
-    symptom_totals = []
+        weekly_data.append({
 
-    for item in symptom_totals_queryset:
-        symptom_label = dict(
-            SymptomEntry.SYMPTOM_CHOICES
-        ).get(item["symptom"], item["symptom"])
+            "week": entry.date.strftime("%Y-%m-%d"),
 
-        symptom_totals.append({
-            "symptom": item["symptom"],
-            "label": symptom_label,
-            "frequency": item["total_frequency"] or 0,
-            "entries": item["entries"] or 0
+            "symptom": entry.symptom,
+
+            "frequency": entry.frequency,
+
         })
 
-    # Average severity by symptom
-    severity_queryset = (
-        user_symptoms
-        .values("symptom")
-        .annotate(
-            average_severity=Sum("severity")
-        )
-    )
 
-    severity_map = {}
-    for item in severity_queryset:
-        # Recalculate using a small aggregate for correctness.
-        count = user_symptoms.filter(
-            symptom=item["symptom"]
-        ).count()
-        severity_map[item["symptom"]] = round(
-            (item["average_severity"] or 0) / count,
-            1
-        ) if count else 0
+    # ============================================================
+    # CONTEXT
+    # ============================================================
 
-    for item in symptom_totals:
-        item["average_severity"] = severity_map.get(
-            item["symptom"],
-            0
-        )
+    context = {
 
-    recent_entries = user_symptoms.order_by(
-        "-date", "-id"
-    )[:10]
+        "symptoms": symptoms,
+
+        "weekly_data": json.dumps(
+            weekly_data
+        ),
+
+    }
+
+
+    # ============================================================
+    # RENDER
+    # ============================================================
 
     return render(
         request,
         "tracker/analysis.html",
-        {
-            "weekly_data": weekly_data,
-            "symptom_totals": symptom_totals,
-            "recent_entries": recent_entries,
-            "total_entries": user_symptoms.count(),
-        }
+        context
     )
-
-
 # ============================================================
 # HEALTH REMINDERS
 # ============================================================
