@@ -17,6 +17,100 @@
 
     <style>
 
+        /* =====================================================
+   REPORT ANALYSIS & PREVIOUS REPORTS
+   ===================================================== */
+
+.dashboard-card {
+    background: white;
+
+    border: 1px solid #f0dce5;
+
+    border-radius: 20px;
+
+    padding: 25px;
+
+    margin-bottom: 18px;
+
+    box-shadow:
+        0 6px 20px rgba(189, 91, 136, 0.08);
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(189, 91, 136, 0.14);
+}
+
+.dashboard-card .card-icon {
+    width: 50px;
+    height: 50px;
+
+    background: #fde8f0;
+
+    border-radius: 14px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 25px;
+
+    margin-bottom: 15px;
+}
+
+.dashboard-card h2 {
+    color: #333;
+
+    font-size: 22px;
+
+    margin-bottom: 8px;
+}
+
+.dashboard-card p {
+    color: #777;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+    margin-bottom: 15px;
+}
+
+.dashboard-card a {
+    display: inline-block;
+
+    background: #bd5b88;
+
+    color: white;
+
+    text-decoration: none;
+
+    padding: 11px 18px;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    transition:
+        background 0.2s,
+        transform 0.2s;
+}
+
+.dashboard-card a:hover {
+    background: #a94c77;
+
+    transform: translateY(-1px);
+}
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -2650,7 +2744,46 @@
 
 
         </div>
+        <div class="dashboard-card">
 
+    <div class="card-icon">
+        📄
+    </div>
+
+    <h2>
+        Report Analysis
+    </h2>
+
+    <p>
+        Upload your health report and get
+        easy-to-understand insights.
+    </p>
+
+    <a href="{% url 'report_analysis' %}">
+        Analyze a Report →
+    </a>
+
+</div>
+   <div class="dashboard-card">
+
+    <div class="card-icon">
+        📚
+    </div>
+
+    <h2>
+        Previous Reports
+    </h2>
+
+    <p>
+        View your previously uploaded
+        reports and their insights.
+    </p>
+
+    <a href="{% url 'previous_reports' %}">
+        View Previous Reports →
+    </a>
+
+</div>
     </div>
 
 
