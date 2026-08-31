@@ -66,5 +66,23 @@ path(
     views.delete_secret_note,
     name="delete_secret_note"
 ),
+
+path(
+    "report-analysis/",
+    views.report_analysis,
+    name="report_analysis"
+),
+
+path(
+    "report-result/<int:report_id>/",
+    views.report_result,
+    name="report_result"
+),
+
+path(
+    "previous-reports/",
+    views.previous_reports,
+    name="previous_reports"
+),
 ]
 

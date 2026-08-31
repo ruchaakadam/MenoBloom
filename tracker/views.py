@@ -8,6 +8,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
 from .models import SymptomEntry, UserProfile, Reminder, MealEntry, FamilyConnection, SecretNote, SupportChatMessage
+from pypdf import PdfReader
+from .models import MedicalReport
 
 # ============================================================
 # HELPER
@@ -2353,3 +2355,341 @@ def delete_secret_note(
             note.delete()
 
     return redirect("secret_notes")
+
+def extract_pdf_text(uploaded_file):
+
+    try:
+
+        reader = PdfReader(uploaded_file)
+
+        text = ""
+
+        for page in reader.pages:
+
+            page_text = page.extract_text()
+
+            if page_text:
+                text += page_text + "\n"
+
+        return text.strip()
+
+    except Exception:
+
+        return ""
+
+    def generate_report_insights(report_text):
+
+       if not report_text:
+
+        return (
+            "We could not extract readable text from this PDF.\n\n"
+            "Please make sure the uploaded report contains "
+            "selectable text and try again."
+        )
+
+
+    text = report_text.lower()
+
+    insights = []
+
+    insights.append(
+        "📊 REPORT SUMMARY"
+    )
+
+    insights.append(
+        "\nYour report was successfully uploaded and "
+        "read by MenoBloom."
+    )
+
+
+    # --------------------------------------------------
+    # FSH
+    # --------------------------------------------------
+
+    if "fsh" in text:
+
+        insights.append(
+            "\n\n🌸 FSH\n"
+            "Your report contains an FSH measurement. "
+            "FSH can be one of several measurements considered "
+            "when assessing the menopause transition. "
+            "Its meaning depends on the person's age, symptoms, "
+            "medications and other clinical information."
+        )
+
+
+    # --------------------------------------------------
+    # LH
+    # --------------------------------------------------
+
+    if "lh" in text:
+
+        insights.append(
+            "\n\n🌸 LH\n"
+            "Your report contains an LH measurement. "
+            "LH is another hormone that may be considered "
+            "alongside other information when evaluating "
+            "menstrual and hormonal changes."
+        )
+
+
+    # --------------------------------------------------
+    # Estradiol
+    # --------------------------------------------------
+
+    if "estradiol" in text or "oestrogen" in text or "estrogen" in text:
+
+        insights.append(
+            "\n\n🌸 Estrogen / Estradiol\n"
+            "Your report contains an estrogen-related "
+            "measurement. Hormone levels can vary during "
+            "the menopause transition, so this value should "
+            "be interpreted together with symptoms and other "
+            "clinical information."
+        )
+
+
+    # --------------------------------------------------
+    # TSH
+    # --------------------------------------------------
+
+    if "tsh" in text:
+
+        insights.append(
+            "\n\n🦋 TSH\n"
+            "Your report contains a TSH measurement. "
+            "Thyroid function can sometimes produce symptoms "
+            "that overlap with symptoms experienced during "
+            "menopause, so this result may be useful to "
+            "discuss with your healthcare professional."
+        )
+
+
+    # --------------------------------------------------
+    # Vitamin D
+    # --------------------------------------------------
+
+    if "vitamin d" in text or "25-oh" in text:
+
+        insights.append(
+            "\n\n☀️ Vitamin D\n"
+            "Your report contains a vitamin D measurement. "
+            "Vitamin D status is relevant to overall health, "
+            "including bone health."
+        )
+
+
+    # --------------------------------------------------
+    # Hemoglobin
+    # --------------------------------------------------
+
+    if "hemoglobin" in text or "haemoglobin" in text:
+
+        insights.append(
+            "\n\n🩸 Hemoglobin\n"
+            "Your report contains a hemoglobin measurement. "
+            "Hemoglobin is commonly included in blood tests "
+            "and can provide information about red blood cells."
+        )
+
+
+    # --------------------------------------------------
+    # Calcium
+    # --------------------------------------------------
+
+    if "calcium" in text:
+
+        insights.append(
+            "\n\n🦴 Calcium\n"
+            "Your report contains a calcium measurement. "
+            "Calcium is important for bone and muscle health."
+        )
+
+
+    # --------------------------------------------------
+    # Final message
+    # --------------------------------------------------
+
+    insights.append(
+
+        "\n\n💗 WHAT THIS MEANS\n"
+
+        "MenoBloom provides an educational summary of "
+        "information detected in your uploaded report. "
+
+        "The results should be interpreted in the context "
+        "of your symptoms, age, medical history and the "
+        "reference ranges provided by the laboratory."
+
+    )
+
+
+    insights.append(
+
+        "\n\n⚠️ IMPORTANT\n"
+
+        "This report summary is not a medical diagnosis. "
+        "Please consult a qualified healthcare professional "
+        "if you have concerns about any result."
+
+    )
+
+
+    return "".join(insights)
+def generate_report_insights(report_text):
+    """
+    Generate simple educational insights from a health report.
+    """
+
+    insights = []
+
+    text = report_text.lower()
+
+    if "fsh" in text:
+        insights.append(
+            "FSH was detected in the uploaded report. "
+            "FSH is a hormone that can change during the menopause transition."
+        )
+
+    if "lh" in text:
+        insights.append(
+            "LH was detected in the uploaded report. "
+            "LH is involved in the reproductive hormone system."
+        )
+
+    if "estradiol" in text:
+        insights.append(
+            "Estradiol was detected in the report. "
+            "Estradiol levels can change during the menopause transition."
+        )
+
+    if "tsh" in text:
+        insights.append(
+            "TSH was detected. TSH is related to thyroid function."
+        )
+
+    if "vitamin d" in text:
+        insights.append(
+            "Vitamin D was detected. Vitamin D is important for bone health."
+        )
+
+    if "hemoglobin" in text:
+        insights.append(
+            "Hemoglobin was detected. Hemoglobin is related to oxygen transport "
+            "in the blood."
+        )
+
+    if "calcium" in text:
+        insights.append(
+            "Calcium was detected. Calcium is important for bone health."
+        )
+
+    if not insights:
+        insights.append(
+            "The report was uploaded successfully, but no supported health "
+            "markers were detected."
+        )
+
+    return "\n\n".join(insights)
+
+@login_required(login_url="/login/")
+def report_analysis(request):
+
+    if request.method == "POST":
+
+        uploaded_file = request.FILES.get("report")
+
+        if not uploaded_file:
+
+            return render(
+                request,
+                "tracker/report_analysis.html",
+                {
+                    "error": "Please select a PDF report."
+                }
+            )
+
+        # Check file type
+
+        if not uploaded_file.name.lower().endswith(".pdf"):
+
+            return render(
+                request,
+                "tracker/report_analysis.html",
+                {
+                    "error": "Please upload a PDF file."
+                }
+            )
+
+        # Extract text from PDF
+
+        report_text = extract_pdf_text(
+            uploaded_file
+        )
+
+        # Generate educational insights
+
+        analysis = generate_report_insights(
+            report_text
+        )
+
+        # Save report in database
+
+        medical_report = MedicalReport.objects.create(
+
+            user=request.user,
+
+            report=uploaded_file,
+
+            report_name=uploaded_file.name,
+
+            analysis=analysis,
+
+            status="Analyzed"
+
+        )
+
+        return redirect(
+            "report_result",
+            report_id=medical_report.id
+        )
+
+
+    return render(
+        request,
+        "tracker/report_analysis.html"
+    )
+
+def report_result(request, report_id):
+
+    if not request.user.is_authenticated:
+        return redirect("login")
+
+    report = MedicalReport.objects.get(
+        id=report_id,
+        user=request.user
+    )
+
+    return render(
+        request,
+        "tracker/report_result.html",
+        {
+            "report": report
+        }
+    )
+def previous_reports(request):
+
+    if not request.user.is_authenticated:
+        return redirect("login")
+
+    reports = MedicalReport.objects.filter(
+        user=request.user
+    ).order_by("-uploaded_at")
+
+    return render(
+        request,
+        "tracker/previous_reports.html",
+        {
+            "reports": reports
+        }
+    )

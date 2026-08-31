@@ -455,3 +455,39 @@ class SupportChatMessage(models.Model):
             f"{self.user.username} - "
             f"{self.sender}"
         )
+    from django.db import models
+from django.contrib.auth.models import User
+
+
+class MedicalReport(models.Model):
+
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name="medical_reports"
+    )
+
+    report = models.FileField(
+        upload_to="medical_reports/"
+    )
+
+    uploaded_at = models.DateTimeField(
+        auto_now_add=True
+    )
+
+    report_name = models.CharField(
+        max_length=255
+    )
+
+    analysis = models.TextField(
+        blank=True,
+        null=True
+    )
+
+    status = models.CharField(
+        max_length=30,
+        default="Uploaded"
+    )
+
+    def __str__(self):
+        return self.report_name

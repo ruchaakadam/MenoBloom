@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Previous Reports | MenoBloom</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #fff8fb;
+            color: #333;
+            min-height: 100vh;
+        }
+
+        nav {
+            background: white;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        nav h1 {
+            color: #b65c88;
+            font-size: 24px;
+        }
+
+        nav a {
+            color: #b65c88;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .container {
+            width: 88%;
+            max-width: 950px;
+            margin: 45px auto;
+        }
+
+        .heading {
+            margin-bottom: 30px;
+        }
+
+        .heading h2 {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .heading p {
+            color: #777;
+            font-size: 16px;
+        }
+
+        .report-card {
+            background: white;
+            border: 1px solid #f0d9e4;
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 20px;
+
+            box-shadow:
+                0 7px 25px rgba(189, 91, 136, 0.08);
+        }
+
+        .report-card h3 {
+            color: #444;
+            font-size: 19px;
+            margin-bottom: 12px;
+        }
+
+        .report-info {
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .status {
+            display: inline-block;
+            background: #fff0f6;
+            color: #b65c88;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+
+        .view-button {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 11px 18px;
+            background: #b65c88;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .view-button:hover {
+            background: #9f4e77;
+            transform: translateY(-1px);
+        }
+
+        .empty {
+            background: white;
+            border-radius: 20px;
+            padding: 45px;
+            text-align: center;
+            border: 1px solid #f0d9e4;
+        }
+
+        .empty-icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .empty h3 {
+            margin-bottom: 10px;
+        }
+
+        .empty p {
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        .upload-button {
+            display: inline-block;
+            padding: 12px 20px;
+            background: #b65c88;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <nav>
+
+        <h1>🌸 MenoBloom</h1>
+
+        <a href="{% url 'dashboard' %}">
+            Dashboard
+        </a>
+
+    </nav>
+
+
+    <div class="container">
+
+        <div class="heading">
+
+            <h2>
+                📊 Previous Reports
+            </h2>
+
+            <p>
+                View your previously uploaded health reports and their insights.
+            </p>
+
+        </div>
+
+
+        {% if reports %}
+
+            {% for report in reports %}
+
+                <div class="report-card">
+
+                    <h3>
+                        📄 {{ report.report_name }}
+                    </h3>
+
+                    <p class="report-info">
+
+                        Uploaded:
+                        {{ report.uploaded_at|date:"d M Y, h:i A" }}
+
+                    </p>
+
+                    <span class="status">
+
+                        {{ report.status }}
+
+                    </span>
+
+
+                    <br>
+
+                    <a
+                        href="{% url 'report_result' report.id %}"
+                        class="view-button"
+                    >
+                        View Analysis →
+                    </a>
+
+                </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <div class="empty">
+
+                <div class="empty-icon">
+                    📄
+                </div>
+
+                <h3>
+                    No Reports Yet
+                </h3>
+
+                <p>
+                    You haven't uploaded any reports yet.
+                </p>
+
+                <a
+                    href="{% url 'report_analysis' %}"
+                    class="upload-button"
+                >
+                    Analyze a Report
+                </a>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</body>
+
+</html>

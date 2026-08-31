@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Report Analysis | MenoBloom</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #fff7fa;
+            margin: 0;
+            padding: 40px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(189, 91, 136, 0.12);
+        }
+
+        h1 {
+            color: #bd5b88;
+            text-align: center;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #777;
+            margin-bottom: 30px;
+        }
+
+        .upload-box {
+            border: 2px dashed #dca8bf;
+            padding: 40px;
+            text-align: center;
+            border-radius: 18px;
+            margin-bottom: 25px;
+        }
+
+        input[type="file"] {
+            margin: 20px;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 12px;
+            background: #bd5b88;
+            color: white;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #a94c77;
+        }
+
+        .notice {
+            background: #fff4f8;
+            padding: 15px;
+            border-radius: 12px;
+            margin-top: 25px;
+            color: #666;
+            font-size: 14px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>🌸 Report Analysis</h1>
+
+        <p class="subtitle">
+            Upload your health report to receive easy-to-understand
+            educational insights.
+        </p>
+
+        {% if error %}
+
+    <div style="
+        background:#fff0f0;
+        color:#c0392b;
+        padding:12px;
+        border-radius:10px;
+        margin-bottom:20px;
+    ">
+
+        {{ error }}
+
+    </div>
+
+{% endif %}
+        <form method="POST"
+              enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+            <div class="upload-box">
+
+                <h3>
+                    📄 Upload your report
+                </h3>
+
+                <p>
+                    Supported format: PDF
+                </p>
+
+                <input
+                    type="file"
+                    name="report"
+                    accept=".pdf"
+                    required
+                >
+
+            </div>
+
+            <button type="submit">
+                Analyze Report
+            </button>
+
+        </form>
+
+        <div class="notice">
+
+            <strong>Important:</strong>
+
+            MenoBloom provides educational information
+            from the uploaded report. It does not provide
+            a medical diagnosis. Please discuss your results
+            with a qualified healthcare professional.
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
