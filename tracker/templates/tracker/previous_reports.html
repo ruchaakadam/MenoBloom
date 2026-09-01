@@ -5,7 +5,8 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Previous Reports | MenoBloom</title>
 
@@ -19,109 +20,159 @@
 
         body {
             font-family: Arial, Helvetica, sans-serif;
-            background: #fff8fb;
+            background: #fff7fa;
             color: #333;
             min-height: 100vh;
         }
 
-        nav {
+        /* HEADER */
+
+        .header {
             background: white;
-            padding: 18px 7%;
+            padding: 20px 7%;
+            border-bottom: 1px solid #f0dce5;
+        }
+
+        .header-content {
+            max-width: 1100px;
+            margin: auto;
+
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
         }
 
-        nav h1 {
-            color: #b65c88;
-            font-size: 24px;
+        .brand {
+            color: #bd5b88;
+            font-size: 27px;
+            font-weight: bold;
         }
 
-        nav a {
-            color: #b65c88;
+        .dashboard-link {
+            color: #bd5b88;
             text-decoration: none;
             font-weight: 600;
         }
 
-        .container {
-            width: 88%;
-            max-width: 950px;
-            margin: 45px auto;
+        .dashboard-link:hover {
+            color: #a94c77;
         }
 
+        /* MAIN CONTAINER */
+
+        .container {
+            max-width: 800px;
+            margin: 45px auto;
+            padding: 20px;
+        }
+
+        /* PAGE HEADING */
+
         .heading {
+            text-align: center;
             margin-bottom: 30px;
         }
 
-        .heading h2 {
+        .heading h1 {
+            color: #bd5b88;
             font-size: 32px;
-            color: #333;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
         .heading p {
             color: #777;
             font-size: 16px;
+            line-height: 1.5;
         }
+
+        /* REPORT CARD */
 
         .report-card {
             background: white;
-            border: 1px solid #f0d9e4;
-            border-radius: 20px;
-            padding: 25px;
+
+            padding: 30px;
+
+            border-radius: 22px;
+
+            border: 1px solid #f0dce5;
+
             margin-bottom: 20px;
 
             box-shadow:
-                0 7px 25px rgba(189, 91, 136, 0.08);
+                0 10px 30px rgba(189, 91, 136, 0.10);
         }
 
-        .report-card h3 {
+        .report-card h2 {
             color: #444;
-            font-size: 19px;
-            margin-bottom: 12px;
+            font-size: 20px;
+            margin-bottom: 15px;
         }
 
         .report-info {
             color: #777;
             font-size: 14px;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
+
+        /* STATUS */
 
         .status {
             display: inline-block;
-            background: #fff0f6;
-            color: #b65c88;
-            padding: 6px 12px;
+
+            background: #fff4f8;
+
+            color: #bd5b88;
+
+            padding: 7px 13px;
+
             border-radius: 20px;
+
             font-size: 13px;
+
             font-weight: 600;
-            margin-top: 5px;
         }
+
+        /* BUTTON */
 
         .view-button {
             display: inline-block;
-            margin-top: 18px;
-            padding: 11px 18px;
-            background: #b65c88;
+
+            margin-top: 20px;
+
+            padding: 13px 20px;
+
+            background: #bd5b88;
+
             color: white;
+
             text-decoration: none;
-            border-radius: 10px;
+
+            border-radius: 12px;
+
             font-weight: 600;
+
             transition: 0.2s;
         }
 
         .view-button:hover {
-            background: #9f4e77;
-            transform: translateY(-1px);
+            background: #a94c77;
         }
+
+        /* EMPTY STATE */
 
         .empty {
             background: white;
-            border-radius: 20px;
-            padding: 45px;
+
+            padding: 40px;
+
             text-align: center;
-            border: 1px solid #f0d9e4;
+
+            border-radius: 22px;
+
+            border: 1px solid #f0dce5;
+
+            box-shadow:
+                0 10px 30px rgba(189, 91, 136, 0.10);
         }
 
         .empty-icon {
@@ -129,7 +180,8 @@
             margin-bottom: 15px;
         }
 
-        .empty h3 {
+        .empty h2 {
+            color: #444;
             margin-bottom: 10px;
         }
 
@@ -138,43 +190,103 @@
             margin-bottom: 20px;
         }
 
+        /* UPLOAD BUTTON */
+
         .upload-button {
             display: inline-block;
-            padding: 12px 20px;
-            background: #b65c88;
+
+            padding: 13px 20px;
+
+            background: #bd5b88;
+
             color: white;
+
             text-decoration: none;
-            border-radius: 10px;
+
+            border-radius: 12px;
+
             font-weight: 600;
+        }
+
+        .upload-button:hover {
+            background: #a94c77;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 600px) {
+
+            .header {
+                padding: 18px 20px;
+            }
+
+            .brand {
+                font-size: 23px;
+            }
+
+            .container {
+                margin: 25px auto;
+                padding: 15px;
+            }
+
+            .heading h1 {
+                font-size: 27px;
+            }
+
+            .report-card {
+                padding: 25px;
+            }
+
+            .view-button,
+            .upload-button {
+                width: 100%;
+                text-align: center;
+            }
+
         }
 
     </style>
 
 </head>
 
+
 <body>
 
-    <nav>
+    <!-- HEADER -->
 
-        <h1>🌸 MenoBloom</h1>
+    <div class="header">
 
-        <a href="{% url 'dashboard' %}">
-            Dashboard
-        </a>
+        <div class="header-content">
 
-    </nav>
+            <div class="brand">
+                🌸 MenoBloom
+            </div>
 
+            <a
+                href="{% url 'dashboard' %}"
+                class="dashboard-link"
+            >
+                Dashboard
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- MAIN CONTENT -->
 
     <div class="container">
 
         <div class="heading">
 
-            <h2>
+            <h1>
                 📊 Previous Reports
-            </h2>
+            </h1>
 
             <p>
-                View your previously uploaded health reports and their insights.
+                View your previously uploaded health reports
+                and their insights.
             </p>
 
         </div>
@@ -186,9 +298,10 @@
 
                 <div class="report-card">
 
-                    <h3>
+                    <h2>
                         📄 {{ report.report_name }}
-                    </h3>
+                    </h2>
+
 
                     <p class="report-info">
 
@@ -196,6 +309,7 @@
                         {{ report.uploaded_at|date:"d M Y, h:i A" }}
 
                     </p>
+
 
                     <span class="status">
 
@@ -205,6 +319,7 @@
 
 
                     <br>
+
 
                     <a
                         href="{% url 'report_result' report.id %}"
@@ -217,6 +332,7 @@
 
             {% endfor %}
 
+
         {% else %}
 
             <div class="empty">
@@ -225,13 +341,16 @@
                     📄
                 </div>
 
-                <h3>
+
+                <h2>
                     No Reports Yet
-                </h3>
+                </h2>
+
 
                 <p>
                     You haven't uploaded any reports yet.
                 </p>
+
 
                 <a
                     href="{% url 'report_analysis' %}"

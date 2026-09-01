@@ -21,14 +21,23 @@
         body {
             font-family: Arial, Helvetica, sans-serif;
             background: #fff7fa;
+            margin: 0;
+            padding: 40px;
             color: #333;
             min-height: 100vh;
         }
 
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
         .header {
             background: white;
-            padding: 20px 7%;
-            border-bottom: 1px solid #f0dce5;
+            padding: 20px 30px;
+            border-radius: 18px;
+            margin-bottom: 25px;
+            border: 1px solid #f0dce5;
         }
 
         .brand {
@@ -37,34 +46,30 @@
             font-weight: bold;
         }
 
-        .container {
-            max-width: 850px;
-            margin: 45px auto;
-            padding: 20px;
-        }
-
         .card {
             background: white;
-            padding: 35px;
-            border-radius: 22px;
+            padding: 40px;
+            border-radius: 25px;
 
             box-shadow:
-                0 10px 30px rgba(189, 91, 136, 0.10);
+                0 15px 40px rgba(189, 91, 136, 0.12);
         }
 
         h1 {
             color: #bd5b88;
-            margin-bottom: 10px;
+            text-align: center;
+            margin-bottom: 12px;
         }
 
         .report-name {
+            text-align: center;
             color: #777;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
 
         .section-title {
-            margin-bottom: 15px;
             color: #444;
+            margin-bottom: 15px;
         }
 
         .analysis {
@@ -76,25 +81,34 @@
             line-height: 1.7;
 
             white-space: pre-line;
+
+            color: #444;
         }
 
         .buttons {
             margin-top: 25px;
+
             display: flex;
             gap: 12px;
+
             flex-wrap: wrap;
         }
 
         .button {
             display: inline-block;
-            padding: 12px 18px;
-            border-radius: 10px;
+
+            padding: 13px 20px;
+
+            border-radius: 12px;
 
             background: #bd5b88;
             color: white;
 
             text-decoration: none;
+
             font-weight: 600;
+
+            transition: 0.2s;
         }
 
         .button:hover {
@@ -111,25 +125,48 @@
         }
 
         .notice {
-            margin-top: 25px;
-            padding: 15px;
-
             background: #fff4f8;
+
+            padding: 15px;
 
             border-radius: 12px;
 
+            margin-top: 25px;
+
             color: #666;
 
-            font-size: 13px;
+            font-size: 14px;
 
             line-height: 1.5;
+        }
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 20px;
+            }
+
+            .card {
+                padding: 25px;
+            }
+
+            .button {
+                width: 100%;
+                text-align: center;
+            }
+
         }
 
     </style>
 
 </head>
 
+
 <body>
+
+<div class="container">
+
+    <!-- HEADER -->
 
     <div class="header">
 
@@ -140,73 +177,78 @@
     </div>
 
 
-    <div class="container">
+    <!-- REPORT RESULT -->
 
-        <div class="card">
+    <div class="card">
 
-            <h1>
-                🌸 Your Report Insights
-            </h1>
+        <h1>
+            🌸 Your Report Insights
+        </h1>
 
-            <p class="report-name">
-                📄 {{ report.report_name }}
-            </p>
-
-
-            <h2 class="section-title">
-                💡 Analysis
-            </h2>
+        <p class="report-name">
+            📄 {{ report.report_name }}
+        </p>
 
 
-            <div class="analysis">
-
-                {% if report.analysis %}
-
-                    {{ report.analysis }}
-
-                {% else %}
-
-                    Your report was uploaded successfully,
-                    but an analysis has not been generated yet.
-
-                {% endif %}
-
-            </div>
+        <h2 class="section-title">
+            💡 Analysis
+        </h2>
 
 
-            <div class="buttons">
+        <div class="analysis">
 
-                <a
-                    href="{% url 'previous_reports' %}"
-                    class="button"
-                >
-                    📚 Previous Reports
-                </a>
+            {% if report.analysis %}
 
-                <a
-                    href="{% url 'report_analysis' %}"
-                    class="button secondary"
-                >
-                    📄 Upload Another Report
-                </a>
+                {{ report.analysis }}
 
-            </div>
+            {% else %}
+
+                Your report was uploaded successfully,
+                but an analysis has not been generated yet.
+
+            {% endif %}
+
+        </div>
 
 
-            <div class="notice">
+        <!-- BUTTONS -->
 
-                <strong>Important:</strong>
+        <div class="buttons">
 
-                MenoBloom provides educational information
-                from uploaded reports. It does not provide
-                a medical diagnosis. Please discuss your
-                results with a qualified healthcare professional.
+            <a
+                href="{% url 'previous_reports' %}"
+                class="button"
+            >
+                📚 Previous Reports
+            </a>
 
-            </div>
+
+            <a
+                href="{% url 'report_analysis' %}"
+                class="button secondary"
+            >
+                📄 Upload Another Report
+            </a>
+
+        </div>
+
+
+        <!-- IMPORTANT NOTICE -->
+
+        <div class="notice">
+
+            <strong>Important:</strong>
+
+            MenoBloom provides educational information
+            from uploaded reports. It does not provide
+            a medical diagnosis. Please discuss your
+            results with a qualified healthcare professional.
 
         </div>
 
     </div>
+
+</div>
 
 </body>
 
